@@ -9,17 +9,12 @@
     <meta name="color-scheme" content="light dark" />
     <title>WotBlitzStatisticsPro</title>
     <base href="/" />
-    <link
-      href="css/bootstrap/bootstrap.min.css"
-      rel="stylesheet"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
+    <link id="theme" href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link
+      id="theme"
       href="css/bootstrap/bootstrap-dark.min.css"
       rel="stylesheet"
-      media="(prefers-color-scheme: dark)"
-    />
-
+    /> -->
     <link href="css/app.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="supremacyLegend.png" />
     <link href="WotBlitzStatisticsPro.WebUi.styles.css" rel="stylesheet" />
@@ -41,20 +36,9 @@
       <a href="" class="reload">Reload</a>
       <a class="dismiss">🗙</a>
     </div>
-    <script>
-      if (
-        window.matchMedia('(prefers-color-scheme: dark)').media === 'not all'
-      ) {
-        document.documentElement.style.display = 'none';
-        document.head.insertAdjacentHTML(
-          'beforeend',
-          '<link id="css" rel="stylesheet" href="../dist/css/bootstrap.css" onload="document.documentElement.style.display = \'\'">'
-        );
-      }
-    </script>
-
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="css/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="scripts/themes.js"></script>
     <script>
       navigator.serviceWorker.register('service-worker.js');
     </script>
