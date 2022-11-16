@@ -1,5 +1,6 @@
 using System.Text.Json;
 using MediatR;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using WotBlitzStatisticsPro.WebUi.Messages;
 using WotBlitzStatisticsPro.WebUi.Model;
@@ -9,16 +10,20 @@ namespace WotBlitzStatisticsPro.WebUi.Services
     public class LocalStateService: 
         IRequestHandler<LocalStateRequest, LocalState>,
         INotificationHandler<SwitchThemeNotification>,
-        INotificationHandler<SaveThemeNotification>
+        INotificationHandler<SaveThemeNotification>,
+        INotificationHandler<ChangeCultureNotification>
     {
         private const string LocalStorageStateKey = "WotBlitzStatisticsPro";
         private readonly IJSRuntime _jsRuntime;
         private readonly IMediator _mediator;
+        private readonly NavigationManager _navigationManager;
 
-        public LocalStateService(IJSRuntime jsRuntime, IMediator mediator)
+
+        public LocalStateService(IJSRuntime jsRuntime, IMediator mediator, NavigationManager navigationManager)
         {
             _jsRuntime = jsRuntime;
             _mediator = mediator;
+            _navigationManager = navigationManager;
         }
 
         public Task<LocalState> Handle(LocalStateRequest request, CancellationToken cancellationToken)
@@ -34,6 +39,12 @@ namespace WotBlitzStatisticsPro.WebUi.Services
         public Task Handle(SaveThemeNotification notification, CancellationToken cancellationToken)
         {
             return SetTheme(notification.IsDarkTheme);
+        }
+
+        public async Task Handle(ChangeCultureNotification notification, CancellationToken cancellationToken)
+        {
+            await SetLocale(notification.Culture);
+            _navigationManager.NavigateTo(_navigationManager.Uri, forceLoad: true);
         }
 
         private async Task<LocalState> ReadLocalState()

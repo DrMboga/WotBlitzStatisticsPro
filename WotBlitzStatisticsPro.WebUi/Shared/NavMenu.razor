@@ -1,4 +1,5 @@
-﻿@implements IDisposable
+﻿@using System.Globalization
+@implements IDisposable
 @inject NavigationManager NavigationManager
 @inject IMediator Mediator
 
@@ -13,8 +14,25 @@
           <a class="nav-link @GetActive("", NavLinkMatch.All)" aria-current="page" href="">Main</a>
         </li>
       </ul>
-      <div class="d-flex">
+      <div class="d-flex flex-row align-items-center gap-3">
         <img src="/icons/@(IsDarkTheme ? "sun.svg" : "moon.svg")" alt="Theme" width="24" height="24" @onclick="@(async (arg) => await SwitchTheme())">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="navbarLocaleMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="@Flag(CurrentCulture)" width="40" height="24" alt="@CurrentCulture">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarLocaleMenuLink">
+              @foreach (var cultureInfo in CultureInfos)
+              {
+                  <li>
+                    <button class="dropdown-item" type="button" @onclick="@(async (arg) => await SetLocale(cultureInfo.Key))">
+                      <img src="@Flag(@cultureInfo.Value.Name)" width="40" height="24" alt="@cultureInfo.Value.Name">
+                    </button>
+                  </li>
+              }
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -23,11 +41,21 @@
 @code {
     private bool IsDarkTheme { get; set; }
 
+    private Dictionary<string, CultureInfo> CultureInfos { get; set; } = new()
+    {
+        { "en-US", new CultureInfo("en-US", false)},
+        { "ru-RU", new CultureInfo("ru-RU", false)},
+        { "de-DE", new CultureInfo("de-DE", false)}
+    };
+
+    private string CurrentCulture { get; set; } = string.Empty;
+
     protected override async Task OnInitializedAsync()
     {
-      var localState = await Mediator.Send(new LocalStateRequest());
-      IsDarkTheme = localState.IsDarkTheme;
-      NavigationManager.LocationChanged += LocationChangedHandler;
+        var localState = await Mediator.Send(new LocalStateRequest());
+        IsDarkTheme = localState.IsDarkTheme;
+        NavigationManager.LocationChanged += LocationChangedHandler;
+        CurrentCulture = CultureInfo.CurrentCulture.Name;
     }
 
     private bool IsActive(string href, NavLinkMatch navLinkMatch = NavLinkMatch.Prefix)
@@ -40,14 +68,33 @@
 
     private async Task SwitchTheme()
     {
-      IsDarkTheme = !IsDarkTheme;
-      await Mediator.Publish(new SwitchThemeNotification(IsDarkTheme));
-      await Mediator.Publish(new SaveThemeNotification(IsDarkTheme));
+        IsDarkTheme = !IsDarkTheme;
+        await Mediator.Publish(new SwitchThemeNotification(IsDarkTheme));
+        await Mediator.Publish(new SaveThemeNotification(IsDarkTheme));
     }
 
     private void LocationChangedHandler(Object? source, LocationChangedEventArgs args)
     {
         StateHasChanged();
+    }
+
+    private async Task SetLocale(string locale)
+    {
+        await Mediator.Publish(new ChangeCultureNotification(locale));
+    }
+
+    private string Flag(string locale)
+    {
+      switch(locale)
+      {
+        case "en-US":
+          return "/img/locale-usa.png";
+        case "ru-RU":
+          return "/img/locale-russia.png";
+        case "de-DE":
+          return "/img/locale-german.png";
+      }
+      return string.Empty;
     }
 
     public void Dispose()
