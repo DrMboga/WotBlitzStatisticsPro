@@ -1,20 +1,42 @@
 using System.Text.Json;
+using MediatR;
 using Microsoft.JSInterop;
+using WotBlitzStatisticsPro.WebUi.Messages;
 using WotBlitzStatisticsPro.WebUi.Model;
 
 namespace WotBlitzStatisticsPro.WebUi.Services
 {
-    public class LocalStateService : ILocalStateService
+    public class LocalStateService: 
+        IRequestHandler<LocalStateRequest, LocalState>,
+        INotificationHandler<SwitchThemeNotification>,
+        INotificationHandler<SaveThemeNotification>
     {
         private const string LocalStorageStateKey = "WotBlitzStatisticsPro";
         private readonly IJSRuntime _jsRuntime;
+        private readonly IMediator _mediator;
 
-        public LocalStateService(IJSRuntime jsRuntime)
+        public LocalStateService(IJSRuntime jsRuntime, IMediator mediator)
         {
             _jsRuntime = jsRuntime;
+            _mediator = mediator;
         }
 
-        public async Task<LocalState> ReadLocalState()
+        public Task<LocalState> Handle(LocalStateRequest request, CancellationToken cancellationToken)
+        {
+            return ReadLocalState();
+        }
+
+        public async Task Handle(SwitchThemeNotification notification, CancellationToken cancellationToken)
+        {
+            await _jsRuntime.InvokeVoidAsync("themesHelper.switchTheme", notification.IsDarkTheme);
+        }
+
+        public Task Handle(SaveThemeNotification notification, CancellationToken cancellationToken)
+        {
+            return SetTheme(notification.IsDarkTheme);
+        }
+
+        private async Task<LocalState> ReadLocalState()
         {
             var json = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", LocalStorageStateKey);
             if(!string.IsNullOrEmpty(json))
@@ -28,7 +50,7 @@ namespace WotBlitzStatisticsPro.WebUi.Services
             return new LocalState(false, "en-US");
         }
 
-        public async Task<LocalState> SetLocale(string locale)
+        private async Task<LocalState> SetLocale(string locale)
         {
             var state = await ReadLocalState();
             if (state.Locale != locale)
@@ -41,7 +63,7 @@ namespace WotBlitzStatisticsPro.WebUi.Services
             return state;
         }
 
-        public async Task<LocalState> SetTheme(bool isDarkTheme)
+        private async Task<LocalState> SetTheme(bool isDarkTheme)
         {
             var state = await ReadLocalState();
             if (state.IsDarkTheme != isDarkTheme)

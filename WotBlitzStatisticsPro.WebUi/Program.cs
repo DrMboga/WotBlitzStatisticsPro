@@ -2,12 +2,27 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using WotBlitzStatisticsPro.WebUi;
 using WotBlitzStatisticsPro.WebUi.Services;
+using MediatR;
+using System.Reflection;
+using WotBlitzStatisticsPro.WebUi.Messages;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped<ILocalStateService, LocalStateService>();
+// TODO: Find out the way to scan the other assemblies
+// https://github.com/jbogard/MediatR/wiki#aspnet-core-or-net-core-in-general
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+
+builder.Services.AddScoped<LocalStateService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+// Reading the theme and locale from local storage
+var mediator = host.Services.GetRequiredService<IMediator>();
+var localState = await mediator.Send(new LocalStateRequest());
+
+// Applying theme
+await mediator.Publish(new SwitchThemeNotification(localState.IsDarkTheme));
+
+await host.RunAsync();

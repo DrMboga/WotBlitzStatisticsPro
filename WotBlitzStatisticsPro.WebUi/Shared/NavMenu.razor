@@ -1,7 +1,6 @@
 ﻿@implements IDisposable
 @inject NavigationManager NavigationManager
-@inject IJSRuntime JsRuntime
-@inject ILocalStateService LocalStateService
+@inject IMediator Mediator
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
@@ -26,10 +25,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-      // TODO: Move this logic to the MediatR
-      var localState = await LocalStateService.ReadLocalState();
+      var localState = await Mediator.Send(new LocalStateRequest());
       IsDarkTheme = localState.IsDarkTheme;
-      await JsRuntime.InvokeVoidAsync("themesHelper.switchTheme", IsDarkTheme);
       NavigationManager.LocationChanged += LocationChangedHandler;
     }
 
@@ -43,10 +40,9 @@
 
     private async Task SwitchTheme()
     {
-      // TODO: Move this logic to the MediatR
       IsDarkTheme = !IsDarkTheme;
-      await JsRuntime.InvokeVoidAsync("themesHelper.switchTheme", IsDarkTheme);
-      await LocalStateService.SetTheme(IsDarkTheme);
+      await Mediator.Publish(new SwitchThemeNotification(IsDarkTheme));
+      await Mediator.Publish(new SaveThemeNotification(IsDarkTheme));
     }
 
     private void LocationChangedHandler(Object? source, LocationChangedEventArgs args)
