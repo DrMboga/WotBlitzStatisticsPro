@@ -12,23 +12,41 @@ namespace WotBlitzStatisticsPro.WebUi.Tests.PagesTests
         }
 
         [Test]
-        public void ShouldFireMediatorEventEachTimeWhenLanguageChanged()
+        public void ShouldFireMediatorEventWhenThemeChanged()
         {
-            var html = _component.Markup;
+            // It is light theme by default
+            _component.Instance.IsDarkTheme.Should().Be(false);
+
+            var themeIcon = _component.Find("img");
+
+            themeIcon.Should().NotBeNull();
+            themeIcon.Click();
+            // Should switch theme
+            _component.Instance.IsDarkTheme.Should().Be(true);
+            MediatorMock.Verify(m => m.Publish(
+                It.Is<SwitchThemeNotification>(n => n.IsDarkTheme == true),
+                It.IsAny<CancellationToken>()), Times.Once);
+            MediatorMock.Verify(m => m.Publish(
+                It.Is<SaveThemeNotification>(n => n.IsDarkTheme == true),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [TestCase(0, "en-US")]
+        [TestCase(1, "ru-RU")]
+        [TestCase(2, "de-DE")]
+        public void ShouldFireMediatorEventEachTimeWhenLanguageChanged(int dropdownButtonIndex, string expectedLanguageParameter)
+        {
+            // var html = _component.Markup;
             // Console.WriteLine(html);
             var elements = _component.FindAll(".dropdown-item");
 
             elements.Should().NotBeNull();
             elements.Count.Should().Be(3);
 
-            // string[] expectedLanguages = {"en-US", "ru-RU", "de-DE"};
-            // for (int i = 0; i < 3; i++)
-            // {
-            //     elements[i].Click();
-            //     MediatorMock.Verify(m => m.Publish(
-            //         It.Is<ChangeCultureNotification>(n => n.Culture == expectedLanguages[0]),
-            //         It.IsAny<CancellationToken>()), Times.Once);
-            // }
+            elements[dropdownButtonIndex].Click();
+            MediatorMock.Verify(m => m.Publish(
+                It.Is<ChangeCultureNotification>(n => n.Culture == expectedLanguageParameter),
+                It.IsAny<CancellationToken>()), Times.Once);
         }
 
     }
