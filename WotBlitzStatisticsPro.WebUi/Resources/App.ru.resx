@@ -121,4 +121,16 @@
     <value>Добро пожаловать в WOT Blitz statistics!</value>
     <comment/>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Домой</value>
+    <comment/>
+  </data>
+  <data name="Login with WG.net ID" xml:space="preserve">
+    <value>Войти с WG.net ID</value>
+    <comment/>
+  </data>
+  <data name="Find player" xml:space="preserve">
+    <value>Найти игрока</value>
+    <comment/>
+  </data>
 </root>

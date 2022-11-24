@@ -121,4 +121,12 @@
     <value>Willkommen bei der WOT Blitz statistics!</value>
     <comment/>
   </data>
+  <data name="Login with WG.net ID" xml:space="preserve">
+    <value>Anmelden mit WG.net-ID</value>
+    <comment/>
+  </data>
+  <data name="Find player" xml:space="preserve">
+    <value>Spieler finden</value>
+    <comment/>
+  </data>
 </root>
