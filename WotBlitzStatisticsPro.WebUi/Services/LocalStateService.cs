@@ -58,7 +58,7 @@ namespace WotBlitzStatisticsPro.WebUi.Services
                     return state;
                 }
             }
-            return new LocalState(false, "en-US");
+            return new LocalState(true, "en-US");
         }
 
         private async Task<LocalState> SetLocale(string locale)
