@@ -9,7 +9,7 @@
     @foreach (var player in players)
     {
       <li class="list-group-item @(SelectedPlayer == player ? "active" : string.Empty)"
-          @onclick="@(async (e) => await OnPlayerSelected(player))">
+          @onclick="@((e) => SelectedPlayer = player)">
         <div class="d-flex flex-row align-items-center">
           <div class="flex-fill">@player</div>
           @if(SelectedPlayer == player)
@@ -38,11 +38,6 @@
         // TODO: Send mediatR request for search player
         players.Add(newValue);
       }
-    }
-
-    private async Task OnPlayerSelected(string player)
-    {
-      SelectedPlayer = player;
     }
 
     private async Task OnPlayerInfoClicked(string player)
