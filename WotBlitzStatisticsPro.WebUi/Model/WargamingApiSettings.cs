@@ -5,5 +5,9 @@ namespace WotBlitzStatisticsPro.WebUi.Model
     {
         /// <inheritdoc />
         public string ApplicationId { get; set; } = string.Empty;
+        /// <inheritdoc />
+        public string BlitzApiUrl { get; set; } = string.Empty;
+         /// <inheritdoc />
+        public string WotApiUrl { get; set; } = string.Empty;
     } 
 }
