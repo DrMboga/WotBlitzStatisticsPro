@@ -1,4 +1,6 @@
 @inject IStringLocalizer<App> Localize
+@inject IMediator Mediator
+
 <div class="d-flex flex-column mt-4">
   <div class="input-group">
     <span class="input-group-text" id="search-area"><img src="/icons/tankists-200.png" width="32px" height="32px"></span>
@@ -8,14 +10,14 @@
   <ul class="list-group flex-fill mt-4">
     @foreach (var player in players)
     {
-      <li class="list-group-item @(SelectedPlayer == player ? "active" : string.Empty)"
-          @onclick="@((e) => SelectedPlayer = player)">
+      <li class="list-group-item @(SelectedPlayer == player.AccountId ? "active" : string.Empty)"
+          @onclick="@((e) => SelectedPlayer = player.AccountId)">
         <div class="d-flex flex-row align-items-center">
-          <div class="flex-fill">@player</div>
-          @if(SelectedPlayer == player)
+          <div class="flex-fill">@player.Nickname</div>
+          @if(SelectedPlayer == player.AccountId)
           {
           <button type="button" class="btn btn-secondary" 
-            @onclick="@(async (e) => await OnPlayerInfoClicked(player))"><img src="/icons/tankist-200.png" width="24px" height="24px"></button>
+            @onclick="@(async (e) => await OnPlayerInfoClicked(player.AccountId))"><img src="/icons/tankist-200.png" width="24px" height="24px"></button>
           }
         </div>
       </li>
@@ -26,23 +28,21 @@
 @code {
     private string? InputValue { get; set; }
 
-    // TODO: Replace with searcPlayerResponseItem DTO
-    private List<String> players { get; set; } = new List<string>();
+    private List<PlayerInfoDto> players { get; set; } = new List<PlayerInfoDto>();
 
-    private string? SelectedPlayer { get; set; }
+    private long? SelectedPlayer { get; set; }
 
     private async Task OnSearchTextrChanged(string? newValue)
     {
       if(!string.IsNullOrEmpty(newValue))
       {
-        // TODO: Send mediatR request for search player
-        players.Add(newValue);
+        players = await Mediator.Send(new FindPlayersRequest(newValue));
       }
     }
 
-    private async Task OnPlayerInfoClicked(string player)
+    private async Task OnPlayerInfoClicked(long playerId)
     {
       // TODO: Send mediatR notification to navigate to player statistics
-      Console.WriteLine($"Selected '{player}' statistics");
+      Console.WriteLine($"Selected '{playerId}' statistics");
     }
 }

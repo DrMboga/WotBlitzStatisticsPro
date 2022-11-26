@@ -6,15 +6,20 @@ using MediatR;
 using System.Reflection;
 using WotBlitzStatisticsPro.WebUi.Messages;
 using System.Globalization;
+using WotBlitzStatisticsPro.Application;
+using WotBlitzStatisticsPro.Application.Messages;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-// TODO: Find out the way to scan the other assemblies
-// https://github.com/jbogard/MediatR/wiki#aspnet-core-or-net-core-in-general
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+ApplicationInstaller.ConfigureServices(builder.Services);
+
+// Register all MediatR handlers from all assemblies
+var mediatRAssembliesToRegister = ApplicationInstaller.GetAllMediatRAssemblies();
+mediatRAssembliesToRegister.Add(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(mediatRAssembliesToRegister.ToArray());
 
 builder.Services.AddScoped<LocalStateService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
