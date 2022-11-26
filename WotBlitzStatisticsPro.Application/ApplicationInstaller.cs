@@ -1,7 +1,8 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using WotBlitzStatisticsPro.Application.Messages;
-using WotBlitzStatisticsPro.Application.Services;
+using WotBlitzStatisticsPro.WargamingApi;
+using WotBlitzStatisticsPro.WargamingApi.Messages;
 
 namespace WotBlitzStatisticsPro.Application
 {
@@ -9,14 +10,15 @@ namespace WotBlitzStatisticsPro.Application
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            // services.AddTransient<PlayerInfoService>();
+            WargamingApiInstaller.ConfigureServices(services);
         }
 
         public static List<Assembly> GetAllMediatRAssemblies()
         {
             return new List<Assembly> 
             { 
-                typeof(FindPlayersRequest).Assembly
+                typeof(FindPlayersRequest).Assembly,
+                typeof(GetAccountsListRequest).Assembly
             };
         }
     }
