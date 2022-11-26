@@ -129,4 +129,16 @@
     <value>Spieler finden</value>
     <comment/>
   </data>
+  <data name="Win rate" xml:space="preserve">
+    <value>Sieg</value>
+    <comment/>
+  </data>
+  <data name="Battles" xml:space="preserve">
+    <value>Gefechte</value>
+    <comment/>
+  </data>
+  <data name="Last battle" xml:space="preserve">
+    <value>Letzte Gefecht</value>
+    <comment/>
+  </data>
 </root>

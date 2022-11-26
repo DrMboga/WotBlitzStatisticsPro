@@ -15,7 +15,7 @@ namespace WotBlitzStatisticsPro.Model
         ///<summary>
         /// Account creation date
         ///</summary>
-        public DateTime CreatedAt { get; } 
+        public DateTimeOffset CreatedAt { get; } 
 
         /// <summary>
         /// Player's battles count
@@ -25,7 +25,7 @@ namespace WotBlitzStatisticsPro.Model
         /// <summary>
         /// Last battle time
         /// </summary>
-        public DateTime LastBattle { get; }
+        public DateTimeOffset LastBattle { get; }
 
         ///<summary>
         /// Tank id, which kills max frags per battle

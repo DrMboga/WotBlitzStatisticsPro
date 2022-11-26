@@ -133,4 +133,16 @@
     <value>Найти игрока</value>
     <comment/>
   </data>
+  <data name="Win rate" xml:space="preserve">
+    <value>Процент побед</value>
+    <comment/>
+  </data>
+  <data name="Battles" xml:space="preserve">
+    <value>Количество боёв</value>
+    <comment/>
+  </data>
+  <data name="Last battle" xml:space="preserve">
+    <value>Последний бой</value>
+    <comment/>
+  </data>
 </root>

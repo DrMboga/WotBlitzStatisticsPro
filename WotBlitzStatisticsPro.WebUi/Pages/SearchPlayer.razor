@@ -7,13 +7,19 @@
     <input type="text" class="form-control" placeholder="@Localize["Find player"]" aria-label="FindPlayer" aria-describedby="search-area"
       value="@InputValue" @onchange="@(async (ChangeEventArgs __e) => await OnSearchTextrChanged(__e?.Value?.ToString()))" >
   </div>
+  @if(Loading)
+  {
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  }
   <ul class="list-group flex-fill mt-4">
     @foreach (var player in players)
     {
       <li class="list-group-item @(SelectedPlayer == player.AccountId ? "active" : string.Empty)"
           @onclick="@((e) => SelectedPlayer = player.AccountId)">
         <div class="d-flex flex-row align-items-center">
-          <div class="flex-fill">@player.Nickname</div>
+          <div class="flex-fill"><SearchPlayerListItem Player="@player"></SearchPlayerListItem></div>
           @if(SelectedPlayer == player.AccountId)
           {
           <button type="button" class="btn btn-secondary" 
@@ -32,11 +38,15 @@
 
     private long? SelectedPlayer { get; set; }
 
+    private bool Loading { get; set; } = false;
+
     private async Task OnSearchTextrChanged(string? newValue)
     {
       if(!string.IsNullOrEmpty(newValue))
       {
+        Loading = true;
         players = await Mediator.Send(new FindPlayersRequest(newValue));
+        Loading = false;
       }
     }
 

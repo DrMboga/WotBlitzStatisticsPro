@@ -6,9 +6,9 @@ namespace WotBlitzStatisticsPro.Application.Dto
     (
         long AccountId,
         string Nickname,
-        DateTime CreatedAt,
+        DateTimeOffset CreatedAt,
         long Battles,
-        DateTime LastBattle,
+        DateTimeOffset LastBattle,
         long? MaxFragsTankId,
         long? MaxXpTankId,
         string? ClanTag,

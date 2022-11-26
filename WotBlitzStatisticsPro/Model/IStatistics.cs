@@ -5,7 +5,7 @@ namespace WotBlitzStatisticsPro.Model
         ///<summary>
 		/// Last battle time
 		///</summary>
-		DateTime LastBattleTime { get; }
+		DateTimeOffset LastBattleTime { get; }
 
 		///<summary>
 		/// Battles count
