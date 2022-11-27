@@ -3,6 +3,7 @@ using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using WotBlitzStatisticsPro.Application.Mappers;
 using WotBlitzStatisticsPro.Application.Messages;
+using WotBlitzStatisticsPro.Application.Services;
 using WotBlitzStatisticsPro.WargamingApi;
 using WotBlitzStatisticsPro.WargamingApi.Messages;
 
@@ -19,6 +20,8 @@ namespace WotBlitzStatisticsPro.Application
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+            services.AddTransient<IFindPlayersService, FindPlayersService>();
 
             WargamingApiInstaller.ConfigureServices(services);
         }

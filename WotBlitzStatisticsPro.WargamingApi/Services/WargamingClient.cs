@@ -23,11 +23,11 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
 			params string[] queryParameters) where T: class
 		{
 			string uri = GetBlitzUri(language, method, queryParameters);
-
+            // TODO: Cache requests inside the client
 			return CallWgApi<T>(uri);
         }
 
-		protected async Task<T?> CallWgApi<T>(string uri, bool postMethod = false) where T : class
+		public async Task<T?> CallWgApi<T>(string uri, bool postMethod = false) where T : class
 		{
 			_httpClient.DefaultRequestHeaders.Accept.Clear();
 			_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
