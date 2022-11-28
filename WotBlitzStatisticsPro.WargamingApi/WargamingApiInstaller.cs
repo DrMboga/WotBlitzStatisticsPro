@@ -8,6 +8,8 @@ namespace WotBlitzStatisticsPro.WargamingApi
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient<IWargamingClient, WargamingClient>();
+            services.AddMemoryCache();
+            services.AddSingleton<ICacheService, CacheService>();
         }
     }
 }

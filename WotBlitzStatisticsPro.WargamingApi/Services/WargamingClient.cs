@@ -10,11 +10,16 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
     {
         private readonly HttpClient _httpClient;
         private readonly IWargamingApiSettings _wargamingApiSettings;
+		private readonly ICacheService _cacheService;
 
-        public WargamingClient(HttpClient httpClient, IWargamingApiSettings wargamingApiSettings)
+        public WargamingClient(
+			HttpClient httpClient, 
+			IWargamingApiSettings wargamingApiSettings, 
+			ICacheService cacheService)
         {
             _httpClient = httpClient;
             _wargamingApiSettings = wargamingApiSettings;
+            _cacheService = cacheService;
         }
 
         public Task<T?> GetFromBlitzApi<T>(
@@ -23,7 +28,6 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
 			params string[] queryParameters) where T: class
 		{
 			string uri = GetBlitzUri(language, method, queryParameters);
-            // TODO: Cache requests inside the client
 			return CallWgApi<T>(uri);
         }
 
@@ -43,7 +47,16 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
             }
             else
             {
-				response = await _httpClient.GetAsync(uri);
+				string? cachedResponse = _cacheService.CachedRequest(uri);
+				if (string.IsNullOrEmpty(cachedResponse))
+				{
+					response = await _httpClient.GetAsync(uri);
+				}
+				else
+				{
+					var cachedObject = JsonSerializer.Deserialize<ResponseBody<T>>(cachedResponse);
+					return cachedObject?.Data;
+				}
 			}
 			response.EnsureSuccessStatusCode();
 			var responseString = await response.Content.ReadAsStringAsync();
@@ -57,6 +70,7 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
                 switch (responseBody.Status)
                 {
                     case "ok":
+						_cacheService.PutToCache(uri, responseString);
                         return responseBody.Data;
                     case "error":
                         {
