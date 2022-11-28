@@ -19,7 +19,7 @@ var wgApiConfig = new WargamingApiSettings();
 builder.Configuration.GetSection("WargamingApi").Bind(wgApiConfig);
 builder.Services.AddSingleton<IWargamingApiSettings>(wgApiConfig);
 
-ApplicationInstaller.ConfigureServices(builder.Services);
+ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData);
 
 // Register all MediatR handlers from all assemblies
 var mediatRAssembliesToRegister = ApplicationInstaller.GetAllMediatRAssemblies();

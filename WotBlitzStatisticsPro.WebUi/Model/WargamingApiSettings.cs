@@ -9,5 +9,7 @@ namespace WotBlitzStatisticsPro.WebUi.Model
         public string BlitzApiUrl { get; set; } = string.Empty;
          /// <inheritdoc />
         public string WotApiUrl { get; set; } = string.Empty;
+        /// <inheritdoc />
+        public bool UseMockData { get; set; } = false;
     } 
 }

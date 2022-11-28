@@ -19,5 +19,10 @@ namespace WotBlitzStatisticsPro
 		/// WOT API url
 		/// </summary>
 		string WotApiUrl { get; set; }
+
+		/// <summary>
+		/// If true, application uses mock data instead of WG API calls
+		/// </summary>
+		bool UseMockData { get; set; }
 	}
 }
