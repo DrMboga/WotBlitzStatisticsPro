@@ -7,7 +7,8 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
 {
     public class PlayersService : 
         IRequestHandler<GetAccountsListRequest, List<WotAccountListResponse>>,
-        IRequestHandler<GetBunchOfAccountsRequest, List<WotAccountInfo>>
+        IRequestHandler<GetBunchOfAccountsRequest, List<WotAccountInfo>>,
+        IRequestHandler<GetAccountStatisticsRequest, WotAccountInfo>
     {
         private readonly IWargamingClient _wargamingClient;
 
@@ -35,6 +36,15 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
 
             return accounts?.Values.ToList() ?? new List<WotAccountInfo>();
 
+        }
+
+        public async Task<WotAccountInfo> Handle(GetAccountStatisticsRequest request, CancellationToken cancellationToken)
+        {
+            var account = await _wargamingClient.GetFromBlitzApi<Dictionary<string, WotAccountInfo>>(
+                    request.Language,
+                    "account/info/",
+                    $"account_id={request.AccountId}").ConfigureAwait(false);
+            return account?[request.AccountId.ToString()] ?? new WotAccountInfo();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace WotBlitzStatisticsPro.Application
             var mapperConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new AccountSearchResponseProfile());
+                mc.AddProfile(new AccountInfoProfile());
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
