@@ -18,15 +18,15 @@ namespace WotBlitzStatisticsPro.Application.Services
         }
 
 
-        public async Task<List<PlayerInfoDto>> FindPlayers(string searchString)
+        public async Task<List<ShortPlayerInfoDto>> FindPlayers(string searchString)
         {
             var accountsList = await _mediator.Send(new GetAccountsListRequest(searchString));
 
             if (accountsList == null)
             {
-                return new List<PlayerInfoDto>();
+                return new List<ShortPlayerInfoDto>();
             }
-            var accounts = _mapper.Map<List<WotAccountListResponse>, List<PlayerInfoDto>>(accountsList);
+            var accounts = _mapper.Map<List<WotAccountListResponse>, List<ShortPlayerInfoDto>>(accountsList);
 
             if (accountsList.Count > 100)
             {

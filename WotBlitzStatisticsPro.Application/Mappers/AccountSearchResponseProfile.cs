@@ -9,12 +9,12 @@ namespace WotBlitzStatisticsPro.Application.Mappers
     {
         public AccountSearchResponseProfile()
         {
-            CreateMap<WotAccountListResponse, PlayerInfoDto>()
+            CreateMap<WotAccountListResponse, ShortPlayerInfoDto>()
                 .ForMember(
                     d => d.AccountId, 
                     o => o.MapFrom(s => s.AccountId ?? -1));
 
-            CreateMap<WotAccountInfo, PlayerInfoDto>()
+            CreateMap<WotAccountInfo, ShortPlayerInfoDto>()
                 .ForMember(dest => dest.CreatedAt,
                     o => o.MapFrom(s => s.CreatedAt.ToDateTime()))
                 .ForMember(dest => dest.LastBattle,

@@ -5,7 +5,7 @@ using WotBlitzStatisticsPro.Application.Messages;
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class PlayerInfoService
-        : IRequestHandler<FindPlayersRequest, List<PlayerInfoDto>>
+        : IRequestHandler<FindPlayersRequest, List<ShortPlayerInfoDto>>
     {
         private readonly IFindPlayersService _findPlayersService;
 
@@ -14,7 +14,7 @@ namespace WotBlitzStatisticsPro.Application.Services
             _findPlayersService = findPlayersService;
         }
 
-        public Task<List<PlayerInfoDto>> Handle(FindPlayersRequest request, CancellationToken cancellationToken)
+        public Task<List<ShortPlayerInfoDto>> Handle(FindPlayersRequest request, CancellationToken cancellationToken)
         {
             return _findPlayersService.FindPlayers(request.SearchString);
         }

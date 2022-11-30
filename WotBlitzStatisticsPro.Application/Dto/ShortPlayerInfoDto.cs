@@ -2,7 +2,7 @@ using WotBlitzStatisticsPro.Model;
 
 namespace WotBlitzStatisticsPro.Application.Dto
 {
-    public class PlayerInfoDto : IPlayerInfo
+    public class ShortPlayerInfoDto
     {
         public long AccountId { get; set;}
 
@@ -14,15 +14,9 @@ namespace WotBlitzStatisticsPro.Application.Dto
 
         public DateTimeOffset LastBattle { get; set;}
 
-        public long? MaxFragsTankId { get; set;}
-
-        public long? MaxXpTankId { get; set;}
-
         public string? ClanTag { get; set;}
 
         public int WinRate { get; set;}
-
-        public double? AvgTier { get; set;}
     }
 
 }
