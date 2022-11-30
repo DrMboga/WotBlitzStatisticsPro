@@ -29,6 +29,7 @@ namespace WotBlitzStatisticsPro.Application
             else
             {
                 services.AddTransient<IFindPlayersService, FindPlayersService>();
+                services.AddTransient<IPlayerInfoService, PlayerInfoService>();
                 WargamingApiInstaller.ConfigureServices(services);
             }
         }
@@ -36,6 +37,7 @@ namespace WotBlitzStatisticsPro.Application
         private static void ConfigureMocks(IServiceCollection services)
         {
             services.AddTransient<IFindPlayersService, FindPlayersServiceMock>();
+            services.AddTransient<IPlayerInfoService, PlayerInfoServiceMock>();
         }
 
         public static List<Assembly> GetAllMediatRAssemblies()

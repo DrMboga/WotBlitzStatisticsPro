@@ -1,0 +1,22 @@
+@page "/player/{AccountId:long}"
+@using System.Globalization
+@inject IStringLocalizer<App> Localize
+@inject IMediator Mediator
+
+<PageTitle>@(Player == null ? "Player": Player.Nickname)</PageTitle>
+
+<div class="container">
+    @AccountId
+</div>
+
+@code {
+    [Parameter]
+    public long AccountId { get; set; }
+
+    public PlayerInfoDto? Player { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Player = await Mediator.Send(new GetPlayerInfoRequest(AccountId, CultureInfo.CurrentCulture.Name));
+    }
+}

@@ -52,7 +52,6 @@
 
     private async Task OnPlayerInfoClicked(long playerId)
     {
-      // TODO: Send mediatR notification to navigate to player statistics
-      Console.WriteLine($"Selected '{playerId}' statistics");
+      await Mediator.Publish(new NavigateToPlayerInfoPageNotification(playerId));
     }
 }

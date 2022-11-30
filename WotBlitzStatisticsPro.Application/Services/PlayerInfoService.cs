@@ -1,22 +1,14 @@
-using MediatR;
 using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Messages;
+using WotBlitzStatisticsPro.Model;
 
 namespace WotBlitzStatisticsPro.Application.Services
 {
-    public class PlayerInfoService
-        : IRequestHandler<FindPlayersRequest, List<ShortPlayerInfoDto>>
+    public class PlayerInfoService : IPlayerInfoService
     {
-        private readonly IFindPlayersService _findPlayersService;
-
-        public PlayerInfoService(IFindPlayersService findPlayersService)
+        public async Task<PlayerInfoDto> GetFullPlayerStatistics(long accountId, RequestLanguage language)
         {
-            _findPlayersService = findPlayersService;
-        }
-
-        public Task<List<ShortPlayerInfoDto>> Handle(FindPlayersRequest request, CancellationToken cancellationToken)
-        {
-            return _findPlayersService.FindPlayers(request.SearchString);
+            // TODO: Add implementation calling WG Api request
+            return new PlayerInfoDto { Nickname = "Fake" };
         }
     }
 }
