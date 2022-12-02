@@ -4,10 +4,58 @@
 @inject IMediator Mediator
 
 <PageTitle>@(Player == null ? "Player": Player.Nickname)</PageTitle>
-
-<div class="container">
-    @AccountId
+@if(Player == null)
+{
+<div class="text-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
+}
+@if(Player != null)
+{
+<div class="container">
+    <h1>
+    @Player.Nickname 
+    @* @if (AccountInfo.ClanInfo != null)
+                            {
+                                <span style="color: @Constants.ClanTagColor;"> [<span style="font-weight: bolder;">@AccountInfo.ClanInfo.Tag</span>]</span>
+                            } *@
+    </h1>
+    <div class="mt-1 mb-1">
+        <div class="data-field">
+            <div class="data-label">@Localize["Created"]:</div>
+            <div class="data-value">
+                <div> <b>@Player.CreatedAt.ToString("d")</b></div>
+            </div>
+        </div>
+        <div class="data-field mt-1">
+            <div class="data-label">@Localize["Last battle"]:</div>
+            <div class="data-value">
+                <div> <b>@Player.LastBattleTime.ConvertToLocalTime().ToString("g")</b></div>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-pills mb-2 mt-2" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="statistics-tab" data-bs-toggle="pill" data-bs-target="#statistics" type="button" role="tab" aria-controls="statistics" aria-selected="true">@Localize["Statistics"]</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="charts-tab" data-bs-toggle="pill" data-bs-target="#charts" type="button" role="tab" aria-controls="charts" aria-selected="false">@Localize["Infographics"]</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tanks-tab" data-bs-toggle="pill" data-bs-target="#tanks" type="button" role="tab" aria-controls="tanks" aria-selected="false">@Localize["Tanks"]</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
+            <PlayerInfoOverview Player="@Player"></PlayerInfoOverview>
+        </div>
+        <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">...</div>
+        <div class="tab-pane fade" id="tanks" role="tabpanel" aria-labelledby="tanks-tab">...</div>
+    </div>
+</div>
+}
 
 @code {
     [Parameter]

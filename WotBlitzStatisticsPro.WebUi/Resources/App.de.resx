@@ -141,4 +141,28 @@
     <value>Letzte Gefecht</value>
     <comment/>
   </data>
+  <data name="Created" xml:space="preserve">
+    <value>Erstellt</value>
+    <comment/>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistik</value>
+    <comment/>
+  </data>
+  <data name="Infographics" xml:space="preserve">
+    <value>Infografiken</value>
+    <comment/>
+  </data>
+  <data name="Tanks" xml:space="preserve">
+    <value>Panzern</value>
+    <comment/>
+  </data>
+  <data name="Average Damage" xml:space="preserve">
+    <value>Mittlerer Schaden</value>
+    <comment/>
+  </data>
+  <data name="Average XP" xml:space="preserve">
+    <value>Mittlere EP</value>
+    <comment/>
+  </data>
 </root>

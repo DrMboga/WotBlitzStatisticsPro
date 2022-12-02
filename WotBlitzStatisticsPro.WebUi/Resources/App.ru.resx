@@ -145,4 +145,40 @@
     <value>Последний бой</value>
     <comment/>
   </data>
+  <data name="Created" xml:space="preserve">
+    <value>Создан</value>
+    <comment/>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Статистика</value>
+    <comment/>
+  </data>
+  <data name="Infographics" xml:space="preserve">
+    <value>Инфографика</value>
+    <comment/>
+  </data>
+  <data name="Tanks" xml:space="preserve">
+    <value>Танки</value>
+    <comment/>
+  </data>
+  <data name="Average Damage" xml:space="preserve">
+    <value>Средний урон</value>
+    <comment/>
+  </data>
+  <data name="Average XP" xml:space="preserve">
+    <value>Средний опыт</value>
+    <comment/>
+  </data>
+  <data name="Damage coefficient" xml:space="preserve">
+    <value>Коэффициент урона</value>
+    <comment/>
+  </data>
+  <data name="Survival rate" xml:space="preserve">
+    <value>Выживаемость</value>
+    <comment/>
+  </data>
+  <data name="Avg tier" xml:space="preserve">
+    <value>Танкоуровень</value>
+    <comment/>
+  </data>
 </root>
