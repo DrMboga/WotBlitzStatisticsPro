@@ -181,4 +181,60 @@
     <value>Танкоуровень</value>
     <comment/>
   </data>
+  <data name="Ower all statistics" xml:space="preserve">
+    <value>Общая статистика</value>
+    <comment/>
+  </data>
+  <data name="Wins" xml:space="preserve">
+    <value>Побед</value>
+    <comment/>
+  </data>
+  <data name="Losses" xml:space="preserve">
+    <value>Поражений</value>
+    <comment/>
+  </data>
+  <data name="Survived" xml:space="preserve">
+    <value>Выжил</value>
+    <comment/>
+  </data>
+  <data name="Win and survived" xml:space="preserve">
+    <value>Выжил и победил</value>
+    <comment/>
+  </data>
+  <data name="Average Damage received" xml:space="preserve">
+    <value>Полученный средний урон</value>
+    <comment/>
+  </data>
+  <data name="Frags" xml:space="preserve">
+    <value>Фрагов</value>
+    <comment/>
+  </data>
+  <data name="Frags over 8 tier" xml:space="preserve">
+    <value>Фрагов 8+ ур.</value>
+    <comment/>
+  </data>
+  <data name="Hits" xml:space="preserve">
+    <value>Пробитий</value>
+    <comment/>
+  </data>
+  <data name="Accuracy" xml:space="preserve">
+    <value>Точность</value>
+    <comment/>
+  </data>
+  <data name="Spotted tanks" xml:space="preserve">
+    <value>Обнаружено танков</value>
+    <comment/>
+  </data>
+  <data name="Base captured" xml:space="preserve">
+    <value>Захват базы</value>
+    <comment/>
+  </data>
+  <data name="Dropped base capture" xml:space="preserve">
+    <value>Защита базы</value>
+    <comment/>
+  </data>
+  <data name="Shots" xml:space="preserve">
+    <value>Выстрелов</value>
+    <comment/>
+  </data>
 </root>
