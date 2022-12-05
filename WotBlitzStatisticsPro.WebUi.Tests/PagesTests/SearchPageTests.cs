@@ -22,21 +22,37 @@ namespace WotBlitzStatisticsPro.WebUi.Tests.PagesTests
         public void ShouldFireMediatorEventWhenUserWantsToFindPlayer()
         {
             string searchString = "mboga";
-            // TODO: find search text box, set up search string and click enter
+            var input = _component.Find("input");
+            input.Change(searchString);
 
-            MediatorMock.Verify(m => m.Publish(
+            MediatorMock.Verify(m => m.Send(
                 It.Is<FindPlayersRequest>(n => n.SearchString == searchString),
                 It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Test]
-        public void ShouldFireMediatorEventWhenUserWantsToOpenPlayerStatistics()
+        public async Task ShouldFireMediatorEventWhenUserWantsToOpenPlayerStatistics()
         {
-            // TODO: find search text box, set up search string and click enter
-            // TODO: find list-group-item array
-            // TODO: Select SECOND of them and click a `btn` button
+            // Triggering the list box filling
+            string searchString = "mboga";
+            var input = _component.Find("input");
+            await input.ChangeAsync(new ChangeEventArgs {Value = searchString});
 
-            // Second item
+            // Finding the list elements array
+            var listItems = _component.FindAll(".list-group-item");
+            listItems.Should().NotBeNull();
+            listItems.Count.Should().BeGreaterThan(1);
+            listItems[1].Should().NotBeNull();
+
+            // Selecting the second item
+            listItems[1].Click();
+
+            // Find a button that should appear in the second item
+            var button = _component.Find("button");
+            button.Should().NotBeNull();
+            button.Click();
+
+            // Second item in the list
             long expectedAccountId = _playersExample[1].AccountId;
             MediatorMock.Verify(m => m.Publish(
                 It.Is<NavigateToPlayerInfoPageNotification>(n => n.accountId == expectedAccountId),

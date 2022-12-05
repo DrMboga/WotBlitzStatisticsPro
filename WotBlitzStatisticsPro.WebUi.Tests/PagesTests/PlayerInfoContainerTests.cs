@@ -20,10 +20,10 @@ namespace WotBlitzStatisticsPro.WebUi.Tests.PagesTests
         }
 
         [Test]
-        public void ShouldShowAppropriatePlayerInfo()
+        public void ShouldShowAppropriatePlayerInfoHeader()
         {
-            // TODO: find h1 tag and check if it is reflects the _playerInfo.Nickname property
-            Assert.Fail("find h1 tag and check if it is reflects the _playerInfo.Nickname property");
+            var header = _component.Find("h1");
+            header.TextContent.Should().Be(_playerInfo.Nickname);
         }
         
     }
