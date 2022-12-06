@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WotBlitzStatisticsPro.Application\WotBlitzStatisticsPro.Application.csproj" />
     <ProjectReference Include="..\WotBlitzStatisticsPro\WotBlitzStatisticsPro.csproj" />
+    <ProjectReference Include="..\WotBlitzStatisticsPro.WargamingApi\WotBlitzStatisticsPro.WargamingApi.csproj" />
   </ItemGroup>
 
 </Project>
