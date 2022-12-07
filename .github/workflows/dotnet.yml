@@ -26,7 +26,7 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
       - name: Publish .NET Project
-        run: dotnet publish WotBlitzStatisticsPro.WebUi/WotBlitzStatisticsPro.WebUi -c Release -o release --nologo
+        run: dotnet publish WotBlitzStatisticsPro.WebUi/WotBlitzStatisticsPro.WebUi.csproj -c Release -o release --nologo
         env:
           WargamingApi:ApplicationId: ${{ secrets.APPLICATION_ID }}
           WargamingApi:BlitzApiUrl: ${{ secrets.BLITZ_API_URL }}
