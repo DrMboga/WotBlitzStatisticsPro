@@ -68,8 +68,10 @@ namespace WotBlitzStatisticsPro.Application.Tests
             players[1].AccountId.Should().Be(listsResponse[1].AccountId);
             players[0].Nickname.Should().Be(listsResponse[0].Nickname);
             players[1].Nickname.Should().Be(listsResponse[1].Nickname);
-            players[0].LastBattle.Should().Be(DateTime.Parse("2022.12.01 11:55:17"));
-            players[1].LastBattle.Should().Be(DateTime.Parse("2022.12.03 15:55:17"));
+            var expectedLastBattleFirst = listAccountInfos[0].LastBattleTime.ToDateTime();
+            var expectedLastBattleSecond = listAccountInfos[1].LastBattleTime.ToDateTime();
+            players[0].LastBattle.Should().Be(expectedLastBattleFirst);
+            players[1].LastBattle.Should().Be(expectedLastBattleSecond);
             players[0].Battles.Should().Be(1245);
             players[1].Battles.Should().Be(4227);
             players[0].ClanTag.Should().BeNull();
