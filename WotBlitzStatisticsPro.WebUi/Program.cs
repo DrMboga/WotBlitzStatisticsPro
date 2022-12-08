@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using WotBlitzStatisticsPro.WebUi;
 using MediatR;
-using System.Reflection;
 using WotBlitzStatisticsPro.WebUi.Messages;
 using System.Globalization;
 using WotBlitzStatisticsPro.Application;
@@ -22,12 +21,7 @@ builder.Services.AddSingleton<IWargamingApiSettings>(wgApiConfig);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData);
 
-// Register all MediatR handlers from all assemblies
-// var mediatRAssembliesToRegister = ApplicationInstaller.GetAllMediatRAssemblies();
-// mediatRAssembliesToRegister.Add(Assembly.GetExecutingAssembly());
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
-
-// builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 var host = builder.Build();
 // Reading the theme and locale from local storage
