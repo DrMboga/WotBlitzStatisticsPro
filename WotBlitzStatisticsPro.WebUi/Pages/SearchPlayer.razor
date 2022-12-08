@@ -3,7 +3,7 @@
 
 <div class="d-flex flex-column mt-4">
   <div class="input-group">
-    <span class="input-group-text" id="search-area"><img src="/icons/tankists-200.png" width="32px" height="32px"></span>
+    <span class="input-group-text" id="search-area"><img src="icons/tankists-200.png" width="32px" height="32px"></span>
     <input type="text" class="form-control" placeholder="@Localize["Find player"]" aria-label="FindPlayer" aria-describedby="search-area"
       value="@InputValue" @onchange="@(async (ChangeEventArgs __e) => await OnSearchTextrChanged(__e?.Value?.ToString()))" >
   </div>

@@ -5,7 +5,7 @@
 }
 
 .splash-content {
-  background-image: url('/berlin.png');
+  background-image: url('berlin.png');
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
