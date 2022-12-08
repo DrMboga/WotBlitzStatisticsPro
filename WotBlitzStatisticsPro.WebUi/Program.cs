@@ -23,9 +23,9 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData);
 
 // Register all MediatR handlers from all assemblies
-var mediatRAssembliesToRegister = ApplicationInstaller.GetAllMediatRAssemblies();
-mediatRAssembliesToRegister.Add(Assembly.GetExecutingAssembly());
-builder.Services.AddMediatR(mediatRAssembliesToRegister.ToArray());
+// var mediatRAssembliesToRegister = ApplicationInstaller.GetAllMediatRAssemblies();
+// mediatRAssembliesToRegister.Add(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
 // builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
