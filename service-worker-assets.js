@@ -33,12 +33,16 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-FlpaYhzN0+ve7AH0J6mKqrGZGOoXaTCR7Hpx6GsE+JE=",
+      "hash": "sha256-5OplT6qg3HlTL6PSS3HcoxaZT\/ePcn86odUTpVr9GK0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
       "hash": "sha256-LTWmKNU9i6fBHVW+MD0Y4saF9Xz7sunXXY69kMlHXNs=",
       "url": "_framework\/AutoMapper.dll"
+    },
+    {
+      "hash": "sha256-EgxNMqkSDuvW0qfJ51BwzzHNyFgz66BQsDHK1XnhZUc=",
+      "url": "_framework\/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
     },
     {
       "hash": "sha256-jbWZnge7bolAMw8ppWQLC7bKPAY6DjkJn2ezN9OXafU=",
@@ -93,7 +97,7 @@
       "url": "_framework\/Microsoft.Extensions.Configuration.Json.dll"
     },
     {
-      "hash": "sha256-7xALT\/6hMcWg0NQRxBA5eo0CFg8RJIHtYWs\/vfGeA9I=",
+      "hash": "sha256-XPdfvXl7jioKnpBi7WAeGxNQ5JYbmD3t1O7UIjvUfds=",
       "url": "_framework\/Microsoft.Extensions.DependencyInjection.Abstractions.dll"
     },
     {
@@ -121,7 +125,7 @@
       "url": "_framework\/Microsoft.Extensions.Logging.dll"
     },
     {
-      "hash": "sha256-k1PjwPFJyC4Wi\/osswlNgoz2xvHm0whIeCO0AY\/VeLo=",
+      "hash": "sha256-WKIej6n7lc7ilIEYzNxkILiVf+h6v9S+HYtJboMe9Yw=",
       "url": "_framework\/Microsoft.Extensions.Options.dll"
     },
     {
@@ -201,7 +205,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-BiBp+y\/2FqNGlH2EU8KxqxhafqERpX\/ImmJ3+GeeGtg=",
+      "hash": "sha256-LJ6qAMuxlgWLt8IYQNFq+avB2\/xIek7ygkj3lmB8yp4=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -209,7 +213,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-OsZlwHKWVPF6tyKSm5vdw9HfACqb\/joJZNO68HErC0Q=",
+      "hash": "sha256-YOvjfglZ1kP6I0Ob9mTc5\/4gbUtc2Cq6Y7Dj30up5L4=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -229,7 +233,7 @@
       "url": "_framework\/System.Text.Json.dll"
     },
     {
-      "hash": "sha256-L2y1kVkb4thNy38l0ZIyUi3gU36z7ojebj\/H2ecZ8+Q=",
+      "hash": "sha256-er+1zYSrrKcAx3InBWQBT+B4ZrbaQStvxklUk\/Ibk2o=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
@@ -245,7 +249,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-TrnHgpnYCjgyb\/metUmUx6jV0696BNf32OEzUawFReE=",
+      "hash": "sha256-jMneucPVIIQcxjhI5XI8TI5+Q5CIk6Yeh0nyIUdJ0Qg=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -453,5 +457,5 @@
       "url": "supremacyLegend.png"
     }
   ],
-  "version": "6UpvnODW"
+  "version": "xGuwqBYc"
 };
