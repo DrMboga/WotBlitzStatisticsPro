@@ -15,13 +15,13 @@ namespace WotBlitzStatisticsPro.Application
         public static void ConfigureServices(IServiceCollection services, Boolean useMockData)
         {
             // Auto Mapper Configurations
-            var mapperConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new AccountSearchResponseProfile());
-                mc.AddProfile(new AccountInfoProfile());
-            });
-            IMapper mapper = mapperConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            // var mapperConfig = new MapperConfiguration(mc =>
+            // {
+            //     mc.AddProfile(new AccountSearchResponseProfile());
+            //     mc.AddProfile(new AccountInfoProfile());
+            // });
+            // IMapper mapper = mapperConfig.CreateMapper();
+            // services.AddSingleton(mapper);
 
             if (useMockData)
             {
