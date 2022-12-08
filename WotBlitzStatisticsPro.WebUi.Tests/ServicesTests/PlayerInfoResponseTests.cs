@@ -1,4 +1,4 @@
-namespace WotBlitzStatisticsPro.Application.Tests
+namespace WotBlitzStatisticsPro.WebUi.Tests.ServicesTests
 {
     public class PlayerInfoResponseTests
     {

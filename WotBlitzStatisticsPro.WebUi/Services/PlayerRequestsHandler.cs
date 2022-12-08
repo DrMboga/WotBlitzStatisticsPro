@@ -1,9 +1,10 @@
 using MediatR;
 using WotBlitzStatisticsPro.Application.Dto;
 using WotBlitzStatisticsPro.Application.Helpers;
-using WotBlitzStatisticsPro.Application.Messages;
+using WotBlitzStatisticsPro.Application.Services;
+using WotBlitzStatisticsPro.WebUi.Messages;
 
-namespace WotBlitzStatisticsPro.Application.Services
+namespace WotBlitzStatisticsPro.WebUi.Services
 {
     public class PlayerRequestsHandler
         : IRequestHandler<FindPlayersRequest, List<ShortPlayerInfoDto>>,

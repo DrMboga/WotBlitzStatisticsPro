@@ -1,8 +1,3 @@
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Messages;
-using WotBlitzStatisticsPro.Application.Mocks;
-using WotBlitzStatisticsPro.Model;
-
 namespace WotBlitzStatisticsPro.WebUi.Tests.PagesTests
 {
     public class PlayerInfoContainerTests: TestContextBase

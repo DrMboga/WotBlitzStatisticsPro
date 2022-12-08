@@ -23,11 +23,6 @@ ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData
 
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
-foreach (var service in builder.Services)
-{
-    Console.WriteLine($"{service.ServiceType.FullName}; {service.Lifetime}; {service.ImplementationType?.FullName}");
-}
-
 var host = builder.Build();
 // Reading the theme and locale from local storage
 var mediator = host.Services.GetRequiredService<IMediator>();

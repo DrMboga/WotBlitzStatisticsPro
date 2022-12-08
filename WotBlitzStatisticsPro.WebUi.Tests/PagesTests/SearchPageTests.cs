@@ -1,7 +1,3 @@
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Messages;
-using WotBlitzStatisticsPro.Application.Mocks;
-
 namespace WotBlitzStatisticsPro.WebUi.Tests.PagesTests
 {
     public class SearchPageTests: TestContextBase
