@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-91q76FvkheuWOy4F5MWnXK4xN1WOTKgvP7RQGETl1aM=",
+      "hash": "sha256-7qqcG0meMKtxhpruUKpe+\/poPv3msEyN3GL4i7stHR8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -205,7 +205,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-LJ6qAMuxlgWLt8IYQNFq+avB2\/xIek7ygkj3lmB8yp4=",
+      "hash": "sha256-Fz5Ol0saOFJfl7Mokk9HoFBkwqmfercojmya7QE3o4U=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -249,7 +249,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-XM2sJIDdJDNF7rZlLW1HyR0\/d0dy7AhJLHqsj1m90Rg=",
+      "hash": "sha256-BIe2vkwAPBA99iDSEdPYMV5GBy0GhvzJINrGpowp7hE=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -457,5 +457,5 @@
       "url": "supremacyLegend.png"
     }
   ],
-  "version": "OgZYpPWK"
+  "version": "ouc0V366"
 };
