@@ -23,9 +23,9 @@ ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData
 
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
-foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+foreach (var service in builder.Services)
 {
-    Console.WriteLine(assembly.FullName);
+    Console.WriteLine($"{service.ServiceType.FullName}; {service.Lifetime}; {service.ImplementationType?.FullName}");
 }
 
 var host = builder.Build();
