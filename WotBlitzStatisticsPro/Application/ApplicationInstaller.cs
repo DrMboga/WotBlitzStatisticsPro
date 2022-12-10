@@ -12,9 +12,9 @@ namespace WotBlitzStatisticsPro.Application
             }
             else
             {
-                // services.AddTransient<IFindPlayersService, FindPlayersService>();
-                // services.AddTransient<IPlayerInfoService, PlayerInfoService>();
-                // WargamingApiInstaller.ConfigureServices(services);
+                services.AddTransient<IFindPlayersService, FindPlayersService>();
+                services.AddTransient<IPlayerInfoService, PlayerInfoService>();
+                WargamingApiInstaller.ConfigureServices(services);
             }
         }
 
