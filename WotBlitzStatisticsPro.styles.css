@@ -1,11 +1,11 @@
 /* /Pages/Index.razor.rz.scp.css */
-.splash[b-dxfrk2i4j2] {
+.splash[b-jpf2inju7r] {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-.splash-content[b-dxfrk2i4j2] {
+.splash-content[b-jpf2inju7r] {
   background-image: url('berlin.png');
   background-repeat: no-repeat;
   display: flex;
@@ -16,35 +16,35 @@
   height: 667px;
 }
 /* /Pages/PlayerInfoContainer.razor.rz.scp.css */
-dates-section[b-jklkqzpfj9] {
+dates-section[b-8o7cpyz38e] {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.data-field[b-jklkqzpfj9] {
+.data-field[b-8o7cpyz38e] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.data-label[b-jklkqzpfj9] {
+.data-label[b-8o7cpyz38e] {
   color: #b3b1ad;
   font-size: small;
 }
 
-.data-value[b-jklkqzpfj9] {
+.data-value[b-8o7cpyz38e] {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
-.page[b-79krbfpa7l] {
+.page[b-75ylp2q429] {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-main[b-79krbfpa7l] {
+main[b-75ylp2q429] {
   flex: 1;
 }
 /* /Shared/NavMenu.razor.rz.scp.css */
