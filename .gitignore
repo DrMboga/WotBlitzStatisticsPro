@@ -477,4 +477,4 @@ $RECYCLE.BIN/
 *.lnk
 
 *.pdn
-WotBlitzStatisticsPro.WebUi/wwwroot/appsettings.Development.json
+WotBlitzStatisticsPro/wwwroot/appsettings.Development.json

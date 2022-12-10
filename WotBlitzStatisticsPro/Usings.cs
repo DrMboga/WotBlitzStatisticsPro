@@ -1,0 +1,12 @@
+global using WotBlitzStatisticsPro;
+global using WotBlitzStatisticsPro.Model;
+global using WotBlitzStatisticsPro.Shared;
+global using WotBlitzStatisticsPro.Dto;
+global using WotBlitzStatisticsPro.Helpers;
+global using WotBlitzStatisticsPro.UiModel;
+global using WotBlitzStatisticsPro.Messages;
+global using WotBlitzStatisticsPro.Services;
+global using MediatR;
+global using System.Text.Json;
+global using Microsoft.AspNetCore.Components;
+global using Microsoft.JSInterop;

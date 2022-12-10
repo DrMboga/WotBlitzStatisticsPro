@@ -1,6 +1,6 @@
 namespace WotBlitzStatisticsPro.Model
 {
-    public interface IPlayerInfo
+        public interface IPlayerInfo
     {
         ///<summary>
         /// Player accountId
@@ -32,4 +32,5 @@ namespace WotBlitzStatisticsPro.Model
         /// </summary>
         public double? AvgTier { get; }
     }
+
 }

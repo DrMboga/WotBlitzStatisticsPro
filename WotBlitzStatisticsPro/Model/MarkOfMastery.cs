@@ -26,5 +26,4 @@ namespace WotBlitzStatisticsPro.Model
 		/// </summary>
 		Master = 4
 	}
-
 }
