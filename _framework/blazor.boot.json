@@ -24,7 +24,7 @@
       "Microsoft.Extensions.Configuration.Binder.dll": "sha256-D9a46awlrB9yXE+GdE7\/GDkM43jteMR1FDuKaPoIqPc=",
       "Microsoft.Extensions.Configuration.dll": "sha256-1CiPR9x6jeIRIh2+Vu\/SvUsV7d4Y15cD5qfGpgfazKk=",
       "Microsoft.Extensions.Configuration.Json.dll": "sha256-nTqLKuydttqLtE3VT3p6XhPmLxuaJDd0cL3Qzt8D4Ro=",
-      "Microsoft.Extensions.DependencyInjection.Abstractions.dll": "sha256-7kq14p8UCGJ48YMrgSCQKForfDa42YkqTX8nKDQ7+B0=",
+      "Microsoft.Extensions.DependencyInjection.Abstractions.dll": "sha256-XPdfvXl7jioKnpBi7WAeGxNQ5JYbmD3t1O7UIjvUfds=",
       "Microsoft.Extensions.DependencyInjection.dll": "sha256-qi0kE7rp0kdsNqdL6DyPZEeimjUGvcLT4iWQX0YnRus=",
       "Microsoft.Extensions.Http.dll": "sha256-rZWnWVD6nK+nRjxDQYWLF5GE9vGvT14HtIoM\/0PlVd0=",
       "Microsoft.Extensions.Localization.Abstractions.dll": "sha256-9IYirxXacHyqtL4++XzpFAkqx0EhBjbPP4VC6fpqE5A=",
@@ -58,7 +58,7 @@
       "System.Runtime.Serialization.Primitives.dll": "sha256-OP6RjGwu7ioXEBmPw6wyVtbqLgVBQ36mpvyUrWlQgMU=",
       "System.Text.Encodings.Web.dll": "sha256-cm0YJx3r\/ZuuTCQdWGQeo92Gx5uKFdH+7\/xBIIueiOQ=",
       "System.Text.Json.dll": "sha256-lLPwXl4U3fXRV2MbJZvamIAoJNeex+hXmb2aWaAFaVM=",
-      "WotBlitzStatisticsPro.dll": "sha256-Msachzb7RXDtaYFQBfKRodaW1r8B+73KtGipsjW8zQo="
+      "WotBlitzStatisticsPro.dll": "sha256-0Am\/Avi8O2HAMwAhAFUe2C7k5fuWxRoJTlaVKwbLjzQ="
     },
     "extensions": null,
     "lazyAssembly": null,
