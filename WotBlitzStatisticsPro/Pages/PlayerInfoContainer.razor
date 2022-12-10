@@ -65,6 +65,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        @* Player = await Mediator.Send(new GetPlayerInfoRequest(AccountId, CultureInfo.CurrentCulture.Name)); *@
+        Player = await Mediator.Send(new GetPlayerInfoRequest(AccountId, CultureInfo.CurrentCulture.Name));
     }
 }

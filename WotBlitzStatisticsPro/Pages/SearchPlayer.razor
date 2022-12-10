@@ -45,13 +45,13 @@
       if(!string.IsNullOrEmpty(newValue))
       {
         Loading = true;
-        @* players = await Mediator.Send(new FindPlayersRequest(newValue)); *@
+        players = await Mediator.Send(new FindPlayersRequest(newValue));
         Loading = false;
       }
     }
 
     private async Task OnPlayerInfoClicked(long playerId)
     {
-      @* await Mediator.Publish(new NavigateToPlayerInfoPageNotification(playerId)); *@
+      await Mediator.Publish(new NavigateToPlayerInfoPageNotification(playerId));
     }
 }

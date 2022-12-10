@@ -14,9 +14,9 @@ builder.Configuration.GetSection("WargamingApi").Bind(wgApiConfig);
 builder.Services.AddSingleton<IWargamingApiSettings>(wgApiConfig);
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
+ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData);
 
 var host = builder.Build();
 // Reading the theme and locale from local storage
