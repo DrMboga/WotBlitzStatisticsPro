@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-x35DqM\/s3G3jH+G27cKfddmR90oaxdJpo6I5fSIPxZU=",
+      "hash": "sha256-RAEV+SWEd6XOMMG8cmIXsn7h4v3X0bjd142r2yycMtI=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -233,24 +233,40 @@
       "url": "_framework\/System.Text.Json.dll"
     },
     {
-      "hash": "sha256-0Am\/Avi8O2HAMwAhAFUe2C7k5fuWxRoJTlaVKwbLjzQ=",
+      "hash": "sha256-nsKVXHMx3xK4LfOPr3NbSdX3CKHgCmFTEXBVKp2mtUk=",
+      "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
+    },
+    {
+      "hash": "sha256-rdux7ueOHvPZ\/9fWlcSFjDYn4iHuV9F7r+oIhhGvNfE=",
       "url": "_framework\/WotBlitzStatisticsPro.dll"
+    },
+    {
+      "hash": "sha256-P+VIuNdN7NkHD2hs2JAz8kNCMnd8BUud2PVxC2JGOfA=",
+      "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
+    },
+    {
+      "hash": "sha256-DYiPkiQ4zXRSlIJqXnH2rPIraZO4owAsywO0y8Eb1WE=",
+      "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
+    },
+    {
+      "hash": "sha256-Iy0CD15A+WgBGAR9xX\/KPSZR4SbqWOf7\/XufVHw8lVo=",
+      "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
       "hash": "sha256-mgVIuvs7L+ifEKIxG94op9o2h\/7hLWOR\/qgoBGjNbxg=",
       "url": "appsettings.json"
     },
     {
-      "hash": "sha256-ekTBL4iqEw\/+R36V7KGDXljrx01st30NnK2Ecsym2Uo=",
-      "url": "_framework\/de\/WotBlitzStatisticsPro.resources.dll"
+      "hash": "sha256-fO9rKToUqUAbsMJ1Inh0ZNvg6mHp4B+s\/vVJ5oomJ78=",
+      "url": "_framework\/de\/WotBlitzStatisticsPro.WebUi.resources.dll"
     },
     {
-      "hash": "sha256-bmHOuklYVy5wYye6eTiahDwoEewEmVQ\/FxUn0CIhPTw=",
-      "url": "_framework\/ru\/WotBlitzStatisticsPro.resources.dll"
+      "hash": "sha256-Kn0so5MoZ03T9Ul0BOWoiPbwtr3XDaoEgsjekC\/+Slg=",
+      "url": "_framework\/ru\/WotBlitzStatisticsPro.WebUi.resources.dll"
     },
     {
-      "hash": "sha256-ZN6P9VIkYbw2rXscrVpSJxLnhptRJL4h8wi+uUlWZRE=",
-      "url": "WotBlitzStatisticsPro.styles.css"
+      "hash": "sha256-dCdRAmZtbS6hl0qPUIi04Hy0EqTToN7zhPZhXrQ8daM=",
+      "url": "WotBlitzStatisticsPro.WebUi.styles.css"
     },
     {
       "hash": "sha256-Iy7R3pF7WMeC0oGz5K6r2mmLacSiStzMvTLyQQdiJiU=",
@@ -425,7 +441,7 @@
       "url": "img\/locale-usa.png"
     },
     {
-      "hash": "sha256-ra62LTIqYosPhieNL+vAfv5LitigEXwSMQU8jEMWCGE=",
+      "hash": "sha256-AZvPOEnoJ76zUJWXCfK6PyPr5Pxw2V0QpnT04Pihl58=",
       "url": "index.html"
     },
     {
@@ -441,5 +457,5 @@
       "url": "supremacyLegend.png"
     }
   ],
-  "version": "xCrQtNO5"
+  "version": "AHkDfV3i"
 };
