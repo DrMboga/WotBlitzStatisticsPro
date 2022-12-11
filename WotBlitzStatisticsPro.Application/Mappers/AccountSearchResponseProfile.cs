@@ -1,29 +1,29 @@
-using AutoMapper;
 using WotBlitzStatisticsPro.Application.Dto;
 using WotBlitzStatisticsPro.Application.Helpers;
 using WotBlitzStatisticsPro.WargamingApi.Model;
 
 namespace WotBlitzStatisticsPro.Application.Mappers
 {
-    public class AccountSearchResponseProfile : Profile
+    public static class AccountSearchResponseProfile
     {
-        public AccountSearchResponseProfile()
+        public static ShortPlayerInfoDto MapToShortPlayerInfoDto(this WotAccountListResponse wotAccountInfoResponse)
         {
-            CreateMap<WotAccountListResponse, ShortPlayerInfoDto>()
-                .ForMember(
-                    d => d.AccountId, 
-                    o => o.MapFrom(s => s.AccountId ?? -1));
+            return new ShortPlayerInfoDto {
+                AccountId = wotAccountInfoResponse?.AccountId ?? 0,
+                Nickname = wotAccountInfoResponse?.Nickname ?? string.Empty
+            };
+        }
 
-            CreateMap<WotAccountInfo, ShortPlayerInfoDto>()
-                .ForMember(dest => dest.CreatedAt,
-                    o => o.MapFrom(s => s.CreatedAt.ToDateTime()))
-                .ForMember(dest => dest.LastBattle,
-                    o => o.MapFrom(s => s.LastBattleTime.ToDateTime()))
-                .ForMember(dest => dest.Battles,
-                    o => o.MapFrom(s => s.Statistics!.All!.Battles))
-                .ForMember(dest => dest.WinRate,
-                    o => o.MapFrom(s => s.Statistics!.All!.Battles == 0 ? 0 : 100 * s.Statistics!.All!.Wins / s.Statistics!.All!.Battles))
-                ;
+        public static ShortPlayerInfoDto MapToShortPlayerInfoDto(this ShortPlayerInfoDto shortPlayerInfo, WotAccountInfo wotAccountInfo)
+        {
+            long battles = wotAccountInfo?.Statistics?.All?.Battles ?? 0;
+            
+            shortPlayerInfo.CreatedAt = wotAccountInfo?.CreatedAt.ToDateTime() ?? new DateTime(1970,1,1);
+            shortPlayerInfo.Battles = wotAccountInfo?.Statistics?.All?.Battles ?? 0;
+            shortPlayerInfo.LastBattle = wotAccountInfo?.LastBattleTime.ToDateTime() ?? new DateTime(1970,1,1);
+            shortPlayerInfo.WinRate = battles == 0 ? 0 : Convert.ToInt32(100 * (wotAccountInfo?.Statistics?.All?.Wins ?? 0) / battles);
+            
+            return shortPlayerInfo;
         }
     }
 }

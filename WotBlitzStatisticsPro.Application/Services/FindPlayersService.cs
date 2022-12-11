@@ -1,6 +1,6 @@
-using AutoMapper;
 using MediatR;
 using WotBlitzStatisticsPro.Application.Dto;
+using WotBlitzStatisticsPro.Application.Mappers;
 using WotBlitzStatisticsPro.WargamingApi.Messages;
 using WotBlitzStatisticsPro.WargamingApi.Model;
 
@@ -9,12 +9,10 @@ namespace WotBlitzStatisticsPro.Application.Services
     public class FindPlayersService : IFindPlayersService
     {
         private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
 
-        public FindPlayersService(IMediator mediator, IMapper mapper)
+        public FindPlayersService(IMediator mediator)
         {
             _mediator = mediator;
-            _mapper = mapper;
         }
 
 
@@ -26,7 +24,7 @@ namespace WotBlitzStatisticsPro.Application.Services
             {
                 return new List<ShortPlayerInfoDto>();
             }
-            var accounts = _mapper.Map<List<WotAccountListResponse>, List<ShortPlayerInfoDto>>(accountsList);
+            var accounts = accountsList.Select(a => a.MapToShortPlayerInfoDto()).ToList();
 
             if (accountsList.Count > 100)
             {
@@ -50,7 +48,7 @@ namespace WotBlitzStatisticsPro.Application.Services
                 var shortAccountInfo = accountsBunch?.FirstOrDefault(a => a != null && a.AccountId == accountResponse.AccountId);
                 if (shortAccountInfo != null)
                 {
-                    _mapper.Map(shortAccountInfo, accountResponse);
+                    accountResponse.MapToShortPlayerInfoDto(shortAccountInfo);
                 }
 
                 // Clan

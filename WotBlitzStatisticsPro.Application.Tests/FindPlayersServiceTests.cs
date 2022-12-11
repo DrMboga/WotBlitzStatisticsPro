@@ -8,14 +8,8 @@ namespace WotBlitzStatisticsPro.Application.Tests
         [SetUp]
         protected void Setup()
         {
-            var mapperConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new AccountSearchResponseProfile());
-            });
-            IMapper mapper = mapperConfig.CreateMapper();
-            
             _mediatorMock = new();
-            _service = new FindPlayersService(_mediatorMock.Object, mapper);
+            _service = new FindPlayersService(_mediatorMock.Object);
         }
 
         [Test]

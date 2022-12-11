@@ -18,7 +18,6 @@ var wgApiConfig = new WargamingApiSettings();
 builder.Configuration.GetSection("WargamingApi").Bind(wgApiConfig);
 builder.Services.AddSingleton<IWargamingApiSettings>(wgApiConfig);
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData);
 
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());

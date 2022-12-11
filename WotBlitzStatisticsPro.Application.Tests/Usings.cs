@@ -1,5 +1,4 @@
 global using NUnit.Framework;
-global using AutoMapper;
 global using MediatR;
 global using Moq;
 global using WotBlitzStatisticsPro.Application.Mappers;
