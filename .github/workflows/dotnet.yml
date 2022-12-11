@@ -32,9 +32,9 @@ jobs:
           WargamingApi__BlitzApiUrl: ${{ secrets.BLITZ_API_URL }}
           WargamingApi__WotApiUrl: ${{ secrets.WOT_API_URL }}
       - name: Set Env App Id
-        run: echo "WargamingApi__ApplicationId=$(echo $secrets.APPLICATION_ID)" >> $GITHUB_ENV
+        run: echo "WargamingApi:ApplicationId=$(echo ${{ secrets.APPLICATION_ID }})" >> $GITHUB_ENV
       - name: check Env
-        run: echo $WargamingApi__ApplicationId
+        run: echo $WargamingApi:ApplicationId
       - name: copy index.html to 404.html
         run: cp release/wwwroot/index.html release/wwwroot/404.html
       - name: Add .nojekyll file
