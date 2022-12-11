@@ -233,7 +233,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
-      "hash": "sha256-mgVIuvs7L+ifEKIxG94op9o2h\/7hLWOR\/qgoBGjNbxg=",
+      "hash": "sha256-MCwU+sWpmyrRNh00MZn5WN0FGHaaIJ74Mi5ZfVDztOU=",
       "url": "appsettings.json"
     },
     {
@@ -437,5 +437,5 @@
       "url": "supremacyLegend.png"
     }
   ],
-  "version": "4mM+XUzc"
+  "version": "e8Y5RHB9"
 };
