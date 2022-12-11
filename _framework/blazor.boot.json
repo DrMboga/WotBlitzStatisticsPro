@@ -1,8 +1,7 @@
 {
   "cacheBootResources": true,
   "config": [
-    "appsettings.json",
-    "appsettings.Release.json"
+    "appsettings.json"
   ],
   "debugBuild": false,
   "entryAssembly": "WotBlitzStatisticsPro.WebUi",
