@@ -28,9 +28,9 @@ jobs:
       - name: Publish .NET Project
         run: dotnet publish WotBlitzStatisticsPro.WebUi/WotBlitzStatisticsPro.WebUi.csproj -c Release -o release --nologo
         env:
-          WargamingApi:ApplicationId: ${{ secrets.APPLICATION_ID }}
-          WargamingApi:BlitzApiUrl: ${{ secrets.BLITZ_API_URL }}
-          WargamingApi:WotApiUrl: ${{ secrets.WOT_API_URL }}
+          WargamingApi__ApplicationId: ${{ secrets.APPLICATION_ID }}
+          WargamingApi__BlitzApiUrl: ${{ secrets.BLITZ_API_URL }}
+          WargamingApi__WotApiUrl: ${{ secrets.WOT_API_URL }}
       - name: copy index.html to 404.html
         run: cp release/wwwroot/index.html release/wwwroot/404.html
       - name: Add .nojekyll file
