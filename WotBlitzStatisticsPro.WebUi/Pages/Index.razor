@@ -2,11 +2,8 @@
 @inject IStringLocalizer<App> Localize
 @inject IMediator Mediator
 
-@inject IWargamingApiSettings Settings
-
 <PageTitle>WotBlitzStatisticsPro</PageTitle>
 
-@Settings.BlitzApiUrl - @Settings.ApplicationId
 <div class="splash">
     <div class="splash-content">
         <h6>@Localize["Welcome to WOT Blitz statistics application!"]</h6>
