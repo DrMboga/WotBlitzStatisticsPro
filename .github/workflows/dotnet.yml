@@ -29,10 +29,6 @@ jobs:
         run: dotnet publish WotBlitzStatisticsPro.WebUi/WotBlitzStatisticsPro.WebUi.csproj -c Release -o release --nologo
       - name: Set Env App Id
         run: sed -i 's/Fake/${{ secrets.APPLICATION_ID }}/g' release/wwwroot/appsettings.json
-      - name: Set Env BlitzApi
-        run: sed -i 's/FakeBlitzApi/${{ secrets.BLITZ_API_URL }}/g' release/wwwroot/appsettings.json
-      - name: Set Env WotApi
-        run: sed -i 's/FakeWotApi/${{ secrets.WOT_API_URL }}/g' release/wwwroot/appsettings.json
       - name: copy index.html to 404.html
         run: cp release/wwwroot/index.html release/wwwroot/404.html
       - name: Add .nojekyll file
