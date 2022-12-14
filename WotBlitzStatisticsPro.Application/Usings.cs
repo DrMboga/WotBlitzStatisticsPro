@@ -1,0 +1,9 @@
+global using MediatR;
+global using WotBlitzStatisticsPro.Model;
+global using WotBlitzStatisticsPro.WargamingApi.Model;
+global using WotBlitzStatisticsPro.WargamingApi.Messages;
+global using WotBlitzStatisticsPro.Application.Dto;
+global using WotBlitzStatisticsPro.Application.Helpers;
+global using WotBlitzStatisticsPro.Application.Mappers;
+global using WotBlitzStatisticsPro.Application.Messages;
+global using WotBlitzStatisticsPro.Application.Services;

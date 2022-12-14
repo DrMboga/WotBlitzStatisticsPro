@@ -1,10 +1,3 @@
-using MediatR;
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Mappers;
-using WotBlitzStatisticsPro.Model;
-using WotBlitzStatisticsPro.WargamingApi.Messages;
-using WotBlitzStatisticsPro.WargamingApi.Model;
-
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class PlayerInfoService : IPlayerInfoService

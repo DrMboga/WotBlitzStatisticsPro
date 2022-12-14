@@ -1,5 +1,3 @@
-using WotBlitzStatisticsPro.Model;
-
 namespace WotBlitzStatisticsPro.Application.Dto
 {
     public class ShortPlayerInfoDto

@@ -1,5 +1,3 @@
-using WotBlitzStatisticsPro.Model;
-
 namespace WotBlitzStatisticsPro.Application.Dto
 {
     public class PlayerInfoDto : IPlayerInfo, IStatistics
@@ -63,5 +61,7 @@ namespace WotBlitzStatisticsPro.Application.Dto
         public decimal DamageCoefficient => DamageReceived == 0 ? 0m : (decimal)DamageDealt / DamageReceived;
 
         public decimal SurvivalRate => Battles == 0 ? 0m : (decimal)100 * SurvivedBattles / Battles;
+
+        public ClanInfoDto? ClanInfo { get; set; }
     }
 }

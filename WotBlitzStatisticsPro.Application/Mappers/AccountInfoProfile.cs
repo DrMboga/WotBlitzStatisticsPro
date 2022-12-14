@@ -1,7 +1,3 @@
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Helpers;
-using WotBlitzStatisticsPro.WargamingApi.Model;
-
 namespace WotBlitzStatisticsPro.Application.Mappers
 {
     // TODO: AutoMapper makes it better. But AutoMapper somehow works improperly works with blazor wasm under the the linux container...

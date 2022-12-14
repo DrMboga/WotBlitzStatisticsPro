@@ -1,5 +1,3 @@
-using WotBlitzStatisticsPro.Model;
-
 namespace WotBlitzStatisticsPro.Application.Helpers
 {
     public static class CultureHelper

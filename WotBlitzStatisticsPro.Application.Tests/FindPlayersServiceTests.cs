@@ -50,7 +50,7 @@ namespace WotBlitzStatisticsPro.Application.Tests
                 .ReturnsAsync(listAccountInfos);
             _mediatorMock.Setup(m => m.Send(It.IsAny<GetBulkClanAccountInfosRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(clanAccountInfo);
-            _mediatorMock.Setup(m => m.Send(It.IsAny<GetClanInfoRequest>(), It.IsAny<CancellationToken>()))
+            _mediatorMock.Setup(m => m.Send(It.IsAny<GetBulkClanInfoRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(clansInfo);
 
             var players = await _service.FindPlayers(searchString);

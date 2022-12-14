@@ -1,8 +1,3 @@
-using MediatR;
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Helpers;
-using WotBlitzStatisticsPro.Application.Messages;
-
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class PlayerRequestsHandler
@@ -11,11 +6,13 @@ namespace WotBlitzStatisticsPro.Application.Services
     {
         private readonly IFindPlayersService _findPlayersService;
         private readonly IPlayerInfoService _playerInfoService;
+        private readonly IClanInfoService _clanInfoService;
 
-        public PlayerRequestsHandler(IFindPlayersService findPlayersService, IPlayerInfoService playerInfoService)
+        public PlayerRequestsHandler(IFindPlayersService findPlayersService, IPlayerInfoService playerInfoService, IClanInfoService clanInfoService)
         {
             _findPlayersService = findPlayersService;
             _playerInfoService = playerInfoService;
+            _clanInfoService = clanInfoService;
         }
 
         public Task<List<ShortPlayerInfoDto>> Handle(FindPlayersRequest request, CancellationToken cancellationToken)
@@ -23,9 +20,13 @@ namespace WotBlitzStatisticsPro.Application.Services
             return _findPlayersService.FindPlayers(request.SearchString);
         }
 
-        public Task<PlayerInfoDto> Handle(GetPlayerInfoRequest request, CancellationToken cancellationToken)
+        public async Task<PlayerInfoDto> Handle(GetPlayerInfoRequest request, CancellationToken cancellationToken)
         {
-            return _playerInfoService.GetFullPlayerStatistics(request.accountId, request.locale.ConvertCulture());
+            var language = request.locale.ConvertCulture();
+            var playerInfo = await _playerInfoService.GetFullPlayerStatistics(request.accountId, language);
+            playerInfo.ClanInfo = await _clanInfoService.GetClanInfo(request.accountId, language);
+
+            return playerInfo;
         }
     }
 }

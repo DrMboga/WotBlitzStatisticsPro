@@ -17,10 +17,10 @@
 <div class="container">
     <h1>
     @Player.Nickname 
-    @* @if (AccountInfo.ClanInfo != null)
-                            {
-                                <span style="color: @Constants.ClanTagColor;"> [<span style="font-weight: bolder;">@AccountInfo.ClanInfo.Tag</span>]</span>
-                            } *@
+    @if (Player.ClanInfo != null)
+        {
+            <span style="color: @Constants.ClanTagColor;"> [<span style="font-weight: bolder;">@Player.ClanInfo.Tag</span>]</span>
+        }
     </h1>
     <div class="mt-1 mb-1">
         <div class="data-field">

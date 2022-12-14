@@ -1,9 +1,3 @@
-using MediatR;
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Mappers;
-using WotBlitzStatisticsPro.WargamingApi.Messages;
-using WotBlitzStatisticsPro.WargamingApi.Model;
-
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class FindPlayersService : IFindPlayersService
@@ -39,7 +33,7 @@ namespace WotBlitzStatisticsPro.Application.Services
             List<ClanInfo>? clans = null;
             if (clanAccounts != null)
             {
-                clans = await _mediator.Send(new GetClanInfoRequest(clanAccounts.Where(c => c.ClanId.HasValue).Select(c => c.ClanId!.Value).ToArray()));
+                clans = await _mediator.Send(new GetBulkClanInfoRequest(clanAccounts.Where(c => c.ClanId.HasValue).Select(c => c.ClanId!.Value).ToArray()));
             }
 
             for (int i = 0; i < accounts.Count; i++)

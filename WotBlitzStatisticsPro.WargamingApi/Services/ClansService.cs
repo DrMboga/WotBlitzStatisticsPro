@@ -7,7 +7,9 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
 {
     public class ClansService
         : IRequestHandler<GetBulkClanAccountInfosRequest, List<ClanAccountInfo>>,
-        IRequestHandler<GetClanInfoRequest, List<ClanInfo>>
+        IRequestHandler<GetBulkClanInfoRequest, List<ClanInfo>>,
+        IRequestHandler<GetClanAccountInfoRequest, ClanAccountInfo?>,
+        IRequestHandler<GetClanInfoRequest, ClanInfo>
     {
         private readonly IWargamingClient _wargamingClient;
 
@@ -29,7 +31,7 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
             return clanInfo?.Values.Where(c => c != null).ToList() ?? new List<ClanAccountInfo>();
         }
 
-        public async Task<List<ClanInfo>> Handle(GetClanInfoRequest request, CancellationToken cancellationToken)
+        public async Task<List<ClanInfo>> Handle(GetBulkClanInfoRequest request, CancellationToken cancellationToken)
         {
             if (request.ClanIds.Length == 0)
             {
@@ -40,6 +42,32 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
                 "clans/info/",
                 $"clan_id={string.Join(',', request.ClanIds)}&fields=clan_id,tag").ConfigureAwait(false);
             return clanInfo?.Values.ToList() ?? new List<ClanInfo>();
+        }
+
+        public async Task<ClanAccountInfo?> Handle(GetClanAccountInfoRequest request, CancellationToken cancellationToken)
+        {
+            var clanInfo = await _wargamingClient.GetFromBlitzApi<Dictionary<string, ClanAccountInfo>>(
+				request.Language,
+				"clans/accountinfo/",
+				$"account_id={request.AccountId}").ConfigureAwait(false);
+			if (clanInfo != null && clanInfo.ContainsKey(request.AccountId.ToString()))
+			{
+				return clanInfo[request.AccountId.ToString()];
+			}
+            return null;
+        }
+
+        public async Task<ClanInfo> Handle(GetClanInfoRequest request, CancellationToken cancellationToken)
+        {
+			var clanInfo = await _wargamingClient.GetFromBlitzApi<Dictionary<string, ClanInfo>>(
+                request.Language,
+				"clans/info/",
+                $"clan_id={request.ClanId}").ConfigureAwait(false);
+            if (clanInfo != null && clanInfo.ContainsKey(request.ClanId.ToString()))
+            {
+                return clanInfo[request.ClanId.ToString()];
+            }
+            return new ClanInfo();
         }
     }
 }

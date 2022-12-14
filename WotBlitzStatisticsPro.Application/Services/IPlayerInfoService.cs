@@ -1,6 +1,3 @@
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Model;
-
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public interface IPlayerInfoService

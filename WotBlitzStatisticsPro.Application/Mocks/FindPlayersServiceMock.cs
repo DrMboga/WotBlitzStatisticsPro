@@ -1,6 +1,4 @@
 using System.Text.Json;
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Services;
 
 namespace WotBlitzStatisticsPro.Application.Mocks
 {

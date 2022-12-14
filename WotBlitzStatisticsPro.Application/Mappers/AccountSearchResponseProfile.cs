@@ -1,7 +1,3 @@
-using WotBlitzStatisticsPro.Application.Dto;
-using WotBlitzStatisticsPro.Application.Helpers;
-using WotBlitzStatisticsPro.WargamingApi.Model;
-
 namespace WotBlitzStatisticsPro.Application.Mappers
 {
     public static class AccountSearchResponseProfile

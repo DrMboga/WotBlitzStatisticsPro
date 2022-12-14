@@ -4,6 +4,7 @@ namespace WotBlitzStatisticsPro.Application.Tests
     {
         private Mock<IFindPlayersService> _findPlayerServiceMock;
         private Mock<IPlayerInfoService> _playerInfoServiceMock;
+        private Mock<IClanInfoService> _clanInfoInfoServiceMock;
         private PlayerRequestsHandler _service;
 
         [SetUp]
@@ -11,7 +12,8 @@ namespace WotBlitzStatisticsPro.Application.Tests
         {
             _findPlayerServiceMock = new();
             _playerInfoServiceMock = new();
-            _service = new PlayerRequestsHandler(_findPlayerServiceMock.Object, _playerInfoServiceMock.Object);
+            _clanInfoInfoServiceMock = new();
+            _service = new PlayerRequestsHandler(_findPlayerServiceMock.Object, _playerInfoServiceMock.Object, _clanInfoInfoServiceMock.Object) ;
         }
 
         [Test]
