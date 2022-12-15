@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace WotBlitzStatisticsPro.WargamingApi.Model
 {
 	public class ResponseBody<T> where T: class

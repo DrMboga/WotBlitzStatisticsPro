@@ -1,19 +1,32 @@
+using System.Text.Json;
+
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class DictionariesHandler : 
-        IRequestHandler<UpdateDictionariesRequest, DateTime>,
-        IRequestHandler<GetLastDictionariesUpdateRequest, DateTime>
+        IRequestHandler<UpdateDictionariesRequest, DictionariesInfoDto>,
+        IRequestHandler<GetLastDictionariesUpdateRequest, DictionariesInfoDto>
     {
-        public async Task<DateTime> Handle(UpdateDictionariesRequest request, CancellationToken cancellationToken)
-        {
+        private readonly IMediator _mediator;
 
-            return DateTime.Now;
+        public DictionariesHandler(IMediator mediator)
+        {
+            _mediator = mediator;
         }
 
-        public Task<DateTime> Handle(GetLastDictionariesUpdateRequest request, CancellationToken cancellationToken)
+        public async Task<DictionariesInfoDto> Handle(UpdateDictionariesRequest request, CancellationToken cancellationToken)
+        {
+            var staticDictionaries = await _mediator.Send(new GetStaticDictionariesRequest(request.locale.ConvertCulture()));
+            Console.WriteLine(JsonSerializer.Serialize(staticDictionaries));
+            // TODO: Achievements, Vehicles and so on 
+
+            // TODO: Save to DB
+            return new DictionariesInfoDto(DateTime.Now, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined");
+        }
+
+        public Task<DictionariesInfoDto> Handle(GetLastDictionariesUpdateRequest request, CancellationToken cancellationToken)
         {
             // TODO: Get last date from DB (by language)
-            return Task.FromResult(DateTime.Now.AddDays(-1));
+            return Task.FromResult(new DictionariesInfoDto(DateTime.Now.AddDays(-1), "0.0.1"));
         }
     }
 }

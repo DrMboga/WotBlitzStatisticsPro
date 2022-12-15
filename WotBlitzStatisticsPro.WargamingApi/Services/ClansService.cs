@@ -1,8 +1,3 @@
-using MediatR;
-using WotBlitzStatisticsPro.Model;
-using WotBlitzStatisticsPro.WargamingApi.Messages;
-using WotBlitzStatisticsPro.WargamingApi.Model;
-
 namespace WotBlitzStatisticsPro.WargamingApi.Services
 {
     public class ClansService

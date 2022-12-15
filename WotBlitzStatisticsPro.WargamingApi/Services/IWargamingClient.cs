@@ -1,5 +1,3 @@
-using WotBlitzStatisticsPro.Model;
-
 namespace WotBlitzStatisticsPro.WargamingApi.Services
 {
     public interface IWargamingClient

@@ -249,4 +249,8 @@
     <value>Обновить словари</value>
     <comment/>
   </data>
+  <data name="Game version" xml:space="preserve">
+    <value>Версия игры</value>
+    <comment/>
+  </data>
 </root>

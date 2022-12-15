@@ -1,8 +1,6 @@
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using WotBlitzStatisticsPro.Model;
-using WotBlitzStatisticsPro.WargamingApi.Model;
 
 namespace WotBlitzStatisticsPro.WargamingApi.Services
 {
