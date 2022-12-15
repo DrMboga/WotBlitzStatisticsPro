@@ -31,8 +31,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        // TODO: Get DictionariesUpdated from database (by language)
-        DictionariesUpdated = DateTime.Now.AddDays(-1);
+        DictionariesUpdated = await Mediator.Send(new GetLastDictionariesUpdateRequest(CultureInfo.CurrentCulture.Name));
     }
 
     public async Task UpdateDictionaries()

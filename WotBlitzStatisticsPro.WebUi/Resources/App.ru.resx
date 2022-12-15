@@ -237,4 +237,16 @@
     <value>Выстрелов</value>
     <comment/>
   </data>
+  <data name="Dictionaries" xml:space="preserve">
+    <value>Словари</value>
+    <comment/>
+  </data>
+  <data name="Last updated" xml:space="preserve">
+    <value>Дата обновления</value>
+    <comment/>
+  </data>
+  <data name="Update dictionaries" xml:space="preserve">
+    <value>Обновить словари</value>
+    <comment/>
+  </data>
 </root>
