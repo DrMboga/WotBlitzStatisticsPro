@@ -4,6 +4,41 @@
 
 <PageTitle>WotBlitzStatisticsPro-Dictionaries</PageTitle>
 
-<div>
-    <button type="button" class="btn btn-secondary mt-3">@Localize["Update dictionaries"]</button>
+<div class="d-flex flex-column mt-2">
+    <div class="d-flex flex-row align-items-center ms-2">
+        @if(DictionariesUpdated != null)
+        {
+        <div class="me-2">
+            @Localize["Last updated"] @DictionariesUpdated.Value.ToString("g")
+        </div>
+        }
+        <button type="button" class="btn btn-secondary me-2" @onclick="@(async (e) => await UpdateDictionaries())">@Localize["Update dictionaries"]</button>
+    </div>
+    @if(Loading)
+    {
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+        <div class="spinner-border text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    }
 </div>
+
+@code {
+    public DateTime? DictionariesUpdated { get; set; }
+
+    private bool Loading { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // TODO: Get DictionariesUpdated from database (by language)
+        DictionariesUpdated = DateTime.Now.AddDays(-1);
+    }
+
+    public async Task UpdateDictionaries()
+    {
+        Loading = true;
+        DictionariesUpdated = await Mediator.Send(new UpdateDictionariesRequest(CultureInfo.CurrentCulture.Name));
+        Loading = false;
+    }
+}
