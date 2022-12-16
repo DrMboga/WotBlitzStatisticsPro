@@ -8,6 +8,8 @@ namespace WotBlitzStatisticsPro.Application.Services
     {
         private readonly IMediator _mediator;
 
+        // private readonly IStaticData _staticData;
+
         public DictionariesHandler(IMediator mediator)
         {
             _mediator = mediator;
@@ -19,8 +21,11 @@ namespace WotBlitzStatisticsPro.Application.Services
             var staticDictionaries = await _mediator.Send(new GetStaticDictionariesRequest(language));
             var achievements = await _mediator.Send(new GetDictionaryAchievements(language));
             var vehicles = await _mediator.Send(new GetDictionaryVehicles(language));
+            var vehicleModules = await _mediator.Send(new GetDictionaryVehicleModules(language));
+
+            // var vehiclesMap = await _staticData.GetTanksTreeRowMap();
             
-            Console.WriteLine(JsonSerializer.Serialize(vehicles));
+            Console.WriteLine(JsonSerializer.Serialize(vehicleModules));
             
 
             // TODO: Save to DB

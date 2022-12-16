@@ -44,12 +44,7 @@ namespace WotBlitzStatisticsPro.WebUi.Helpers
 
         public const string LoginInfoLocalStorageKey = "login_info";
 
-        /*
-         * Mongo express filter:
-         * {"NationId": "germany", "IsPremium": false, "Tier": 9}
-         * Projection:
-         * {"Tier" : true,"Name": { $slice: 1 }}
-         */
+/*        
         [Obsolete("Do this as the dictionary in the DB, to make possibility to change it in the future")]
         public static TankTreeRowMap[] TanksTreeHelper = new TankTreeRowMap[]
         {
@@ -193,5 +188,6 @@ namespace WotBlitzStatisticsPro.WebUi.Helpers
             new TankTreeRowMap(6529, 3), // Škoda T 25 (6)
 
         };
+    */
     }
 }

@@ -1,4 +1,4 @@
-namespace WotBlitzStatisticsPro.WebUi.Model
+namespace WotBlitzStatisticsPro.Model
 {
     public record TankTreeRowMap(long TankId, int Row);
 }

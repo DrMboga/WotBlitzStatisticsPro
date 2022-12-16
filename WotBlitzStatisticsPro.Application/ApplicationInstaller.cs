@@ -6,7 +6,7 @@ namespace WotBlitzStatisticsPro.Application
 {
     public static class ApplicationInstaller
     {
-        public static void ConfigureServices(IServiceCollection services, Boolean useMockData)
+        public static void ConfigureServices(IServiceCollection services, Boolean useMockData, string baseAddress)
         {
             if (useMockData)
             {
@@ -14,6 +14,10 @@ namespace WotBlitzStatisticsPro.Application
             }
             else
             {
+                services.AddHttpClient<IStaticData, StaticData>(client =>
+                    {
+                        client.BaseAddress = new Uri(baseAddress);
+                    });
                 services.AddTransient<IFindPlayersService, FindPlayersService>();
                 services.AddTransient<IPlayerInfoService, PlayerInfoService>();
                 services.AddTransient<IClanInfoService, ClanInfoService>();
