@@ -15,9 +15,13 @@ namespace WotBlitzStatisticsPro.Application.Services
 
         public async Task<DictionariesInfoDto> Handle(UpdateDictionariesRequest request, CancellationToken cancellationToken)
         {
-            var staticDictionaries = await _mediator.Send(new GetStaticDictionariesRequest(request.locale.ConvertCulture()));
-            Console.WriteLine(JsonSerializer.Serialize(staticDictionaries));
-            // TODO: Achievements, Vehicles and so on 
+            var language = request.locale.ConvertCulture();
+            var staticDictionaries = await _mediator.Send(new GetStaticDictionariesRequest(language));
+            var achievements = await _mediator.Send(new GetDictionaryAchievements(language));
+            var vehicles = await _mediator.Send(new GetDictionaryVehicles(language));
+            
+            Console.WriteLine(JsonSerializer.Serialize(vehicles));
+            
 
             // TODO: Save to DB
             return new DictionariesInfoDto(DateTime.Now, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined");
@@ -28,5 +32,6 @@ namespace WotBlitzStatisticsPro.Application.Services
             // TODO: Get last date from DB (by language)
             return Task.FromResult(new DictionariesInfoDto(DateTime.Now.AddDays(-1), "0.0.1"));
         }
+
     }
 }
