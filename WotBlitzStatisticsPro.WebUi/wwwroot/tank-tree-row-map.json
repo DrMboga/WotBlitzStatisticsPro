@@ -2,5 +2,373 @@
   {
     "tankId": 2065,
     "row": 2
+  },
+  {
+    "tankId": 1809,
+    "row": 1
+  },
+  {
+    "tankId": 17425,
+    "row": 3
+  },
+  {
+    "tankId": 17,
+    "row": 3
+  },
+  {
+    "tankId": 5393,
+    "row": 7
+  },
+  {
+    "tankId": 1553,
+    "row": 1
+  },
+  {
+    "tankId": 2321,
+    "row": 5
+  },
+  {
+    "tankId": 7185,
+    "row": 3
+  },
+  {
+    "tankId": 10001,
+    "row": 8
+  },
+  {
+    "tankId": 11793,
+    "row": 0
+  },
+  {
+    "tankId": 14097,
+    "row": 6
+  },
+  {
+    "tankId": 1297,
+    "row": 6
+  },
+  {
+    "tankId": 3857,
+    "row": 1
+  },
+  {
+    "tankId": 4113,
+    "row": 7
+  },
+  {
+    "tankId": 11025,
+    "row": 0
+  },
+  {
+    "tankId": 5137,
+    "row": 5
+  },
+  {
+    "tankId": 7697,
+    "row": 2
+  },
+  {
+    "tankId": 8465,
+    "row": 6
+  },
+  {
+    "tankId": 10513,
+    "row": 3
+  },
+  {
+    "tankId": 11537,
+    "row": 1
+  },
+  {
+    "tankId": 13841,
+    "row": 7
+  },
+  {
+    "tankId": 18449,
+    "row": 8
+  },
+  {
+    "tankId": 20497,
+    "row": 4
+  },
+  {
+    "tankId": 7953,
+    "row": 1
+  },
+  {
+    "tankId": 14865,
+    "row": 7
+  },
+  {
+    "tankId": 1825,
+    "row": 2
+  },
+  {
+    "tankId": 10273,
+    "row": 1
+  },
+  {
+    "tankId": 5409,
+    "row": 2
+  },
+  {
+    "tankId": 3361,
+    "row": 2
+  },
+  {
+    "tankId": 1057,
+    "row": 4
+  },
+  {
+    "tankId": 11553,
+    "row": 9
+  },
+  {
+    "tankId": 7201,
+    "row": 1
+  },
+  {
+    "tankId": 1313,
+    "row": 4
+  },
+  {
+    "tankId": 16673,
+    "row": 5
+  },
+  {
+    "tankId": 9761,
+    "row": 6
+  },
+  {
+    "tankId": 3873,
+    "row": 2
+  },
+  {
+    "tankId": 23585,
+    "row": 3
+  },
+  {
+    "tankId": 8225,
+    "row": 1
+  },
+  {
+    "tankId": 2593,
+    "row": 0
+  },
+  {
+    "tankId": 20001,
+    "row": 6
+  },
+  {
+    "tankId": 15393,
+    "row": 5
+  },
+  {
+    "tankId": 15937,
+    "row": 1
+  },
+  {
+    "tankId": 9793,
+    "row": 0
+  },
+  {
+    "tankId": 1089,
+    "row": 1
+  },
+  {
+    "tankId": 6721,
+    "row": 1
+  },
+  {
+    "tankId": 14145,
+    "row": 2
+  },
+  {
+    "tankId": 4609,
+    "row": 2
+  },
+  {
+    "tankId": 3329,
+    "row": 0
+  },
+  {
+    "tankId": 6913,
+    "row": 1
+  },
+  {
+    "tankId": 2049,
+    "row": 2
+  },
+  {
+    "tankId": 11777,
+    "row": 2
+  },
+  {
+    "tankId": 1,
+    "row": 5
+  },
+  {
+    "tankId": 2817,
+    "row": 2
+  },
+  {
+    "tankId": 10497,
+    "row": 3
+  },
+  {
+    "tankId": 2561,
+    "row": 4
+  },
+  {
+    "tankId": 16641,
+    "row": 6
+  },
+  {
+    "tankId": 2305,
+    "row": 0
+  },
+  {
+    "tankId": 10241,
+    "row": 1
+  },
+  {
+    "tankId": 513,
+    "row": 2
+  },
+  {
+    "tankId": 5889,
+    "row": 3
+  },
+  {
+    "tankId": 18433,
+    "row": 5
+  },
+  {
+    "tankId": 24065,
+    "row": 6
+  },
+  {
+    "tankId": 18177,
+    "row": 6
+  },
+  {
+    "tankId": 7937,
+    "row": 5
+  },
+  {
+    "tankId": 23809,
+    "row": 6
+  },
+  {
+    "tankId": 16897,
+    "row": 4
+  },
+  {
+    "tankId": 13825,
+    "row": 5
+  },
+  {
+    "tankId": 2353,
+    "row": 1
+  },
+  {
+    "tankId": 7729,
+    "row": 0
+  },
+  {
+    "tankId": 5169,
+    "row": 1
+  },
+  {
+    "tankId": 3633,
+    "row": 1
+  },
+  {
+    "tankId": 1073,
+    "row": 2
+  },
+  {
+    "tankId": 6993,
+    "row": 2
+  },
+  {
+    "tankId": 9041,
+    "row": 0
+  },
+  {
+    "tankId": 849,
+    "row": 3
+  },
+  {
+    "tankId": 2129,
+    "row": 2
+  },
+  {
+    "tankId": 2897,
+    "row": 4
+  },
+  {
+    "tankId": 593,
+    "row": 1
+  },
+  {
+    "tankId": 1105,
+    "row": 2
+  },
+  {
+    "tankId": 18257,
+    "row": 1
+  },
+  {
+    "tankId": 5457,
+    "row": 2
+  },
+  {
+    "tankId": 5969,
+    "row": 2
+  },
+  {
+    "tankId": 20049,
+    "row": 3
+  },
+  {
+    "tankId": 865,
+    "row": 2
+  },
+  {
+    "tankId": 1377,
+    "row": 1
+  },
+  {
+    "tankId": 5473,
+    "row": 2
+  },
+  {
+    "tankId": 5217,
+    "row": 0
+  },
+  {
+    "tankId": 1121,
+    "row": 1
+  },
+  {
+    "tankId": 2689,
+    "row": 1
+  },
+  {
+    "tankId": 3713,
+    "row": 0
+  },
+  {
+    "tankId": 8065,
+    "row": 1
+  },
+  {
+    "tankId": 1409,
+    "row": 2
+  },
+  {
+    "tankId": 6529,
+    "row": 3
   }
 ]
