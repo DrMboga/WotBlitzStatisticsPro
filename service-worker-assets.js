@@ -445,9 +445,9 @@
       "url": "supremacyLegend.png"
     },
     {
-      "hash": "sha256-03dzz+n900NkInRbqY4LxEpIHRza82UZqh5f1nL6k2o=",
+      "hash": "sha256-7XL5NgVjAohN8qyCFcKT4BOWkKIoNibBfGXtiQ7Zvfc=",
       "url": "tank-tree-row-map.json"
     }
   ],
-  "version": "pey1oMHu"
+  "version": "gJDZX2hw"
 };
