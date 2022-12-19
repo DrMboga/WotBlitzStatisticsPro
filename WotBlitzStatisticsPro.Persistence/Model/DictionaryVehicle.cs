@@ -27,10 +27,8 @@ modelBuilder.Entity<DictionaryNextVehicle>()
 
         public string Image { get; set; } = string.Empty;
         public string PreviewImage { get; set; } = string.Empty;
-
-        // TODO: These 2 props depends on request language in settings table. If user changes the language, this will be overridden
-        public string? Name { get; set; }
-        public string? Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
 
         // Many-to-many relation with modules.
         // https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx
