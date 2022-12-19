@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-YPh6\/UZS3aKThaIyetmtZZhj0CfPlOWbN6SUW8pzOg0=",
+      "hash": "sha256-jVzyx7f5RmoFs34W+l+XU1fw57io9BDbaDy2R5ST3rU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -229,7 +229,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-6tXXOFU9pLL8X4yCVfCkdsb4PhCfdR14plBeHG1kX8M=",
+      "hash": "sha256-oHPedJx2zLTkExrWbdcKceIRZ1GccIDzFreHdchZGfg=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
@@ -237,7 +237,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-wV1SuCyBznpuXgX3eXXeDk3E7Womdc2ZIdmKIbJr\/kg=",
+      "hash": "sha256-CTviZir1gRG7Eog9gN78dN660MHPKF0BfvWqCbpHY4E=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -449,5 +449,5 @@
       "url": "tank-tree-row-map.json"
     }
   ],
-  "version": "gJDZX2hw"
+  "version": "+LaQBMnh"
 };
