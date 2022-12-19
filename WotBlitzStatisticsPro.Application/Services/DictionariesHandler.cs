@@ -7,12 +7,12 @@ namespace WotBlitzStatisticsPro.Application.Services
         IRequestHandler<GetLastDictionariesUpdateRequest, DictionariesInfoDto>
     {
         private readonly IMediator _mediator;
+        private readonly IStaticData _staticData;
 
-        // private readonly IStaticData _staticData;
-
-        public DictionariesHandler(IMediator mediator)
+        public DictionariesHandler(IMediator mediator, IStaticData staticData)
         {
             _mediator = mediator;
+            _staticData = staticData;
         }
 
         public async Task<DictionariesInfoDto> Handle(UpdateDictionariesRequest request, CancellationToken cancellationToken)
@@ -20,12 +20,14 @@ namespace WotBlitzStatisticsPro.Application.Services
             var language = request.locale.ConvertCulture();
             var staticDictionaries = await _mediator.Send(new GetStaticDictionariesRequest(language));
             var achievements = await _mediator.Send(new GetDictionaryAchievements(language));
+
             var vehicles = await _mediator.Send(new GetDictionaryVehicles(language));
             var vehicleModules = await _mediator.Send(new GetDictionaryVehicleModules(language));
+            var vehiclesMap = await _staticData.GetTanksTreeRowMap();
 
-            // var vehiclesMap = await _staticData.GetTanksTreeRowMap();
+            var vehicleDictionaries = vehicles.ToDbStructure(vehicleModules, vehiclesMap);
             
-            Console.WriteLine(JsonSerializer.Serialize(vehicleModules));
+            Console.WriteLine(JsonSerializer.Serialize(vehicleDictionaries));
             
 
             // TODO: Save to DB

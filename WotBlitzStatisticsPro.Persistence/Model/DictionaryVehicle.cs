@@ -17,9 +17,13 @@ namespace WotBlitzStatisticsPro.Persistence.Model
 "16641": 31000
 },
 https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx
+
+modelBuilder.Entity<DictionaryNextVehicle>()
+            .HasOne<DictionaryVehicle>(s => s.Tank)
+            .WithMany(g => g.NextVehicles)
+            .HasForeignKey(s => s.TankId);
         */
-        // TODO: Create mapping one to many relation. The mapping by rows in the tree - read static json file from wwwroot
-        public long? NextTankMappingId { get; set; }
+        public List<DictionaryNextVehicle>? NextVehicles { get; set; }
 
         public string Image { get; set; } = string.Empty;
         public string PreviewImage { get; set; } = string.Empty;
@@ -28,9 +32,22 @@ https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationshi
         public string? Name { get; set; }
         public string? Description { get; set; }
 
-        // TODO: Create many-to-many relation with "encyclopedia/modules/" request.
+        // Many-to-many relation with modules.
         // https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx
-        // Table should contain module Id, Tank Id, ModuleType, and XP
-        // Then collect Turrets, Suspensions and Engines from WotEncyclopediaVehiclesResponse into this table for each tank ID
+        /*
+modelBuilder.Entity<DictionaryVehicleModuleRelation>().HasKey(mr => new { mr.ModuleId, mr.TankId });
+
+modelBuilder.Entity<DictionaryVehicleModuleRelation>()
+    .HasOne<DictionaryVehicleModule>(sc => sc.Module)
+    .WithMany(s => s.VehicleModulesRelation)
+    .HasForeignKey(sc => sc.ModuleId);
+
+
+modelBuilder.Entity<DictionaryVehicleModuleRelation>()
+    .HasOne<DictionaryVehicle>(sc => sc.Tank)
+    .WithMany(s => s.VehicleModulesRelation)
+    .HasForeignKey(sc => sc.TankId);
+        */
+        public List<DictionaryVehicleModuleRelation>? VehicleModulesRelation { get; set; }
     }
 }
