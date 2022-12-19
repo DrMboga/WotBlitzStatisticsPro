@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-SlzNDM5WIvVU1A\/4yDfmRBV0EKLuu2QwJmacFffEQcw=",
+      "hash": "sha256-onuVoCz6HfumLMVNI4Fz1kkUO0PJVXZqLL2NCFzDdD4=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -169,7 +169,7 @@
       "url": "_framework\/System.dll"
     },
     {
-      "hash": "sha256-cj\/IuOKsXlWtAilyQkKzaS+8moFPRVuE5NOvvW5VxDI=",
+      "hash": "sha256-b51S7EWSmm+3BanJoRu5qNE9k1VbALTuExkCGKyDx+A=",
       "url": "_framework\/System.Linq.dll"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-952CM0txUBkj8e3mzTpe5ZZZjfpAwCgQS0BpVEAT1lE=",
+      "hash": "sha256-OQdacvaRQvRVVohVIycAOS7bBKobZvy1L7vjaCtElVA=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -221,7 +221,7 @@
       "url": "_framework\/System.Text.Json.dll"
     },
     {
-      "hash": "sha256-CNsaAC701MM1CiHz+xHrDOWyIFIL0o4vafI6tMrLGBs=",
+      "hash": "sha256-q4L9XLon9Q81L3JqnrA1ZsBvT3nt2XlKRYvvy+qwtmw=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
@@ -229,7 +229,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-JH3rqJth4r1n2HrjV7ZxMKC6UDxRr\/ZnxnepQeDEnPQ=",
+      "hash": "sha256-L+y\/c2ZTmRTnDm8p97wz6yVzXZj5R4KqeHMDL2SknDU=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
@@ -237,7 +237,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-au9a5etMJYBM5fJXxow\/pc9bzW\/4gK4Yp0T8VMSG2gA=",
+      "hash": "sha256-i7oJjRSdZoN0S5hRb8LWcoGbNGPtodZ2cFut0xjDVDg=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -449,5 +449,5 @@
       "url": "tank-tree-row-map.json"
     }
   ],
-  "version": "PGXvheUv"
+  "version": "LiWFXQx0"
 };
