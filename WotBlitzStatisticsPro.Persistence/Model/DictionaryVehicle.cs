@@ -11,6 +11,13 @@ namespace WotBlitzStatisticsPro.Persistence.Model
         public long? PriceGold { get; set; }
         public long? PriceCredits { get; set; }
 
+        /*
+"next_tanks": {
+"2561": 29000,
+"16641": 31000
+},
+https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx
+        */
         // TODO: Create mapping one to many relation. The mapping by rows in the tree - read static json file from wwwroot
         public long? NextTankMappingId { get; set; }
 
@@ -22,6 +29,7 @@ namespace WotBlitzStatisticsPro.Persistence.Model
         public string? Description { get; set; }
 
         // TODO: Create many-to-many relation with "encyclopedia/modules/" request.
+        // https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx
         // Table should contain module Id, Tank Id, ModuleType, and XP
         // Then collect Turrets, Suspensions and Engines from WotEncyclopediaVehiclesResponse into this table for each tank ID
     }
