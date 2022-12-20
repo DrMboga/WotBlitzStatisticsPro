@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-onuVoCz6HfumLMVNI4Fz1kkUO0PJVXZqLL2NCFzDdD4=",
+      "hash": "sha256-aABopUUCNN22H85IpKAtYSEv09cCsXqazH+IsIupASw=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -137,7 +137,7 @@
       "url": "_framework\/System.Collections.Concurrent.dll"
     },
     {
-      "hash": "sha256-X08hZCOw5nEsMRrvX6ALE\/2IP9BpKO2k29\/xj7vj3F8=",
+      "hash": "sha256-908HHJrT4XaxvXnykffQj\/daqN0GYJb+2p+T6T6aIMo=",
       "url": "_framework\/System.Collections.dll"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-OQdacvaRQvRVVohVIycAOS7bBKobZvy1L7vjaCtElVA=",
+      "hash": "sha256-07ICJR0uyzDD5Na0l8K6BKMCWWgc4WEKnEVoj7SrQKY=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -217,11 +217,11 @@
       "url": "_framework\/System.Text.Encodings.Web.dll"
     },
     {
-      "hash": "sha256-LTWAf+e5W2yFIgUf1ozsa7GVliTNpLVoSfb4Y37walk=",
+      "hash": "sha256-fStnbom23GzlLDTSiFq4FzTD97u\/Lq4J87+Vl3Cc7IM=",
       "url": "_framework\/System.Text.Json.dll"
     },
     {
-      "hash": "sha256-q4L9XLon9Q81L3JqnrA1ZsBvT3nt2XlKRYvvy+qwtmw=",
+      "hash": "sha256-ucAierT0eX2P+vlf7zfy\/oHFI4XjA34U0EJ0jWYaHnQ=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
@@ -229,15 +229,15 @@
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-L+y\/c2ZTmRTnDm8p97wz6yVzXZj5R4KqeHMDL2SknDU=",
+      "hash": "sha256-UELYMa01HyrjN+rvO5QFgZfWhUbcffa7tGrMhwDdTi0=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
-      "hash": "sha256-ef6Sd5ie1aonKk1E\/2CfQhZy6EpRFpRvz8gEEpifyP4=",
+      "hash": "sha256-kgBLrU6VpxHgLkHVv+7dJx2cGdsP5tC1QS1vfA8gITY=",
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-i7oJjRSdZoN0S5hRb8LWcoGbNGPtodZ2cFut0xjDVDg=",
+      "hash": "sha256-7pnbioYQd15f+kLJmCZKqOCP5VlOTxvdfDHlAXTvghc=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -449,5 +449,5 @@
       "url": "tank-tree-row-map.json"
     }
   ],
-  "version": "LiWFXQx0"
+  "version": "CjmioUDW"
 };
