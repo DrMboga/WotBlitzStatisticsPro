@@ -25,9 +25,9 @@ namespace WotBlitzStatisticsPro.Application.Mappers
                     Image = vehicle.Images != null && vehicle.Images.ContainsKey("normal") ? vehicle.Images["normal"] : string.Empty,
                     PreviewImage = vehicle.Images != null && vehicle.Images.ContainsKey("preview") ? vehicle.Images["preview"] : string.Empty,
                     Name = vehicle.Name ?? string.Empty,
-                    Description = vehicle.Description ?? string.Empty,
-                    VehicleModulesRelation = new () // TODO: Get from WotEncyclopediaVehiclesModulesTree
+                    Description = vehicle.Description ?? string.Empty
                 };
+                dictionaryVehicle.VehicleModules = ConvertVehicleModules(vehicle.ModulesTree, dictionaryVehicle);
                 if(tankTreeHelper != null)
                 {
                     dictionaryVehicle.CurrentTankTreeRow = GetCurrentTankTreeRow(
@@ -102,6 +102,30 @@ namespace WotBlitzStatisticsPro.Application.Mappers
                 PriceXP = nextTank.Value,
                 TreeRowIndex = tankFromTreeHelper != null ? tankFromTreeHelper.Row : dictionaryVehicle.CurrentTankTreeRow
             };
+        }
+
+        private static List<DictionaryVehicleModule> ConvertVehicleModules(
+            Dictionary<string, WotEncyclopediaVehiclesModulesTree>? modules, 
+            DictionaryVehicle dictionaryVehicle)
+        {
+            var response = new List<DictionaryVehicleModule>();
+            if(modules != null)
+            {
+                foreach (var module in modules)
+                {
+                    response.Add(new DictionaryVehicleModule {
+                        TankId = dictionaryVehicle.TankId,
+                        Tank = dictionaryVehicle,
+                        ModuleId = module.Value.ModuleId ?? 0,
+                        IsDefault = module.Value.IsDefault,
+                        Name = module.Value.Name ?? string.Empty,
+                        PriceCredit = module.Value.PriceCredit ?? 0,
+                        PriceXp = module.Value.PriceXp ?? 0,
+                        Type = module.Value.Type ?? string.Empty
+                    });
+                }
+            }
+            return response;
         }
     }
 }

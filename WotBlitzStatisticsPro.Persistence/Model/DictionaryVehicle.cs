@@ -32,22 +32,14 @@ modelBuilder.Entity<DictionaryNextVehicle>()
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
 
-        // Many-to-many relation with modules.
-        // https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx
+        // One to many.
+        // https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx
         /*
-modelBuilder.Entity<DictionaryVehicleModuleRelation>().HasKey(mr => new { mr.ModuleId, mr.TankId });
-
-modelBuilder.Entity<DictionaryVehicleModuleRelation>()
-    .HasOne<DictionaryVehicleModule>(sc => sc.Module)
-    .WithMany(s => s.VehicleModulesRelation)
-    .HasForeignKey(sc => sc.ModuleId);
-
-
-modelBuilder.Entity<DictionaryVehicleModuleRelation>()
-    .HasOne<DictionaryVehicle>(sc => sc.Tank)
-    .WithMany(s => s.VehicleModulesRelation)
-    .HasForeignKey(sc => sc.TankId);
+modelBuilder.Entity<DictionaryVehicleModule>()
+            .HasOne<DictionaryVehicle>(s => s.Tank)
+            .WithMany(g => g.VehicleModules)
+            .HasForeignKey(s => s.TankId);
         */
-        public List<DictionaryVehicleModuleRelation>? VehicleModulesRelation { get; set; }
+        public List<DictionaryVehicleModule>? VehicleModules { get; set; }
     }
 }

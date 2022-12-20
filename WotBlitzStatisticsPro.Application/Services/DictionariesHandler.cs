@@ -1,6 +1,3 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class DictionariesHandler : 
@@ -20,17 +17,19 @@ namespace WotBlitzStatisticsPro.Application.Services
         {
             var language = request.locale.ConvertCulture();
             var staticDictionaries = await _mediator.Send(new GetStaticDictionariesRequest(language));
-            var achievements = await _mediator.Send(new GetDictionaryAchievements(language));
+            var achievementsDictionaries = await _mediator.Send(new GetDictionaryAchievements(language));
 
             var vehicles = await _mediator.Send(new GetDictionaryVehicles(language));
             var vehiclesMap = await _staticData.GetTanksTreeRowMap();
 
             var vehicleDictionaries = vehicles.ToDbStructure(vehiclesMap);
-            
-            Console.WriteLine(JsonSerializer.Serialize(vehicleDictionaries, new JsonSerializerOptions { ReferenceHandler = ReferenceHandler.IgnoreCycles}));
-            
 
-            // TODO: Save to DB
+            if(vehicleDictionaries != null)
+            {
+                await _mediator.Publish(new ResetVehicleDictionariesNotification(vehicleDictionaries));
+                await _mediator.Publish(new UpdateStateNotification(DateTime.Now, request.locale, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined"));
+            }
+
             return new DictionariesInfoDto(DateTime.Now, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined");
         }
 

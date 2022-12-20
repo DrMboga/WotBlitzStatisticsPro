@@ -1,4 +1,4 @@
-namespace WotBlitzStatisticsPro.Persistence.State
+namespace WotBlitzStatisticsPro.Persistence.Model
 {
     public class State
     {

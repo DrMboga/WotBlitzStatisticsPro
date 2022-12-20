@@ -106,7 +106,7 @@ namespace WotBlitzStatisticsPro.WargamingApi.Model
 		/////<summary>
 		///// Information about investigated modules
 		/////</summary>
-		//[JsonPropertyName("modules_tree")]
-		//public WotEncyclopediaVehiclesModulesTree ModulesTree { get; set; }
+		[JsonPropertyName("modules_tree")]
+		public Dictionary<string, WotEncyclopediaVehiclesModulesTree>? ModulesTree { get; set; }
 	}
 }

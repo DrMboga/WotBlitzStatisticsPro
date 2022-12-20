@@ -8,3 +8,4 @@ global using WotBlitzStatisticsPro.Application.Mappers;
 global using WotBlitzStatisticsPro.Application.Messages;
 global using WotBlitzStatisticsPro.Application.Services;
 global using WotBlitzStatisticsPro.Persistence.Model;
+global using WotBlitzStatisticsPro.Persistence.Messages;
