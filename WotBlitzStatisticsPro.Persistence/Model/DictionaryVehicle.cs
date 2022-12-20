@@ -25,6 +25,8 @@ modelBuilder.Entity<DictionaryNextVehicle>()
         */
         public List<DictionaryNextVehicle>? NextVehicles { get; set; }
 
+        public int CurrentTankTreeRow { get; set; }
+
         public string Image { get; set; } = string.Empty;
         public string PreviewImage { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;

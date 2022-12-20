@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace WotBlitzStatisticsPro.Application.Services
 {
@@ -22,12 +23,11 @@ namespace WotBlitzStatisticsPro.Application.Services
             var achievements = await _mediator.Send(new GetDictionaryAchievements(language));
 
             var vehicles = await _mediator.Send(new GetDictionaryVehicles(language));
-            var vehicleModules = await _mediator.Send(new GetDictionaryVehicleModules(language));
             var vehiclesMap = await _staticData.GetTanksTreeRowMap();
 
-            var vehicleDictionaries = vehicles.ToDbStructure(vehicleModules, vehiclesMap);
+            var vehicleDictionaries = vehicles.ToDbStructure(vehiclesMap);
             
-            Console.WriteLine(JsonSerializer.Serialize(vehicleDictionaries));
+            Console.WriteLine(JsonSerializer.Serialize(vehicleDictionaries, new JsonSerializerOptions { ReferenceHandler = ReferenceHandler.IgnoreCycles}));
             
 
             // TODO: Save to DB

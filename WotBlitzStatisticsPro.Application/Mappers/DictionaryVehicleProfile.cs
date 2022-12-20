@@ -4,7 +4,6 @@ namespace WotBlitzStatisticsPro.Application.Mappers
     {
         public static List<DictionaryVehicle>? ToDbStructure(
             this List<WotEncyclopediaVehiclesResponse>? vehicles,
-            WotEncyclopediaVehicleModulesResponse vehicleModules,
             TankTreeRowMap[]? tankTreeHelper)
         {
             if(vehicles == null)
@@ -27,110 +26,81 @@ namespace WotBlitzStatisticsPro.Application.Mappers
                     PreviewImage = vehicle.Images != null && vehicle.Images.ContainsKey("preview") ? vehicle.Images["preview"] : string.Empty,
                     Name = vehicle.Name ?? string.Empty,
                     Description = vehicle.Description ?? string.Empty,
-                    VehicleModulesRelation = new ()
+                    VehicleModulesRelation = new () // TODO: Get from WotEncyclopediaVehiclesModulesTree
                 };
-                if(vehicle.NextTanks != null)
+                if(tankTreeHelper != null)
                 {
-                    // TODO: If vehicle id is not in the tankTreeHelper, then take row from previous tank
+                    dictionaryVehicle.CurrentTankTreeRow = GetCurrentTankTreeRow(
+                        dictionaryVehicle.TankId, 
+                        tankTreeHelper, 
+                        dictionaryVehicle,
+                        result);
+                    if(vehicle.NextTanks != null && vehicle.NextTanks.Count > 0)
+                    {
+                        dictionaryVehicle.NextVehicles = new ();
+                        foreach (var nextTank in vehicle.NextTanks)
+                        {
+                            var nextVehicle = FindNextVehicle(nextTank, tankTreeHelper, dictionaryVehicle);
+                            if(nextVehicle != null)
+                            {
+                                dictionaryVehicle.NextVehicles.Add(nextVehicle);
+                            }
+                        }
+                    }
                 }
                 
-                if(vehicle.Suspensions != null)
-                {
-                    foreach (var moduleId in vehicle.Suspensions)
-                    {
-                        var relation = new DictionaryVehicleModuleRelation 
-                        {
-                            ModuleId = moduleId,
-                            Module = vehicleModules.Suspensions?
-                                .Where(s => s.ModuleId == moduleId)
-                                .Select(s => s.ToDictionaryVehicle(
-                                    "suspension",
-                                    dictionaryVehicle.VehicleModulesRelation))
-                                .FirstOrDefault(),
-                            TankId = vehicle.TankId ?? 0,
-                            Tank = dictionaryVehicle
-                        };
-                        dictionaryVehicle.VehicleModulesRelation.Add(relation);
-                    }
-                }
-                if(vehicle.Turrets != null)
-                {
-                    foreach (var moduleId in vehicle.Turrets)
-                    {
-                        var relation = new DictionaryVehicleModuleRelation 
-                        {
-                            ModuleId = moduleId,
-                            Module = vehicleModules.Turrets?
-                                .Where(s => s.ModuleId == moduleId)
-                                .Select(s => s.ToDictionaryVehicle(
-                                    "turret",
-                                    dictionaryVehicle.VehicleModulesRelation))
-                                .FirstOrDefault(),
-                            TankId = vehicle.TankId ?? 0,
-                            Tank = dictionaryVehicle
-                        };
-                        dictionaryVehicle.VehicleModulesRelation.Add(relation);
-                    }
-                }
-                if(vehicle.Engines != null)
-                {
-                    foreach (var moduleId in vehicle.Engines)
-                    {
-                        var relation = new DictionaryVehicleModuleRelation 
-                        {
-                            ModuleId = moduleId,
-                            Module = vehicleModules.Engines?
-                                .Where(s => s.ModuleId == moduleId)
-                                .Select(s => s.ToDictionaryVehicle(
-                                    "engine",
-                                    dictionaryVehicle.VehicleModulesRelation))
-                                .FirstOrDefault(),
-                            TankId = vehicle.TankId ?? 0,
-                            Tank = dictionaryVehicle
-                        };
-                        dictionaryVehicle.VehicleModulesRelation.Add(relation);
-                    }
-                }
-                if(vehicle.Guns != null)
-                {
-                    foreach (var moduleId in vehicle.Guns)
-                    {
-                        var relation = new DictionaryVehicleModuleRelation 
-                        {
-                            ModuleId = moduleId,
-                            Module = vehicleModules.Guns?
-                                .Where(s => s.ModuleId == moduleId)
-                                .Select(s => s.ToDictionaryVehicle(
-                                    "gun",
-                                    dictionaryVehicle.VehicleModulesRelation))
-                                .FirstOrDefault(),
-                            TankId = vehicle.TankId ?? 0,
-                            Tank = dictionaryVehicle
-                        };
-                        dictionaryVehicle.VehicleModulesRelation.Add(relation);
-                    }
-                }
-
                 result.Add(dictionaryVehicle);
             }
 
             return result;
         }
     
-        private static DictionaryVehicleModule ToDictionaryVehicle(
-            this WotEncyclopediaVehicleModule vehicleModule, 
-            string moduleType,
-            List<DictionaryVehicleModuleRelation> relationsReference)
+        private static int GetCurrentTankTreeRow(
+            long tankId,
+            TankTreeRowMap[] tankTreeHelper,
+            DictionaryVehicle dictionaryVehicle,
+            List<DictionaryVehicle> parsedTanksList)
         {
-            return new DictionaryVehicleModule
+            // If vehicle id is not in the tankTreeHelper, then take row from previous tank
+            var tankFromTreeHelper = tankTreeHelper.FirstOrDefault(t => t.TankId == tankId);
+            if(tankFromTreeHelper != null)
             {
-                ModuleId = vehicleModule.ModuleId ?? 0,
-                Tier = Convert.ToInt32(vehicleModule.Tier ?? 0),
-                Weight = vehicleModule.Weight ?? 0,
-                Nation = vehicleModule.Nation ?? string.Empty,
-                Name = vehicleModule.Name ?? string.Empty,
-                ModuleType = moduleType,
-                VehicleModulesRelation = relationsReference
+                return tankFromTreeHelper.Row;
+            }
+
+            var previousTierTanks = parsedTanksList
+                                    .Where(r => r.Nation == dictionaryVehicle.Nation && r.Tier == dictionaryVehicle.Tier - 1)
+                                    .ToList();
+            if(previousTierTanks.Count > 0)
+            {
+                var previousTankRow = previousTierTanks
+                        .FirstOrDefault(pt => pt.NextVehicles != null && pt.NextVehicles.Any(n => n.NextTankId == dictionaryVehicle.TankId))
+                        ?.NextVehicles
+                            ?.Where(v => v.NextTankId == dictionaryVehicle.TankId)
+                            .Select(v => v.TreeRowIndex)
+                            .FirstOrDefault();
+                if(previousTankRow != null)
+                {
+                    return previousTankRow.Value;
+                }
+            }
+            return 0;
+        }
+
+        private static DictionaryNextVehicle? FindNextVehicle(
+            KeyValuePair<string, long> nextTank,
+            TankTreeRowMap[] tankTreeHelper,
+            DictionaryVehicle dictionaryVehicle
+        )
+        {
+            var nextTankId = long.Parse(nextTank.Key);
+            var tankFromTreeHelper = tankTreeHelper.FirstOrDefault(t => t.TankId == nextTankId);
+            return new DictionaryNextVehicle {
+                TankId = dictionaryVehicle.TankId,
+                Tank = dictionaryVehicle,
+                NextTankId = nextTankId,
+                PriceXP = nextTank.Value,
+                TreeRowIndex = tankFromTreeHelper != null ? tankFromTreeHelper.Row : dictionaryVehicle.CurrentTankTreeRow
             };
         }
     }

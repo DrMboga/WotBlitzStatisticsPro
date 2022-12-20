@@ -3,8 +3,7 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
     public class DictionariesService: 
         IRequestHandler<GetStaticDictionariesRequest, StaticDictionariesResponse>,
         IRequestHandler<GetDictionaryAchievements, List<WotEncyclopediaAchievementsResponse>>,
-        IRequestHandler<GetDictionaryVehicles, List<WotEncyclopediaVehiclesResponse>>,
-        IRequestHandler<GetDictionaryVehicleModules, WotEncyclopediaVehicleModulesResponse>
+        IRequestHandler<GetDictionaryVehicles, List<WotEncyclopediaVehiclesResponse>>
     {
         private readonly IWargamingClient _wargamingClient;
 
@@ -55,19 +54,6 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
                 return new List<WotEncyclopediaVehiclesResponse>();
             }
             return response.Values.ToList();
-        }
-
-        public async Task<WotEncyclopediaVehicleModulesResponse> Handle(GetDictionaryVehicleModules request, CancellationToken cancellationToken)
-        {
-            var response = await _wargamingClient.GetFromBlitzApi<WotEncyclopediaVehicleModulesResponse>(
-                request.Language,
-                "encyclopedia/modules/").ConfigureAwait(false);
-
-            if(response == null)
-            {
-                return new WotEncyclopediaVehicleModulesResponse();
-            }
-            return response;
         }
     }
 }
