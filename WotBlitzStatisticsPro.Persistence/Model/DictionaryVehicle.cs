@@ -31,15 +31,6 @@ modelBuilder.Entity<DictionaryNextVehicle>()
         public string PreviewImage { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-
-        // One to many.
-        // https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx
-        /*
-modelBuilder.Entity<DictionaryVehicleModule>()
-            .HasOne<DictionaryVehicle>(s => s.Tank)
-            .WithMany(g => g.VehicleModules)
-            .HasForeignKey(s => s.TankId);
-        */
         public List<DictionaryVehicleModule>? VehicleModules { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using WotBlitzStatisticsPro.Application.Mocks;
+using WotBlitzStatisticsPro.Persistence;
 using WotBlitzStatisticsPro.WargamingApi;
 
 namespace WotBlitzStatisticsPro.Application
@@ -22,6 +23,7 @@ namespace WotBlitzStatisticsPro.Application
                 services.AddTransient<IPlayerInfoService, PlayerInfoService>();
                 services.AddTransient<IClanInfoService, ClanInfoService>();
                 WargamingApiInstaller.ConfigureServices(services);
+                PersistenceInstaller.ConfigureServices(services);
             }
         }
 

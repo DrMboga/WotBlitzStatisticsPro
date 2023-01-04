@@ -1,3 +1,6 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class DictionariesHandler : 
@@ -24,9 +27,18 @@ namespace WotBlitzStatisticsPro.Application.Services
 
             var vehicleDictionaries = vehicles.ToDbStructure(vehiclesMap);
 
+            // value '{ModuleId: 1381}' is already being tracked
+            Console.WriteLine(JsonSerializer.Serialize(vehicleDictionaries, options: new()
+            {
+                ReferenceHandler = ReferenceHandler.Preserve
+            }));
+
             if(vehicleDictionaries != null)
             {
-                await _mediator.Publish(new ResetVehicleDictionariesNotification(vehicleDictionaries));
+                // TODO: Figure out Vehicle-VehicleModule many to many relationship
+                // await _mediator.Publish(new ResetVehicleDictionariesNotification(vehicleDictionaries));
+
+                // TODO: Wait the https://github.com/JeremyLikness/SqliteWasmHelper/issues/13 issue to be closed and update the SqliteWasmHelper
                 await _mediator.Publish(new UpdateStateNotification(DateTime.Now, request.locale, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined"));
             }
 

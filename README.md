@@ -12,3 +12,18 @@ Detailed player &amp; tank statistics and history for [World of Tanks: Blitz](ht
 docker build -t wotblitzstatisticspro .
 docker run -dp 8840:80 --env WG_APP_ID=AppIdFromEnv wotblitzstatisticspro
 ```
+
+## SQLite check
+
+Run the application and use F12 to open developer tools.
+
+1.  Check db name: Open the Application tab, Cache/CacheStorage/SqliteWasmHelper
+
+2.  Navigate to the Console tab.:
+
+```js
+const cache = await caches.open('SqliteWasmHelper');
+const resp = await cache.match('/data/cache/things.db'); // Path from step 1
+const blob = await resp.blob();
+URL.createObjectURL(blob);
+```
