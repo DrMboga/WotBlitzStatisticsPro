@@ -19,8 +19,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.x
-      - name: Install python for WasmBuildNative
-        run: apt-get update && apt-get install -y python3
       - name: Install wasm-tools
         run: dotnet workload install wasm-tools
       - name: Restore dependencies
