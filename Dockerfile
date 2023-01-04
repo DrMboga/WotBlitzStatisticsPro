@@ -5,6 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
+RUN dotnet workload install wasm-tools
+RUN apt-get update && apt-get install -y python3
 COPY ["WotBlitzStatisticsPro/WotBlitzStatisticsPro.csproj", "WotBlitzStatisticsPro/"]
 COPY ["WotBlitzStatisticsPro.Application/WotBlitzStatisticsPro.Application.csproj", "WotBlitzStatisticsPro.Application/"]
 COPY ["WotBlitzStatisticsPro.Persistence/WotBlitzStatisticsPro.Persistence.csproj", "WotBlitzStatisticsPro.Persistence/"]
