@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatisticsPro.Persi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatisticsPro.WargamingApi.Tests", "WotBlitzStatisticsPro.WargamingApi.Tests\WotBlitzStatisticsPro.WargamingApi.Tests.csproj", "{CE9D07C0-2053-46CD-828A-BF9320095944}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{9C6BB6F1-899D-46C4-83FE-7FBC64B67378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteWasmHelper", "ThirdParty\SqliteWasmHelper\SqliteWasmHelper.csproj", "{68184848-BDFE-42A0-9718-DDB2682CF6EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +70,12 @@ Global
 		{CE9D07C0-2053-46CD-828A-BF9320095944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE9D07C0-2053-46CD-828A-BF9320095944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE9D07C0-2053-46CD-828A-BF9320095944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68184848-BDFE-42A0-9718-DDB2682CF6EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68184848-BDFE-42A0-9718-DDB2682CF6EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68184848-BDFE-42A0-9718-DDB2682CF6EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68184848-BDFE-42A0-9718-DDB2682CF6EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68184848-BDFE-42A0-9718-DDB2682CF6EE} = {9C6BB6F1-899D-46C4-83FE-7FBC64B67378}
 	EndGlobalSection
 EndGlobal

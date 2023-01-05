@@ -6,7 +6,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
 {
     public class DataAccess :
         INotificationHandler<ResetVehicleDictionariesNotification>,
-        INotificationHandler<UpdateStateNotification>
+        INotificationHandler<UpdateStateNotification>,
+        IRequestHandler<ReadStateRequest, State>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -52,6 +53,23 @@ namespace WotBlitzStatisticsPro.Persistence.Services
             await dbContext.SaveChangesAsync();
 
             Console.WriteLine("State update handler");
+        }
+
+        public async Task<State> Handle(ReadStateRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            var state = await dbContext.State.FirstOrDefaultAsync();
+
+            if(state == null)
+            {
+                return new State
+                {
+                    DictionariesLanguage = "En",
+                    GameVersion = "0.0.0",
+                    DictionariesUpdated = new DateTime(1970, 1, 1)
+                };
+            }
+            return state;
         }
 
         private async Task RemoveAllVehicles()

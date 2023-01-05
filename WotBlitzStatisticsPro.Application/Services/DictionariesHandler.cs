@@ -45,10 +45,10 @@ namespace WotBlitzStatisticsPro.Application.Services
             return new DictionariesInfoDto(DateTime.Now, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined");
         }
 
-        public Task<DictionariesInfoDto> Handle(GetLastDictionariesUpdateRequest request, CancellationToken cancellationToken)
+        public async Task<DictionariesInfoDto> Handle(GetLastDictionariesUpdateRequest request, CancellationToken cancellationToken)
         {
-            // TODO: Get last date from DB (by language)
-            return Task.FromResult(new DictionariesInfoDto(DateTime.Now.AddDays(-1), "0.0.1"));
+            var state = await _mediator.Send(new ReadStateRequest());
+            return new DictionariesInfoDto(state.DictionariesUpdated!.Value, state.GameVersion!);
         }
 
     }

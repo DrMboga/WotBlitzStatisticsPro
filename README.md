@@ -6,6 +6,8 @@ Detailed player &amp; tank statistics and history for [World of Tanks: Blitz](ht
 - Stores statistics snapshots in local database
 - Allows to view players, their tanks and achievements statistics, and how it was change in time
 
+This project uses [SqliteWasmHelper](https://github.com/JeremyLikness/SqliteWasmHelper) by Jeremy Likness. But not as a nuget package. I have cloned the original library and bumped it up to .net 7 manually, because on 05.01.2023 the [pull request](https://github.com/JeremyLikness/SqliteWasmHelper/pull/7) still not merged.
+
 ## Run as docker container
 
 ```bash
@@ -23,7 +25,7 @@ Run the application and use F12 to open developer tools.
 
 ```js
 const cache = await caches.open('SqliteWasmHelper');
-const resp = await cache.match('/data/cache/things.db'); // Path from step 1
+const resp = await cache.match('/data/cache/wotblitzstatisticspro.sqlite3'); // Path from step 1
 const blob = await resp.blob();
 URL.createObjectURL(blob);
 ```
