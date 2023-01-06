@@ -65,6 +65,154 @@
       "url": "favicon.ico"
     },
     {
+      "hash": "sha256-1FYN\/1YTCZEnr1NzhpBnhKy88CkISqRnFA6Ua8hCHnQ=",
+      "url": "flags\/china-faded.png"
+    },
+    {
+      "hash": "sha256-h9G7UUf75c\/n3ImL5bTxQxC6R9eNIllL3oYBweQAjAc=",
+      "url": "flags\/china-round.png"
+    },
+    {
+      "hash": "sha256-7t5eIsdiJ+kfwbZ4qtu1B0SIZVb7FczZTsVZ2xQWsr0=",
+      "url": "flags\/china.png"
+    },
+    {
+      "hash": "sha256-rDWR0Lerod4vRkHifbSTWMoJK7rkYNxDa5c6AqTDJVw=",
+      "url": "flags\/eu-faded.png"
+    },
+    {
+      "hash": "sha256-MDK1tpTBNhgy9Zvxqk4JWpThLTCVXbkLz93vAIGNM0U=",
+      "url": "flags\/eu-round.png"
+    },
+    {
+      "hash": "sha256-oYHo4ES\/iD2AyyOZ2lVZ7O1e0e3DXNXiI2YGZKNzy3Q=",
+      "url": "flags\/eu.png"
+    },
+    {
+      "hash": "sha256-\/d\/tDJTDJCSX82Jcf1bBRbt1XVV4oqsWwa1gvi4z\/7s=",
+      "url": "flags\/finland-faded.png"
+    },
+    {
+      "hash": "sha256-IRpDRVm6+p1Fu9HlC5dN1ifypaoI8jzIrjPPH9OJW2k=",
+      "url": "flags\/finland.png"
+    },
+    {
+      "hash": "sha256-inYUpUag449kYnR8MgJXIZeFOljokgoF2ugw3d8c2Og=",
+      "url": "flags\/france-faded.png"
+    },
+    {
+      "hash": "sha256-aX\/wvebSUPINgA5gWggOtFDP0FT1GfmjAFRgeYkVkZo=",
+      "url": "flags\/france-round.png"
+    },
+    {
+      "hash": "sha256-BpoMBsfMJlHKJupNh1ygmmVmFPW39y\/Y\/Id6gjQk8tU=",
+      "url": "flags\/france.png"
+    },
+    {
+      "hash": "sha256-vAXJnIrSnprL9SnhrsUUXKexGhReboYxxshKfa77sjk=",
+      "url": "flags\/germany-faded.png"
+    },
+    {
+      "hash": "sha256-rF\/NbUQZBMTdJfY+R9Fbyab84F9MyNVgg9xLGlGaD4s=",
+      "url": "flags\/germany-round.png"
+    },
+    {
+      "hash": "sha256-O8Ba+dez4JIyVeNMtqnVJ1sdOkLFhBnPtDyH3fgSRG0=",
+      "url": "flags\/germany.png"
+    },
+    {
+      "hash": "sha256-BRLnySDVJ9jk4H5WixyCjU5jzJZUTObR3U4K3wMsLzE=",
+      "url": "flags\/italy-faded.png"
+    },
+    {
+      "hash": "sha256-50fWILbgS3hYRXIi0V5cEVXzCYVTjWIewbC3ayqkyoI=",
+      "url": "flags\/italy.png"
+    },
+    {
+      "hash": "sha256-4uHFFzw68FM6GsVh3RvKuZ9yDfF7P3FBU+MOxnHZjUw=",
+      "url": "flags\/japan-faded.png"
+    },
+    {
+      "hash": "sha256-0NuGu\/v111Ls74aU2lY3CEweIykJk2AmjiAYROPO1S0=",
+      "url": "flags\/japan-round.png"
+    },
+    {
+      "hash": "sha256-6g9y9LJffnamAywE8GMvHNHcScj54161Rik7MsYIkz8=",
+      "url": "flags\/japan.png"
+    },
+    {
+      "hash": "sha256-AF2fjKxh1gGBrV8ehm4pBoCHjN6WOYf\/R+ls4B7hDTg=",
+      "url": "flags\/nations.jpg"
+    },
+    {
+      "hash": "sha256-LqLbRsjlE9hXvKyxiPYEdKJnoS+L1abuVvohtTAlO6g=",
+      "url": "flags\/other-faded.png"
+    },
+    {
+      "hash": "sha256-y8KqA86kMudro4SUuh8DoTexjxKGUJh8dXAcg46nfQk=",
+      "url": "flags\/other-round.png"
+    },
+    {
+      "hash": "sha256-ehAKtP9q79t8kjuJgEbicHwqAhN\/o\/gkxN3mfX+B2S4=",
+      "url": "flags\/other.png"
+    },
+    {
+      "hash": "sha256-n359d8xM+eQ00Mph0Dxs9qI8RvXabwCwEfh\/8zagKes=",
+      "url": "flags\/poland-faded.png"
+    },
+    {
+      "hash": "sha256-SN+7wufeJY17u+3ApDQqzDoMLto3vFiv0p+QR0qaye4=",
+      "url": "flags\/poland.png"
+    },
+    {
+      "hash": "sha256-Xs1jT+su7llygoUBsMVFT8yNtxYN7FWnrdwQW+WtEws=",
+      "url": "flags\/sweden-faded.png"
+    },
+    {
+      "hash": "sha256-ibtu\/KPIzYHXx6ex3OYKhs13OuhxhJUvEPfkuGX+jOY=",
+      "url": "flags\/sweden.png"
+    },
+    {
+      "hash": "sha256-zfydNfRqs75\/cL5SzMbv\/6M3f4nVnYoMt2URYlgSIZQ=",
+      "url": "flags\/uk-faded.png"
+    },
+    {
+      "hash": "sha256-yq27itb4MWdG+ww4boag6JQc4xbjDc9JTtoL3Xn7AIk=",
+      "url": "flags\/uk-round.png"
+    },
+    {
+      "hash": "sha256-ODnLdqKeraFamZ+\/rLZe3ufFOZ0GpmsJc4XIWXs47aA=",
+      "url": "flags\/uk.png"
+    },
+    {
+      "hash": "sha256-e76adsyCbZXpTKQTtxYQo0Ae\/Y+EQie8JVb\/gfdnZvY=",
+      "url": "flags\/usa-faded.png"
+    },
+    {
+      "hash": "sha256-E8HT9Yw8WYKYR8r4c8IY3c7GO77uMV+XQ17kpB6lUeY=",
+      "url": "flags\/usa-round.png"
+    },
+    {
+      "hash": "sha256-8A37tQTfgP3m8Sa3vQR+yXK1oFhFc4Epz+7uZ\/b1u4c=",
+      "url": "flags\/usa.png"
+    },
+    {
+      "hash": "sha256-SYzhtK13dNR1Qx\/Vn5qsklo3H5IiiHbI4xfXkVznP1o=",
+      "url": "flags\/ussr-faded.png"
+    },
+    {
+      "hash": "sha256-KVOdRsWb21Ga1bsQvdYgyOZvGDWzMOb3boAuCW3\/mNA=",
+      "url": "flags\/ussr-round.png"
+    },
+    {
+      "hash": "sha256-FDFv2fJ03IKhCRdl3CP\/qq41GC2aTpNOjTTF9IJGwqE=",
+      "url": "flags\/ussr.png"
+    },
+    {
+      "hash": "sha256-QX\/yJtli4Rmk55vLcIenQzb4EQhuUT6UYrKuaIMRcCY=",
+      "url": "flags\/vehicle.nation.unknown.scale-200.png"
+    },
+    {
       "hash": "sha256-oEVnVLD2wCf\/fZ7AUZzcxiV2LRdq4otI5R6jtFtaNuA=",
       "url": "icons\/Ascending.png"
     },
@@ -181,6 +329,22 @@
       "url": "manifest.json"
     },
     {
+      "hash": "sha256-yOsNPMeVOxdOdSHXv7w5T+1+cQpKKpRVhmtHpgKVUe4=",
+      "url": "modules\/encyclopedia.vehicle.engine.scale-200.png"
+    },
+    {
+      "hash": "sha256-cSKt3GVS9Mqpekeqa3oY+5TT3bzl6gTQylbV3XjF2+A=",
+      "url": "modules\/encyclopedia.vehicle.gun.scale-200.png"
+    },
+    {
+      "hash": "sha256-sRYk9li9731oZihN5IjmzJU5Reyd9eSFqiqTHATh7ms=",
+      "url": "modules\/encyclopedia.vehicle.suspension.scale-200.png"
+    },
+    {
+      "hash": "sha256-l8R4\/ruXMycy8ltmxjKmLywdHU\/4MbsT+TfXnbURJjk=",
+      "url": "modules\/encyclopedia.vehicle.turret.scale-200.png"
+    },
+    {
       "hash": "sha256-xgrZ7tPSaZ3EZtqPzVMR9O4VKAwdvxApXrqj4y57tvU=",
       "url": "scripts\/themes.js"
     },
@@ -191,6 +355,70 @@
     {
       "hash": "sha256-F2FKxTJyiIW6Bcmbvzgpd412Jy1jN7cD0ooeu8Vd\/Ok=",
       "url": "tank-tree-row-map.json"
+    },
+    {
+      "hash": "sha256-R7H38MqABRtbsTYTpx9gnWqLO63+D+4iL2AmajVt+oM=",
+      "url": "tank-type\/vehicle.class.atspg.premium.scale-200.png"
+    },
+    {
+      "hash": "sha256-aU5Hh58KkqeYGYuRostk84TfehP6eBslZnZvrW0iHR8=",
+      "url": "tank-type\/vehicle.class.atspg.premium.small.scale-200.png"
+    },
+    {
+      "hash": "sha256-OABIe8EIePELrsaIpiFrxfM9PHu15UgQYS0ae5ELViw=",
+      "url": "tank-type\/vehicle.class.atspg.scale-200.png"
+    },
+    {
+      "hash": "sha256-N\/5EtE0Ccd3qYByIeSxI\/CLjvf9CDGidPgQ6xAG3bks=",
+      "url": "tank-type\/vehicle.class.atspg.small.scale-200.png"
+    },
+    {
+      "hash": "sha256-o2AwljntoQuZbn09nE1DNcI9DDAccmBPrkBEp+tJD5k=",
+      "url": "tank-type\/vehicle.class.heavy.premium.scale-200.png"
+    },
+    {
+      "hash": "sha256-HOnrb+jdcf\/9t\/7FzI8Bduh3TNtHO\/BTGTHA7Cw57LU=",
+      "url": "tank-type\/vehicle.class.heavy.premium.small.scale-200.png"
+    },
+    {
+      "hash": "sha256-jFpANDPYyJcxfL8NcBjJEIErMFW78zmfPRddrcFzvDY=",
+      "url": "tank-type\/vehicle.class.heavy.scale-200.png"
+    },
+    {
+      "hash": "sha256-Wfdq9RzoWqoM5RMf5X\/SDtVlpuda+tpoKrixeTt\/O0E=",
+      "url": "tank-type\/vehicle.class.heavy.small.scale-200.png"
+    },
+    {
+      "hash": "sha256-Z243XPRV2J4UpxI38VD5zaxDY5E2WVwvauCesMhlbu4=",
+      "url": "tank-type\/vehicle.class.light.premium.scale-200.png"
+    },
+    {
+      "hash": "sha256-MWwpz6zDkDNtM3ukcGVacQHwo7MMAWf+EF2zCmdm\/w0=",
+      "url": "tank-type\/vehicle.class.light.premium.small.scale-200.png"
+    },
+    {
+      "hash": "sha256-A\/rOwseIwTWsmcs7qwIVyWEUSvKatL\/zs3mSg6xUZXg=",
+      "url": "tank-type\/vehicle.class.light.scale-200.png"
+    },
+    {
+      "hash": "sha256-stzbMG45dmPwpNUFZ2eE55v9t8Pypzsc8YcJ0Gam7hM=",
+      "url": "tank-type\/vehicle.class.light.small.scale-200.png"
+    },
+    {
+      "hash": "sha256-0Arn3UICG1j5ZPe59GFZrqWFatBfGD7GMp\/GczKK0jo=",
+      "url": "tank-type\/vehicle.class.medium.premium.scale-200.png"
+    },
+    {
+      "hash": "sha256-URUdqARfxj9ebURudrzRzNINJHN3yEZ42pcS0NUUsTI=",
+      "url": "tank-type\/vehicle.class.medium.premium.small.scale-200.png"
+    },
+    {
+      "hash": "sha256-\/6BGea2Jotaf2TG6yFyiypz3\/UCwMEbgiRYI+Tv+BOU=",
+      "url": "tank-type\/vehicle.class.medium.scale-200.png"
+    },
+    {
+      "hash": "sha256-r35hTb1yuXxIIDfZ+Syhd4A+HqZtCFK6KaO2L1YNuyc=",
+      "url": "tank-type\/vehicle.class.medium.small.scale-200.png"
     },
     {
       "hash": "sha256-gMMhXf930MHxSiJZcjP4DGT41x\/\/4UluuuaVRM2SZIk=",
@@ -217,7 +445,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-Z9mbt554xyi\/Ww6IoO7mrHQm45ucHuh3sVEfD\/tLza0=",
+      "hash": "sha256-IEsKNmMFzT3QHoWOAtDrjpBZZ\/Zv3aFTztlpNmkQS4c=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -525,7 +753,7 @@
       "url": "_framework\/System.Transactions.Local.dll"
     },
     {
-      "hash": "sha256-ywxtREuYdd5k5xNVhM1mkPTPHyWWSRNJ0xBqXmmBgKw=",
+      "hash": "sha256-rTiN7SZ1IJdh03SSP+VfcPVdjJJ\/PoJ43iOVbkfS2z8=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
@@ -533,7 +761,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-XEjYcRKNVWNTYEpA7YlQJsuVzT6UyxScleU5cMmicYI=",
+      "hash": "sha256-UHX7eXsEdBm9FA6uIWOON7P4SecUP+KbcNttc3fBL\/M=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
@@ -541,7 +769,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-kKDfcnBMcBFfG\/cGwNEIFU+miUZWFS4ImoXAYD1TASo=",
+      "hash": "sha256-JFSjMdYFHAOOHqmnux3m5X+sq5OpvSnQUmCBVhGHEJw=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -573,5 +801,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "ZsrFNGO3"
+  "version": "1KY0cqVV"
 };
