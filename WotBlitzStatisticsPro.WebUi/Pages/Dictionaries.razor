@@ -6,6 +6,12 @@
 
 <div class="d-flex flex-column mt-2">
     <div class="d-flex flex-row align-items-center ms-2">
+        <select class="form-select me-2" @bind="SelectedDictionary" style="max-width: 150px;">
+            @foreach (var dict in DictionariesList)
+            {
+                <option value="@dict">@dict</option>
+            }
+        </select>
         <button type="button" class="btn btn-secondary me-2" @onclick="@(async (e) => await UpdateDictionaries())">@Localize["Update dictionaries"]</button>
         @if(DictionariesUpdated != null)
         {
@@ -21,10 +27,33 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+    } else
+    {
+        @if(SelectedDictionary == StateDictionary)
+        {
+            <StateDictionary State="@DictionariesUpdated">
+
+            </StateDictionary>
+        }
+        @if(SelectedDictionary == VehiclesDictionary)
+        {
+            <VehiclesDictionary></VehiclesDictionary>
+        }
     }
 </div>
 
 @code {
+    public const string StateDictionary = "State";
+    public const string VehiclesDictionary = "Vehicles";
+
+    public List<string> DictionariesList { get; set; } = new List<string> 
+        {
+            StateDictionary,
+            VehiclesDictionary
+        };
+    
+    public string SelectedDictionary { get; set; } = StateDictionary;
+
     public DictionariesInfoDto? DictionariesUpdated { get; set; }
 
     private bool Loading { get; set; } = false;

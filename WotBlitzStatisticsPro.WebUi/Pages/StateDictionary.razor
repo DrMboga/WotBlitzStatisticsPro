@@ -1,0 +1,39 @@
+<h1 class="mt-2">State</h1>
+<div class="d-flex flex-row align-items-center mt-2">
+    @if(State != null)
+    {
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Dictionaries updated</th>
+                    <th>@State.LastUpdateDate.ToString("g")</th>
+                </tr>
+                <tr>
+                    <th>Game version</th>
+                    <th>@State.GameVersion</th>
+                </tr>
+                <tr>
+                    <th>Dictionaries language</th>
+                    <th>@State.DictionariesLanguage</th>
+                </tr>
+                <tr>
+                    <th>Logged in player ID</th>
+                    <th>@State.LoggedInAccountId</th>
+                </tr>
+                <tr>
+                    <th>Wargaming token</th>
+                    <th>@State.WgToken</th>
+                </tr>
+                <tr>
+                    <th>Wargaming token expiration</th>
+                    <th>@State.WgTokenExpiration?.ToString("g")</th>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
+@code {
+    [Parameter]
+    public DictionariesInfoDto State { get; set; }
+
+}

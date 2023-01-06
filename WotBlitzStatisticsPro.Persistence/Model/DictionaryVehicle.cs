@@ -27,10 +27,13 @@ modelBuilder.Entity<DictionaryNextVehicle>()
 
         public int CurrentTankTreeRow { get; set; }
 
-        public string Image { get; set; } = string.Empty;
-        public string PreviewImage { get; set; } = string.Empty;
+        public string? Image { get; set; } = string.Empty;
+        public string? PreviewImage { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public List<DictionaryVehicleModule>? VehicleModules { get; set; }
+        public string? Description { get; set; } = string.Empty;
+
+        // Many-to-many relation with modules.
+        // https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx
+        public List<DictionaryVehicleModuleRelation>? VehicleModulesRelation { get; set; }
     }
 }

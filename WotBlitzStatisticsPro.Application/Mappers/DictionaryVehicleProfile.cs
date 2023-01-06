@@ -27,7 +27,7 @@ namespace WotBlitzStatisticsPro.Application.Mappers
                     Name = vehicle.Name ?? string.Empty,
                     Description = vehicle.Description ?? string.Empty
                 };
-                dictionaryVehicle.VehicleModules = ConvertVehicleModules(vehicle.ModulesTree, dictionaryVehicle);
+                dictionaryVehicle.VehicleModulesRelation = CreateVehicleModulesRelations(vehicle.ModulesTree, dictionaryVehicle, result);
                 if(tankTreeHelper != null)
                 {
                     dictionaryVehicle.CurrentTankTreeRow = GetCurrentTankTreeRow(
@@ -104,24 +104,43 @@ namespace WotBlitzStatisticsPro.Application.Mappers
             };
         }
 
-        private static List<DictionaryVehicleModule> ConvertVehicleModules(
-            Dictionary<string, WotEncyclopediaVehiclesModulesTree>? modules, 
-            DictionaryVehicle dictionaryVehicle)
+        private static List<DictionaryVehicleModuleRelation> CreateVehicleModulesRelations(
+            Dictionary<string, WotEncyclopediaVehiclesModulesTree>? vehicleModules, 
+            DictionaryVehicle dictionaryVehicle,
+            List<DictionaryVehicle> parsedTanksList)
         {
-            var response = new List<DictionaryVehicleModule>();
-            if(modules != null)
+            var response = new List<DictionaryVehicleModuleRelation>();
+            if(vehicleModules != null)
             {
-                foreach (var module in modules)
+                foreach (var module in vehicleModules)
                 {
-                    response.Add(new DictionaryVehicleModule {
-                        TankId = dictionaryVehicle.TankId,
+                    DictionaryVehicleModule vehicleModule;
+
+                    var existingModuleRelation = parsedTanksList.
+                        Where(t => t.VehicleModulesRelation != null && t.VehicleModulesRelation.Any(r => r.ModuleId == module.Value.ModuleId))
+                        .SelectMany(t => t.VehicleModulesRelation!)
+                        .FirstOrDefault(m => m.ModuleId == module.Value.ModuleId);
+                    
+                    if(existingModuleRelation?.Module != null)
+                    {
+                        vehicleModule = existingModuleRelation.Module; 
+                    }
+                    else
+                    {
+                        vehicleModule = new DictionaryVehicleModule {
+                            ModuleId = module.Value.ModuleId ?? 0,
+                            IsDefault = module.Value.IsDefault,
+                            Name = module.Value.Name ?? string.Empty,
+                            PriceCredit = module.Value.PriceCredit ?? 0,
+                            PriceXp = module.Value.PriceXp ?? 0,
+                            Type = module.Value.Type ?? string.Empty
+                        };
+                    }
+                    response.Add(new DictionaryVehicleModuleRelation {
+                        Module = vehicleModule,
+                        ModuleId = vehicleModule.ModuleId,
                         Tank = dictionaryVehicle,
-                        ModuleId = module.Value.ModuleId ?? 0,
-                        IsDefault = module.Value.IsDefault,
-                        Name = module.Value.Name ?? string.Empty,
-                        PriceCredit = module.Value.PriceCredit ?? 0,
-                        PriceXp = module.Value.PriceXp ?? 0,
-                        Type = module.Value.Type ?? string.Empty
+                        TankId = dictionaryVehicle.TankId
                     });
                 }
             }

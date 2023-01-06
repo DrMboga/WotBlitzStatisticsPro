@@ -27,28 +27,35 @@ namespace WotBlitzStatisticsPro.Application.Services
 
             var vehicleDictionaries = vehicles.ToDbStructure(vehiclesMap);
 
-            // value '{ModuleId: 1381}' is already being tracked
-            Console.WriteLine(JsonSerializer.Serialize(vehicleDictionaries, options: new()
-            {
-                ReferenceHandler = ReferenceHandler.Preserve
-            }));
+            // Console.WriteLine(JsonSerializer.Serialize(vehicleDictionaries, options: new()
+            // {
+            //     ReferenceHandler = ReferenceHandler.Preserve
+            // }));
 
             if(vehicleDictionaries != null)
             {
-                // TODO: Figure out Vehicle-VehicleModule many to many relationship
-                // await _mediator.Publish(new ResetVehicleDictionariesNotification(vehicleDictionaries));
-
-                // TODO: Wait the https://github.com/JeremyLikness/SqliteWasmHelper/issues/13 issue to be closed and update the SqliteWasmHelper
+                await _mediator.Publish(new ResetVehicleDictionariesNotification(vehicleDictionaries));
                 await _mediator.Publish(new UpdateStateNotification(DateTime.Now, request.locale, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined"));
             }
 
-            return new DictionariesInfoDto(DateTime.Now, staticDictionaries?.EncyclopediaInfo?.GameVersion ?? "Undefined");
+            return await ReadState();
         }
 
-        public async Task<DictionariesInfoDto> Handle(GetLastDictionariesUpdateRequest request, CancellationToken cancellationToken)
+        public Task<DictionariesInfoDto> Handle(GetLastDictionariesUpdateRequest request, CancellationToken cancellationToken)
+        {
+            return ReadState();
+        }
+
+        private async Task<DictionariesInfoDto> ReadState()
         {
             var state = await _mediator.Send(new ReadStateRequest());
-            return new DictionariesInfoDto(state.DictionariesUpdated!.Value, state.GameVersion!);
+            return new DictionariesInfoDto(
+                state.DictionariesUpdated!.Value, 
+                state.GameVersion!,
+                state.DictionariesLanguage,
+                state.LoggedInAccountId,
+                state.WgToken,
+                state.WgTokenExpiration);
         }
 
     }

@@ -2,9 +2,6 @@ namespace WotBlitzStatisticsPro.Persistence.Model
 {
     public class DictionaryVehicleModule
     {
-        public long TankId { get; set; }
-        public DictionaryVehicle? Tank { get; set; }
-
         public long ModuleId { get; set; }
 
         public bool IsDefault { get; set; }
@@ -17,5 +14,6 @@ namespace WotBlitzStatisticsPro.Persistence.Model
 
         public string Type { get; set; } = string.Empty;
 
+        public List<DictionaryVehicleModuleRelation>? VehicleModulesRelation { get; set; }
     }
 }

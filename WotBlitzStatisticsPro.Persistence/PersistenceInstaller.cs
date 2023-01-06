@@ -12,7 +12,7 @@ namespace WotBlitzStatisticsPro.Persistence
             services.AddSqliteWasmDbContextFactory<WotBlitzStatisticsProContext>(
                     opts => {
                         opts.UseSqlite("Data Source=wotblitzstatisticspro.sqlite3");
-                        opts.EnableSensitiveDataLogging();
+                        // opts.EnableSensitiveDataLogging();
                     });
         }
     }
