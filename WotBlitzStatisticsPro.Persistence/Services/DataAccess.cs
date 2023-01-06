@@ -7,7 +7,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
     public class DataAccess :
         INotificationHandler<ResetVehicleDictionariesNotification>,
         INotificationHandler<UpdateStateNotification>,
-        IRequestHandler<ReadStateRequest, State>
+        IRequestHandler<ReadStateRequest, State>,
+        IRequestHandler<GetVehiclesDictionaryRequest, DictionaryVehicle[]>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -70,6 +71,17 @@ namespace WotBlitzStatisticsPro.Persistence.Services
                 };
             }
             return state;
+        }
+
+        public async Task<DictionaryVehicle[]> Handle(GetVehiclesDictionaryRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+
+            return await dbContext.VehiclesDictionary
+                            .Include(v => v.VehicleModulesRelation) // .Where(rel => rel != null)
+                            .ThenInclude(r => r.Module)
+                            .Include(v => v.NextVehicles)
+                            .ToArrayAsync();
         }
 
         private async Task RemoveAllVehicles()

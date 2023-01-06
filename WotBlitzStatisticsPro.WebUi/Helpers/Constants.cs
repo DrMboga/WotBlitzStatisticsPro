@@ -44,6 +44,11 @@ namespace WotBlitzStatisticsPro.WebUi.Helpers
 
         public const string LoginInfoLocalStorageKey = "login_info";
 
+        public const string VehicleModuleEngine = "vehicleEngine";
+        public const string VehicleModuleTurret = "vehicleTurret";
+        public const string VehicleModuleGun = "vehicleGun";
+        public const string VehicleModuleChassis = "vehicleChassis";
+
 /*        
         [Obsolete("Do this as the dictionary in the DB, to make possibility to change it in the future")]
         public static TankTreeRowMap[] TanksTreeHelper = new TankTreeRowMap[]

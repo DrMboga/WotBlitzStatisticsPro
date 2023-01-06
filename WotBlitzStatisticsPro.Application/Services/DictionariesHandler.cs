@@ -5,7 +5,8 @@ namespace WotBlitzStatisticsPro.Application.Services
 {
     public class DictionariesHandler : 
         IRequestHandler<UpdateDictionariesRequest, DictionariesInfoDto>,
-        IRequestHandler<GetLastDictionariesUpdateRequest, DictionariesInfoDto>
+        IRequestHandler<GetLastDictionariesUpdateRequest, DictionariesInfoDto>,
+        IRequestHandler<GetDictionaryVehiclesRequest, DictionaryVehicleDto[]>
     {
         private readonly IMediator _mediator;
         private readonly IStaticData _staticData;
@@ -44,6 +45,13 @@ namespace WotBlitzStatisticsPro.Application.Services
         public Task<DictionariesInfoDto> Handle(GetLastDictionariesUpdateRequest request, CancellationToken cancellationToken)
         {
             return ReadState();
+        }
+
+        public async Task<DictionaryVehicleDto[]> Handle(GetDictionaryVehiclesRequest request, CancellationToken cancellationToken)
+        {
+            var vehicles = await _mediator.Send(new GetVehiclesDictionaryRequest());
+
+            return vehicles.ToVehiclesDto();
         }
 
         private async Task<DictionariesInfoDto> ReadState()
