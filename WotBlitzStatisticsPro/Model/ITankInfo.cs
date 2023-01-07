@@ -33,12 +33,7 @@ namespace WotBlitzStatisticsPro.Model
         public string? Name { get; }
 
         /// <summary>
-        /// Tank nation dictionary identifier
-        /// </summary>
-        public string? TankNationId { get; }
-
-        /// <summary>
-        /// Localized tank nation name
+        /// Tank nation
         /// </summary>
         public string? TankNation { get; }
 
@@ -48,12 +43,7 @@ namespace WotBlitzStatisticsPro.Model
         public int Tier { get; }
 
         /// <summary>
-        /// Tank type dictionary identifier
-        /// </summary>
-        public string? TankTypeId { get; }
-
-        /// <summary>
-        /// Localized tank type name
+        /// Tank type
         /// </summary>
         public string? TankType { get; }
 

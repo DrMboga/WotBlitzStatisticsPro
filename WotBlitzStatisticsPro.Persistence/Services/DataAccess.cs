@@ -8,7 +8,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         INotificationHandler<ResetVehicleDictionariesNotification>,
         INotificationHandler<UpdateStateNotification>,
         IRequestHandler<ReadStateRequest, State>,
-        IRequestHandler<GetVehiclesDictionaryRequest, DictionaryVehicle[]>
+        IRequestHandler<GetVehiclesDictionaryRequest, DictionaryVehicle[]>,
+        IRequestHandler<GetVehiclesByIdsRequest, DictionaryVehicle[]>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -77,11 +78,23 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         {
             using var dbContext = await _contextFactory.CreateDbContextAsync();
 
-            return await dbContext.VehiclesDictionary
+            return await dbContext.VehiclesDictionary.AsNoTracking()
                             .Include(v => v.VehicleModulesRelation) // .Where(rel => rel != null)
                             .ThenInclude(r => r.Module)
                             .Include(v => v.NextVehicles)
                             .ToArrayAsync();
+        }
+
+        public async Task<DictionaryVehicle[]> Handle(GetVehiclesByIdsRequest request, CancellationToken cancellationToken)
+        {
+            if(request.TankIds == null)
+            {
+                return new DictionaryVehicle[0];
+            }
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.VehiclesDictionary.AsNoTracking()
+                    .Where(v => request.TankIds.Contains(v.TankId))
+                    .ToArrayAsync();
         }
 
         private async Task RemoveAllVehicles()
