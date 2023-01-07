@@ -445,7 +445,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-IEsKNmMFzT3QHoWOAtDrjpBZZ\/Zv3aFTztlpNmkQS4c=",
+      "hash": "sha256-heh417gxwntozIY9nue2+eiMlq3bQ7aBzhUHO2VdFJM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -589,7 +589,7 @@
       "url": "_framework\/System.Collections.Concurrent.dll"
     },
     {
-      "hash": "sha256-yZt0xn\/Wk7NAmHtLFPf44Cc6RdJBcwdv6pQoqNiHbFQ=",
+      "hash": "sha256-L2+F8dVcyqUHIew6ib8jpURrN+nLZu8UyforMEwAgtY=",
       "url": "_framework\/System.Collections.dll"
     },
     {
@@ -733,7 +733,7 @@
       "url": "_framework\/System.Text.Encodings.Web.dll"
     },
     {
-      "hash": "sha256-yYgowaQdNbaPSOd9dwWCrQsIijWFqBNnACwqgKfjQiI=",
+      "hash": "sha256-\/adNZnBvduaChQrv3b0WwBZVmHHw0L\/LXIFezibG63Y=",
       "url": "_framework\/System.Text.Json.dll"
     },
     {
@@ -753,23 +753,23 @@
       "url": "_framework\/System.Transactions.Local.dll"
     },
     {
-      "hash": "sha256-rTiN7SZ1IJdh03SSP+VfcPVdjJJ\/PoJ43iOVbkfS2z8=",
+      "hash": "sha256-rMy1+yOlML+s2KfzAmkqz6uAq0oPsEhMAhTZj5w2XII=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
-      "hash": "sha256-Hc89piH6ls+hMEcQNcRwj3TpYJ3SUSMOXhuZGUm+0VQ=",
+      "hash": "sha256-tu1xHXCpHbTAlNj+hrVj8qSCjK79N0TyiPZhjbmFUoM=",
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-UHX7eXsEdBm9FA6uIWOON7P4SecUP+KbcNttc3fBL\/M=",
+      "hash": "sha256-6L4+ItxePbLzM5mqVYUQfIk1jIgsxwj0MmUwXsyePgA=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
-      "hash": "sha256-OpLrAZQpbyM7V4YMQoocfz1LfKFajtI5L0Q+WiAFQok=",
+      "hash": "sha256-7A6vAsHCetXtRx5A0fGKlRdi0QXjDg4O1A\/bjHaKK4k=",
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-JFSjMdYFHAOOHqmnux3m5X+sq5OpvSnQUmCBVhGHEJw=",
+      "hash": "sha256-irDuEX40wX3qnk2\/UDCCVtgji4eymKEN\/097MDP15b4=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "1KY0cqVV"
+  "version": "LUWHD41h"
 };
