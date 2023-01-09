@@ -4,48 +4,80 @@
 <div class="d-flex flex-row flex-wrap mt-4">
     <div class="card mt-2 ms-2" style="width: 20rem;">
     <div class="card-body">
-        <table class="table" width="100%">
-        <tbody>
-            <tr>
-                <td>@Localize["Battles"]:</td>
-                <td align="right"><b>@Player.Battles.ToString("N0")</b></td>
-            </tr>
-            <tr>
-                <td>@Localize["Win rate"]:</td>
-                <td align="right">
-                    <b>@Player.WinRate.ToString("N2")%</b>
-                    <div style="background-color: @Player.WinRate.ScaleColor(); width: 100%; height: 5px; margin-left: 2px; margin-right: 2px;"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>@Localize["Wn7"]:</td>
-                <td align="right">
-                    <b>@Player.Wn7.ToString("N2")</b>
-                    <div style="background-color: @Player.Wn7.Wn7ScaleColor(); width: 100%; height: 5px; margin-left: 2px; margin-right: 2px;"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>@Localize["Average XP"]:</td>
-                <td align="right"><b>@Player.AvgXp.ToString("N0")</b></td>
-            </tr>
-            <tr>
-                <td>@Localize["Average Damage"]:</td>
-                <td align="right"><b>@Player.AvgDamage.ToString("N0")</b></td>
-            </tr>
-            <tr>
-                <td>@Localize["Damage coefficient"]:</td>
-                <td align="right"><b>@Player.DamageCoefficient.ToString("N2")</b></td>
-            </tr>
-            <tr>
-                <td>@Localize["Survival rate"]:</td>
-                <td align="right"><b>@Player.SurvivalRate.ToString("N0")%</b></td>
-            </tr>
-            <tr>
-                <td>@Localize["Avg tier"]:</td>
-                <td align="right"><b>@Player.AvgTier?.ToString("N2")</b></td>
-            </tr>
-        </tbody>
-        </table>
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row justify-content-around">
+                <div class="position-relative">
+                    <img src="mastery/vehicle.mark.master.big.scale-200.png" width="60px" height="60px">
+                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                        @Player?.Achievements?.Mastery.ToString("N0")
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </div>
+                <div class="position-relative">
+                    <img src="mastery/vehicle.mark.first.big.scale-200.png" width="60px" height="60px">
+                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                        @Player?.Achievements?.MasteryRank1.ToString("N0")
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </div>
+                <div class="position-relative">
+                    <img src="mastery/vehicle.mark.second.big.scale-200.png" width="60px" height="60px">
+                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                        @Player?.Achievements?.MasteryRank2.ToString("N0")
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </div>
+                <div class="position-relative">
+                    <img src="mastery/vehicle.mark.third.big.scale-200.png" width="60px" height="60px">
+                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                        @Player?.Achievements?.MasteryRank3.ToString("N0")
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </div>
+            </div>
+            <table class="table mt-4" width="100%">
+            <tbody>
+                <tr>
+                    <td>@Localize["Battles"]:</td>
+                    <td align="right"><b>@Player.Battles.ToString("N0")</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Win rate"]:</td>
+                    <td align="right">
+                        <b>@Player.WinRate.ToString("N2")%</b>
+                        <div style="background-color: @Player.WinRate.ScaleColor(); width: 100%; height: 5px; margin-left: 2px; margin-right: 2px;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Localize["Wn7"]:</td>
+                    <td align="right">
+                        <b>@Player.Wn7.ToString("N2")</b>
+                        <div style="background-color: @Player.Wn7.Wn7ScaleColor(); width: 100%; height: 5px; margin-left: 2px; margin-right: 2px;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Localize["Average XP"]:</td>
+                    <td align="right"><b>@Player.AvgXp.ToString("N0")</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Average Damage"]:</td>
+                    <td align="right"><b>@Player.AvgDamage.ToString("N0")</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Damage coefficient"]:</td>
+                    <td align="right"><b>@Player.DamageCoefficient.ToString("N2")</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Survival rate"]:</td>
+                    <td align="right"><b>@Player.SurvivalRate.ToString("N0")%</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Avg tier"]:</td>
+                    <td align="right"><b>@Player.AvgTier?.ToString("N2")</b></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
     </div>
     </div>
 

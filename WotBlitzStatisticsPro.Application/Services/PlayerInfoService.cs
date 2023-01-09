@@ -21,23 +21,28 @@ namespace WotBlitzStatisticsPro.Application.Services
 
             var tankIds = tanksSTatistics.Select(t => t.TankId).ToArray();
 
-            // TODO: Get tank achievements - mastery
+            var tankAchievements = await _mediator.Send(new GetTanksAchievementsRequest(accountId, tankIds, language));
+            var tankAchievementsDto = tankAchievements
+                                        .Where(a => a.Achievements != null && a.TankId.HasValue)
+                                        .ToDictionary(a => a.TankId!.Value, a => a.Achievements.ToAchievementsDto());
 
             // TODO: Check dictionary last date (mediatR message)
 
             var vehiclesInfo = await _mediator.Send(new GetVehiclesByIdsRequest(tankIds));
 
-            playerInfo.Tanks = tanksSTatistics.ToTankInfoDto(vehiclesInfo);
-
-            Console.WriteLine(JsonSerializer.Serialize(playerInfo, options: new()
-            {
-                ReferenceHandler = ReferenceHandler.Preserve
-            }));
+            playerInfo.Tanks = tanksSTatistics.ToTankInfoDto(vehiclesInfo, tankAchievementsDto);
 
             playerInfo.AvgTier = playerInfo.Tanks.AvgTier(playerInfo.Battles);
             playerInfo.CalculateWn7();
 
-            // TODO: Get account achievements - mastery
+            var accountAchievements = await _mediator.Send(new GetAccountAchievementsRequest(accountId, language));
+            playerInfo.Achievements = accountAchievements.Achievements?.ToAchievementsDto();
+
+
+            // Console.WriteLine(JsonSerializer.Serialize(playerInfo, options: new()
+            // {
+            //     ReferenceHandler = ReferenceHandler.Preserve
+            // }));
 
             return playerInfo;
         }

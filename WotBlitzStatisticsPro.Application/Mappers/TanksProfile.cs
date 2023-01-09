@@ -2,7 +2,7 @@ namespace WotBlitzStatisticsPro.Application.Mappers
 {
     public static class TanksProfile
     {
-        public static TankInfoDto[] ToTankInfoDto(this WotAccountTanksStatistics[]? tanks, DictionaryVehicle[]? dictionaryVehicles)
+        public static TankInfoDto[] ToTankInfoDto(this WotAccountTanksStatistics[]? tanks, DictionaryVehicle[]? dictionaryVehicles, Dictionary<long, AchievementsDto> achievements)
         {
             var result = new List<TankInfoDto>();
 
@@ -11,7 +11,12 @@ namespace WotBlitzStatisticsPro.Application.Mappers
                 foreach (var tank in tanks)
                 {
                     var dictionaryVehicle = dictionaryVehicles?.FirstOrDefault(v => v.TankId == tank.TankId);
-                    result.Add(tank.ToTankDto(dictionaryVehicle));
+                    var tankDto = tank.ToTankDto(dictionaryVehicle);
+                    if(achievements != null && achievements.ContainsKey(tank.TankId))
+                    {
+                        tankDto.Achievements = achievements[tank.TankId];
+                    }
+                    result.Add(tankDto);
                 }
             }
             return result.ToArray();

@@ -65,5 +65,7 @@ namespace WotBlitzStatisticsPro.Application.Dto
         public ClanInfoDto? ClanInfo { get; set; }
 
         public TankInfoDto[]? Tanks { get; set; }
+
+        public AchievementsDto? Achievements { get; set; }
     }
 }
