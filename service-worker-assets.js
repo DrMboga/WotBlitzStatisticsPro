@@ -365,6 +365,30 @@
       "url": "mastery\/vehicle.mark.third.scale-200.png"
     },
     {
+      "hash": "sha256-TpNuq9RLzyhlZXYQENrsctZIljrM2wEj9+V6sp2Jr\/0=",
+      "url": "medals\/Kolobanov.png"
+    },
+    {
+      "hash": "sha256-GHU2oeAvvafFlWf4e4srm+ghjbJPBaNfq58umuHSdjo=",
+      "url": "medals\/mainGun.png"
+    },
+    {
+      "hash": "sha256-f+4GOqTc2ovwwutqBQHxhY5w3NGwUKGEBGPoq4LQx5c=",
+      "url": "medals\/Pool.png"
+    },
+    {
+      "hash": "sha256-WIf5UZKOMgPLNYBCp7pJacAD3AVNIVkAD0gH6L5oKis=",
+      "url": "medals\/Rassenay.png"
+    },
+    {
+      "hash": "sha256-JElvgXXDIUwrpDz4w7JvsWGKil\/6WLjQnNNcV54rNus=",
+      "url": "medals\/Walters.png"
+    },
+    {
+      "hash": "sha256-GNVAfx6O+Ek5mJ5\/9r3tOACzlYG\/\/0Wrz6GuKFamtyI=",
+      "url": "medals\/warrior.png"
+    },
+    {
       "hash": "sha256-yOsNPMeVOxdOdSHXv7w5T+1+cQpKKpRVhmtHpgKVUe4=",
       "url": "modules\/encyclopedia.vehicle.engine.scale-200.png"
     },
@@ -481,7 +505,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-+dui3ea3yGJxYVNm0\/s3sRTfBPSeBYdJ+NDfv1qiV64=",
+      "hash": "sha256-OXLhnkIqyF1AB5VEwgrBq8bR7ssUZEIAMzV+NxqFdpY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -805,7 +829,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-Cesg8TIsxJCS2OuKnbb+UicHjfG3piNCiEhQ9K7zS9c=",
+      "hash": "sha256-YP9Lbx9n8m0QYGSxwL1Cs+VUXQ64EXPJWHIxasaR0pA=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -837,5 +861,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "y1QUWF6G"
+  "version": "qfewlC17"
 };
