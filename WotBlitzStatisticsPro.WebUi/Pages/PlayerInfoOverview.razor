@@ -10,41 +10,66 @@
                     <img src="mastery/vehicle.mark.master.big.scale-200.png" width="60px" height="60px">
                     <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
                         @Player?.Achievements?.Mastery.ToString("N0")
-                        <span class="visually-hidden">unread messages</span>
+                        <span class="visually-hidden">Mark of mastery</span>
                     </span>
                 </div>
                 <div class="position-relative">
-                    <img src="mastery/vehicle.mark.first.big.scale-200.png" width="60px" height="60px">
+                    <img src="medals/Kolobanov.png" width="60px" height="60px">
                     <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
-                        @Player?.Achievements?.MasteryRank1.ToString("N0")
-                        <span class="visually-hidden">unread messages</span>
+                        @Player?.Achievements?.MedalKolobanov.ToString("N0")
+                        <span class="visually-hidden">Medal Kolobanov</span>
+                    </span>
+                </div>   
+                <div class="position-relative">
+                    <img src="medals/mainGun.png" width="60px" height="60px">
+                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                        @Player?.Achievements?.mainGun.ToString("N0")
+                        <span class="visually-hidden">Medal Main gun</span>
+                    </span>
+                </div>                             
+            </div>
+
+            <div class="d-flex flex-row justify-content-around mt-4">
+                <div class="position-relative">
+                    <img src="medals/Rassenay.png" width="60px" height="60px">
+                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                        @Player?.Achievements?.HeroesOfRassenay.ToString("N0")
+                        <span class="visually-hidden">Medal Heroes of Rassenay</span>
+                    </span>
+                </div>                
+                <div class="position-relative">
+                    <img src="medals/Pool.png" width="60px" height="60px">
+                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                        @Player?.Achievements?.MedalLafayettePool.ToString("N0")
+                        <span class="visually-hidden">Medal Lafayet Pool</span>
                     </span>
                 </div>
                 <div class="position-relative">
-                    <img src="mastery/vehicle.mark.second.big.scale-200.png" width="60px" height="60px">
+                    <img src="medals/Walters.png" width="60px" height="60px">
                     <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
-                        @Player?.Achievements?.MasteryRank2.ToString("N0")
-                        <span class="visually-hidden">unread messages</span>
+                        @Player?.Achievements?.MedalRadleyWalters.ToString("N0")
+                        <span class="visually-hidden">Medal Radley Walters</span>
                     </span>
                 </div>
                 <div class="position-relative">
-                    <img src="mastery/vehicle.mark.third.big.scale-200.png" width="60px" height="60px">
+                    <img src="medals/warrior.png" width="60px" height="60px">
                     <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
-                        @Player?.Achievements?.MasteryRank3.ToString("N0")
-                        <span class="visually-hidden">unread messages</span>
+                        @Player?.Achievements?.Warrior.ToString("N0")
+                        <span class="visually-hidden">Medal Warrior</span>
                     </span>
                 </div>
+
             </div>
             <table class="table mt-4" width="100%">
             <tbody>
                 <tr>
                     <td>@Localize["Battles"]:</td>
-                    <td align="right"><b>@Player.Battles.ToString("N0")</b></td>
+                    <td align="right"><b>@Player?.Battles.ToString("N0")</b></td>
                 </tr>
                 <tr>
                     <td>@Localize["Win rate"]:</td>
                     <td align="right">
-                        <b>@Player.WinRate.ToString("N2")%</b>
+                        <b>@Player?.WinRate.ToString("N2")%</b>
                         <div style="background-color: @Player.WinRate.ScaleColor(); width: 100%; height: 5px; margin-left: 2px; margin-right: 2px;"></div>
                     </td>
                 </tr>
