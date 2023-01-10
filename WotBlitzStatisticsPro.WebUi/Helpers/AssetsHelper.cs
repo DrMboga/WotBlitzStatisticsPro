@@ -8,10 +8,10 @@ namespace WotBlitzStatisticsPro.WebUi.Helpers
         {
             return mastery switch
             {
-                MarkOfMastery.Rank3 => "/mastery/vehicle.mark.third.scale-200.png",
-                MarkOfMastery.Rank2 => "/mastery/vehicle.mark.second.scale-200.png",
-                MarkOfMastery.Rank1 => "/mastery/vehicle.mark.first.scale-200.png",
-                MarkOfMastery.Master => "/mastery/vehicle.mark.master.scale-200.png",
+                MarkOfMastery.Rank3 => "mastery/vehicle.mark.third.scale-200.png",
+                MarkOfMastery.Rank2 => "mastery/vehicle.mark.second.scale-200.png",
+                MarkOfMastery.Rank1 => "mastery/vehicle.mark.first.scale-200.png",
+                MarkOfMastery.Master => "mastery/vehicle.mark.master.scale-200.png",
                 _ => "/mastery/vehicle.mark.none.big.scale-200.png"
             };
         }

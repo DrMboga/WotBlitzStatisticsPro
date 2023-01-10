@@ -18,7 +18,7 @@
         </div>
         <img src="@Tank.MarkOfMastery.IconAsset()" class="mastery-image" />
         <span class="mastery-badge badge rounded-pill bg-secondary">
-            @Tank.Achievements?.Mastery.ToString("N0")
+            @MasteryCount()?.ToString("N0")
             <span class="visually-hidden">Mark of mastery</span>
         </span>
         <img src=@Tank.PreviewImage class="tank-preview" />
@@ -66,4 +66,24 @@
     [Parameter]
     public TankInfoDto? Tank { get; set; }
 
+    public int? MasteryCount()
+    {
+        if(Tank == null)
+        {
+            return null;
+        }
+        switch(Tank.MarkOfMastery)
+        {
+            case MarkOfMastery.Master: 
+                return Tank.Achievements?.Mastery;
+            case MarkOfMastery.Rank1:
+                return Tank.Achievements?.MasteryRank1;
+            case MarkOfMastery.Rank2:
+                return Tank.Achievements?.MasteryRank2;
+            case MarkOfMastery.Rank3:
+                return Tank.Achievements?.MasteryRank3;
+            default:
+                return 0;
+        }
+    }
 }
