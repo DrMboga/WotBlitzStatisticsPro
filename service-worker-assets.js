@@ -505,7 +505,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-LXk8ZxSWks+KKG+gnmPAudpiWyWcsn4AdyPQv0E3gdw=",
+      "hash": "sha256-u6cPq0mCjbrthU5zBshAONogv4yDvVARVTMo8lyXcnU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -641,7 +641,7 @@
       "url": "_framework\/SQLitePCLRaw.provider.e_sqlite3.dll"
     },
     {
-      "hash": "sha256-PgY10X9pY0cOpZ\/lCInDfeQ8D+Ch90h6F7Dpka8Fz20=",
+      "hash": "sha256-XTM5mYjdacwTrGp4+ktbmP8TU+SSF+gn+Jsfm\/h0W1w=",
       "url": "_framework\/SqliteWasmHelper.dll"
     },
     {
@@ -813,23 +813,23 @@
       "url": "_framework\/System.Transactions.Local.dll"
     },
     {
-      "hash": "sha256-+wAk0yjMLGZICuPflSV9rvUSrw0m2kChUayCgV9n72o=",
+      "hash": "sha256-1cIRKO1VbKET0vXBWnE3XBitYwsIIgAfh7cqYPw8wqw=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
-      "hash": "sha256-tu1xHXCpHbTAlNj+hrVj8qSCjK79N0TyiPZhjbmFUoM=",
+      "hash": "sha256-j0DPfgDsbn9Y4IT01OpPaeD5WcowoFd1DkSW0SOcVlQ=",
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-6L4+ItxePbLzM5mqVYUQfIk1jIgsxwj0MmUwXsyePgA=",
+      "hash": "sha256-GyL5KFkWJGjM1SztyGDYlKmJ+8Vysq5bB9MEa5iG6Tw=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
-      "hash": "sha256-Msx6Y6\/QKwRtYnFDWGMNrDjb87hv2ZOTpzkIyRALuU4=",
+      "hash": "sha256-H\/rNFdx17B0Py4y0bJfpaaUEpkpFlvg9t7LnmjI7sSs=",
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-vI4AZy3rImZPJjVTtBMWSu8+dhB9qmXu7rWfnYtBiCw=",
+      "hash": "sha256-\/qcMk9hbO+YmFlvbdv\/5Dkt0Q2w9jpALUKTop\/U0zA0=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -849,7 +849,7 @@
       "url": "_framework\/de\/WotBlitzStatisticsPro.WebUi.resources.dll"
     },
     {
-      "hash": "sha256-jbP977q5fxyHJNUkO7DWCDghQ+cAT1akI9aMLg6FdyU=",
+      "hash": "sha256-1e2XExfgT2QNDfCAGtDli2gjKztsZWI5tfLs7rusejU=",
       "url": "_framework\/ru\/WotBlitzStatisticsPro.WebUi.resources.dll"
     },
     {
@@ -861,5 +861,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "yBnRLI4S"
+  "version": "jcyelx8E"
 };

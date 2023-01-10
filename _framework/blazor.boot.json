@@ -42,7 +42,7 @@
       "SQLitePCLRaw.batteries_v2.dll": "sha256-f1l9hr5KK\/K\/NOeVdYp4pI+DRprBMXMYL\/ln+Tsd41E=",
       "SQLitePCLRaw.core.dll": "sha256-PZMtLfSAFNmjHRWpquckk5t34H85Mp0JKNTZO7S3bIc=",
       "SQLitePCLRaw.provider.e_sqlite3.dll": "sha256-pnxAKLpBQEiJIVApZXBaiAzl4H2ggRG4lCQflEYdny4=",
-      "SqliteWasmHelper.dll": "sha256-PgY10X9pY0cOpZ\/lCInDfeQ8D+Ch90h6F7Dpka8Fz20=",
+      "SqliteWasmHelper.dll": "sha256-XTM5mYjdacwTrGp4+ktbmP8TU+SSF+gn+Jsfm\/h0W1w=",
       "System.Collections.Concurrent.dll": "sha256-XKhQ8oo4KNf4CZyZQdNnyT8Js9HyzLAxFrkf52iDuaM=",
       "System.Collections.dll": "sha256-VIjD3o+KyQ9i+\/p0L7i7ghFvST+3eAosZ\/i70aFQrlk=",
       "System.Collections.Immutable.dll": "sha256-tgazOYBUMNKjlH4elNK6elxggrkQsNmfRTs2utXyScU=",
@@ -85,11 +85,11 @@
       "System.Threading.dll": "sha256-EcIZoNsFhAy0\/VL5XP\/YK0u\/gR\/3ttPKHuPgRP0tSFg=",
       "System.Threading.Thread.dll": "sha256-yN10EZ1tFJiZqGW0a\/arTrRDX3QCUQNH4sLBjFB\/Otg=",
       "System.Transactions.Local.dll": "sha256-RT\/dfxaRgfKSdL+ReIJ5iC2cHP616nNI13boeBBm82I=",
-      "WotBlitzStatisticsPro.Application.dll": "sha256-+wAk0yjMLGZICuPflSV9rvUSrw0m2kChUayCgV9n72o=",
-      "WotBlitzStatisticsPro.dll": "sha256-tu1xHXCpHbTAlNj+hrVj8qSCjK79N0TyiPZhjbmFUoM=",
-      "WotBlitzStatisticsPro.Persistence.dll": "sha256-6L4+ItxePbLzM5mqVYUQfIk1jIgsxwj0MmUwXsyePgA=",
-      "WotBlitzStatisticsPro.WargamingApi.dll": "sha256-Msx6Y6\/QKwRtYnFDWGMNrDjb87hv2ZOTpzkIyRALuU4=",
-      "WotBlitzStatisticsPro.WebUi.dll": "sha256-vI4AZy3rImZPJjVTtBMWSu8+dhB9qmXu7rWfnYtBiCw="
+      "WotBlitzStatisticsPro.Application.dll": "sha256-1cIRKO1VbKET0vXBWnE3XBitYwsIIgAfh7cqYPw8wqw=",
+      "WotBlitzStatisticsPro.dll": "sha256-j0DPfgDsbn9Y4IT01OpPaeD5WcowoFd1DkSW0SOcVlQ=",
+      "WotBlitzStatisticsPro.Persistence.dll": "sha256-GyL5KFkWJGjM1SztyGDYlKmJ+8Vysq5bB9MEa5iG6Tw=",
+      "WotBlitzStatisticsPro.WargamingApi.dll": "sha256-H\/rNFdx17B0Py4y0bJfpaaUEpkpFlvg9t7LnmjI7sSs=",
+      "WotBlitzStatisticsPro.WebUi.dll": "sha256-\/qcMk9hbO+YmFlvbdv\/5Dkt0Q2w9jpALUKTop\/U0zA0="
     },
     "extensions": null,
     "lazyAssembly": null,
@@ -115,7 +115,7 @@
         "de\/WotBlitzStatisticsPro.WebUi.resources.dll": "sha256-fO9rKToUqUAbsMJ1Inh0ZNvg6mHp4B+s\/vVJ5oomJ78="
       },
       "ru": {
-        "ru\/WotBlitzStatisticsPro.WebUi.resources.dll": "sha256-jbP977q5fxyHJNUkO7DWCDghQ+cAT1akI9aMLg6FdyU="
+        "ru\/WotBlitzStatisticsPro.WebUi.resources.dll": "sha256-1e2XExfgT2QNDfCAGtDli2gjKztsZWI5tfLs7rusejU="
       }
     }
   }
