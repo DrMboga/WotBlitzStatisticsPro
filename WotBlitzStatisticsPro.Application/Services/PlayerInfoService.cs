@@ -26,7 +26,7 @@ namespace WotBlitzStatisticsPro.Application.Services
                                         .Where(a => a.Achievements != null && a.TankId.HasValue)
                                         .ToDictionary(a => a.TankId!.Value, a => a.Achievements.ToAchievementsDto());
 
-            // TODO: Check dictionary last date (mediatR message)
+            await _mediator.Publish(new CheckAndUpdateDictionariesNotification(language));
 
             var vehiclesInfo = await _mediator.Send(new GetVehiclesByIdsRequest(tankIds));
 
