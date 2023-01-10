@@ -505,7 +505,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-AqYoqg3Dm+O1fi81mWgyUG0HMTRggI4Q66JZhFgEr0I=",
+      "hash": "sha256-D0ma\/FYy9s9WPiuaygjfL0RtYkoxVOqxOTQqjOe3S0Y=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -829,7 +829,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-NoWFgAzIZpi47c3AwgFC51ZktB\/m7\/VP2fdy9MbJotc=",
+      "hash": "sha256-AAmAb4V67SrGX0CnXj67IEnZehwyFd2E2+GHpb06pMQ=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -861,5 +861,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "Yt2usmvi"
+  "version": "IYOaUMI+"
 };
