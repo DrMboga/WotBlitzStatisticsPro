@@ -253,4 +253,36 @@
     <value>Версия игры</value>
     <comment/>
   </data>
+  <data name="Tanks count" xml:space="preserve">
+    <value>Танков</value>
+    <comment/>
+  </data>
+  <data name="With Mastery rank" xml:space="preserve">
+    <value>С рангом Мастер</value>
+    <comment/>
+  </data>
+  <data name="Premium tanks" xml:space="preserve">
+    <value>Премиум танков</value>
+    <comment/>
+  </data>
+  <data name="Researched tanks X tier" xml:space="preserve">
+    <value>Исследованные танки X уровня</value>
+    <comment/>
+  </data>
+  <data name="Active tanks (20+ Battles)" xml:space="preserve">
+    <value>Активных танков (20+ боев)</value>
+    <comment/>
+  </data>
+  <data name="Tank with max frags" xml:space="preserve">
+    <value>Максимум фрагов</value>
+    <comment/>
+  </data>
+  <data name="Tank with max XP" xml:space="preserve">
+    <value>Максимум XP</value>
+    <comment/>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>из</value>
+    <comment/>
+  </data>
 </root>

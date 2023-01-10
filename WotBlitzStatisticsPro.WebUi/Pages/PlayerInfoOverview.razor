@@ -1,4 +1,5 @@
 @inject IStringLocalizer<App> Localize;
+@inject IMediator Mediator
 @if(Player != null)
 {
 <div class="d-flex flex-row flex-wrap mt-4">
@@ -111,10 +112,118 @@
         <OverallStatistics Statistics="@Player"></OverallStatistics>
     </div>
     </div>
+    <div class="card mt-2 ms-2" style="width: 20rem;">
+    <div class="card-body">
+        <table class="table mt-4" width="100%">
+            <tbody>
+                <tr>
+                    <td>@Localize["Tanks count"]:</td>
+                    <td align="right"><b>@Player?.Tanks?.Length.ToString("N0")</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["With Mastery rank"]:</td>
+                    <td align="right"><b>@(TanksMastersCount()?.ToString("N0")) (@(TanksMastersPercent()?.ToString("N0"))%)</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Premium tanks"]:</td>
+                    <td align="right"><b>@(PremiumTanksCount()?.ToString("N0")) (@(PremiumPercent()?.ToString("N0"))%)</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Researched tanks X tier"]:</td>
+                    <td align="right"><b>@(TierTenTanksCount()?.ToString("N0")) @Localize["from"] @ResearchedTenTierTanksCount (@(TierTenPercent()?.ToString("N0"))%)</b></td>
+                </tr>
+                <tr>
+                    <td>@Localize["Active tanks (20+ Battles)"]:</td>
+                    <td align="right"><b>@(Tanks20PlusCount()?.ToString("N0")) (@(Tanks20PlusPercent()?.ToString("N0"))%)</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @Localize["Tank with max frags"] (@Player?.MaxFrags):
+                        @Player?.MaxFragsTankId
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @Localize["Tank with max XP"] (@Player?.MaxXp.ToString("N0")):
+                        @Player?.MaxXpTankId
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
 </div>
 }
 
 @code {
     [Parameter]
     public PlayerInfoDto? Player { get; set; }
+
+    public int ResearchedTenTierTanksCount { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ResearchedTenTierTanksCount = await Mediator.Send(new GetResearchedTenTierTanksCountRequest());
+    }
+
+    public int? TanksMastersCount()
+    {
+        return Player?.Tanks?.Count(t => t.MarkOfMastery == WotBlitzStatisticsPro.Model.MarkOfMastery.Master);
+    }
+
+    public int? TanksMastersPercent()
+    {
+        var mastersCount = TanksMastersCount();
+        if (mastersCount.HasValue && Player?.Tanks != null)
+        {
+            return mastersCount * 100 / Player.Tanks.Length;
+        }
+        return null;
+    }
+
+    public int? PremiumTanksCount()
+    {
+        return Player?.Tanks?.Count(t => t.IsPremium);
+    }
+
+    public int? PremiumPercent()
+    {
+        var premiumCount = PremiumTanksCount();
+        if (premiumCount.HasValue && Player?.Tanks != null)
+        {
+            return premiumCount * 100 / Player.Tanks.Length;
+        }
+        return null;
+    }
+
+    public int? TierTenTanksCount()
+    {
+        return Player?.Tanks?.Count(t => t.Tier == 10 && t.IsPremium == false);
+    }
+
+    public int? TierTenPercent()
+    {
+        var tanksCount = TierTenTanksCount();
+        if (tanksCount.HasValue && ResearchedTenTierTanksCount > 0)
+        {
+            return tanksCount * 100 / ResearchedTenTierTanksCount;
+        }
+        return null;
+    }
+
+    public int? Tanks20PlusCount()
+    {
+        return Player?.Tanks?.Count(t => t.Battles > 20);
+    }
+
+    public int? Tanks20PlusPercent()
+    {
+        var premiumCount = Tanks20PlusCount();
+        if (premiumCount.HasValue && Player?.Tanks != null)
+        {
+            return premiumCount * 100 / Player.Tanks.Length;
+        }
+        return null;
+    }
+
 }

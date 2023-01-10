@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using SqliteWasmHelper;
 using WotBlitzStatisticsPro.Persistence.DataContext;
@@ -9,7 +10,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         INotificationHandler<UpdateStateNotification>,
         IRequestHandler<ReadStateRequest, State>,
         IRequestHandler<GetVehiclesDictionaryRequest, DictionaryVehicle[]>,
-        IRequestHandler<GetVehiclesByIdsRequest, DictionaryVehicle[]>
+        IRequestHandler<GetVehiclesByIdsRequest, DictionaryVehicle[]>,
+        IRequestHandler<GetVehiclesCountByTierRequest, int>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -95,6 +97,24 @@ namespace WotBlitzStatisticsPro.Persistence.Services
             return await dbContext.VehiclesDictionary.AsNoTracking()
                     .Where(v => request.TankIds.Contains(v.TankId))
                     .ToArrayAsync();
+        }
+
+        public async Task<int> Handle(GetVehiclesCountByTierRequest request, CancellationToken cancellationToken)
+        {
+
+            Expression<Func<DictionaryVehicle, bool>> lambda;
+            if(request.IsPremium.HasValue)
+            {
+                lambda = v => v.Tier == request.Tier && v.IsPremium == request.IsPremium.Value;
+            }
+            else
+            {
+                lambda = v => v.Tier == request.Tier;
+            }
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.VehiclesDictionary.AsNoTracking()
+                    .Where(lambda)
+                    .CountAsync();
         }
 
         private async Task RemoveAllVehicles()
