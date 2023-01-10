@@ -285,4 +285,8 @@
     <value>из</value>
     <comment/>
   </data>
+  <data name="Most effective tank" xml:space="preserve">
+    <value>Самый эффективный танк</value>
+    <comment/>
+  </data>
 </root>

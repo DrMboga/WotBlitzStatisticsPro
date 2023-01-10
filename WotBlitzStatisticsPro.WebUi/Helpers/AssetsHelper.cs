@@ -1,18 +1,20 @@
+using WotBlitzStatisticsPro.Model;
+
 namespace WotBlitzStatisticsPro.WebUi.Helpers
 {
     public static class AssetsHelper
     {
-        // public static string IconAsset(this MarkOfMastery mastery)
-        // {
-        //     return mastery switch
-        //     {
-        //         MarkOfMastery.Rank3 => "/mastery/vehicle.mark.third.scale-200.png",
-        //         MarkOfMastery.Rank2 => "/mastery/vehicle.mark.second.scale-200.png",
-        //         MarkOfMastery.Rank1 => "/mastery/vehicle.mark.first.scale-200.png",
-        //         MarkOfMastery.Master => "/mastery/vehicle.mark.master.scale-200.png",
-        //         _ => "/mastery/vehicle.mark.none.big.scale-200.png"
-        //     };
-        // }
+        public static string IconAsset(this MarkOfMastery mastery)
+        {
+            return mastery switch
+            {
+                MarkOfMastery.Rank3 => "/mastery/vehicle.mark.third.scale-200.png",
+                MarkOfMastery.Rank2 => "/mastery/vehicle.mark.second.scale-200.png",
+                MarkOfMastery.Rank1 => "/mastery/vehicle.mark.first.scale-200.png",
+                MarkOfMastery.Master => "/mastery/vehicle.mark.master.scale-200.png",
+                _ => "/mastery/vehicle.mark.none.big.scale-200.png"
+            };
+        }
 
         public static string TankTypeAsset(this string tankTypeId, bool isPremium)
         {

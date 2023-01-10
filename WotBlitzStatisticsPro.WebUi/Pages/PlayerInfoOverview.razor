@@ -138,14 +138,20 @@
                 </tr>
                 <tr>
                     <td colspan="2">
+                        @Localize["Most effective tank"]:
+                        <TankCard Tank="MostRelevantTank()"></TankCard>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
                         @Localize["Tank with max frags"] (@Player?.MaxFrags):
-                        @Player?.MaxFragsTankId
+                        <TankCard Tank="Player?.Tanks?.FirstOrDefault(t => t.TankId == Player.MaxFragsTankId)"></TankCard>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         @Localize["Tank with max XP"] (@Player?.MaxXp.ToString("N0")):
-                        @Player?.MaxXpTankId
+                        <TankCard Tank="Player?.Tanks?.FirstOrDefault(t => t.TankId == Player.MaxXpTankId)"></TankCard>
                     </td>
                 </tr>
             </tbody>
@@ -224,6 +230,11 @@
             return premiumCount * 100 / Player.Tanks.Length;
         }
         return null;
+    }
+
+    public TankInfoDto? MostRelevantTank()
+    {
+        return Player?.Tanks?.FindMostRelevantTank();
     }
 
 }
