@@ -21,7 +21,7 @@
             @MasteryCount()?.ToString("N0")
             <span class="visually-hidden">Mark of mastery</span>
         </span>
-        <img src=@Tank.PreviewImage class="tank-preview" />
+        <img src=@Tank.PreviewImage.ToLocalVehiclesUrl() class="tank-preview" />
         <img src="@Tank.TankType!.TankTypeAsset(Tank.IsPremium)" class="tank-type" />
     </div>
     <div class="tank-info">

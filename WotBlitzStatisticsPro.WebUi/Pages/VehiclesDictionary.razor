@@ -21,7 +21,7 @@
                     <tr class="@(vehicle.Tier%2 == 0 ? "table-secondary" : "")">
                         <td>@vehicle.Tier.RomanNumber()</td>
                         <td><img src="@(vehicle.Type.TankTypeAsset(vehicle.IsPremium))" width="32px" height="32px"></td>
-                        <td><img src="@vehicle.PreviewImage" width="72px" height="53px"></td>
+                        <td><img src="@vehicle.PreviewImage.ToLocalVehiclesUrl()" width="72px" height="53px"></td>
                         <td style="@(vehicle.IsPremium ? $"color: {Constants.ClanTagColor};" : string.Empty)">
                             @vehicle.TankId: <b>@vehicle.Name</b>
                         </td>
