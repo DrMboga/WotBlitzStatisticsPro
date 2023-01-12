@@ -1,7 +1,6 @@
 @inherits TanksListBase;
-@if (TanksList != null && FilteredTankList != null && FilteredTankList.Count() > 0 && Mediator != null && Localize != null)
-{
-    <div class="sorting">
+<div class="d-flex flex-column justify-content-center align-items-center mt-4">
+    <div class="d-flex flex-row justify-content-evenly align-items-center sorting">
         <div @onclick="@(e => OnFilterClick(e, TanksSorting.LastBattle))">
             <img class="sort-button" src="icons/calendar.scale-200.png" />
             @if(sorting == TanksSorting.LastBattle && isSortAscending)
@@ -45,7 +44,8 @@
                 {<img class="sort-arrow" src="icons/Descending.png" />}
         </div>
     </div>
-    
+@if (TanksList != null && FilteredTankList != null && FilteredTankList.Count() > 0 && Mediator != null && Localize != null)
+{    
     <div class="tanks-list">
         @foreach (var tank in FilteredTankList)
         {
@@ -54,33 +54,33 @@
             </div>
         }
     </div>
-
+}
     <div class="filter-area">
         <div>
             @Localize["Tanks"]: @FilteredTankList.Count()
         </div>
-        <div class="filter-row-area">
+        <div class="d-flex justify-content-between">
             @foreach(var nationForFilter in NationsFilter) {
                 <img src="@nationForFilter.ItemName" class="@NationFilterStyle(nationForFilter.ItemId)" @onclick="@(e => ApplyNationFilter(e, nationForFilter.ItemId))" />
             }
         </div>
-        <div class="filter-row-area">
+        <div class="d-flex justify-content-between">
             @foreach(var tier in TierFilter) {
                 <div class="@TierFilterStyle(tier.ItemId)" @onclick="@(e => ApplyTierFilter(e, tier.ItemId))">
                     @tier.ItemName
                 </div>
             }
         </div>
-        <div class="filter-row-area">
+        <div class="d-flex justify-content-between">
             @foreach(var typeFor in TankTypesFilter) {
                 <img src="@typeFor.ItemName" class="@TankTypeFilterStyle(typeFor.ItemId)" @onclick="@(e => ApplyTankTypeFilter(e, typeFor.ItemId))" />
             }
             <img src="icons/vehicle.filter.class.premium.scale-200.png" class="@PremiumStyle()" @onclick="@(e => ApplyPremiumFilter(e))" />
         </div>
-        <div class="filter-row-area">
+        <div class="d-flex justify-content-between">
             @foreach(var mastery in MasteryFilter) {
                 <img src="@mastery.ItemName" class="@MasteryFilterStyle(mastery.ItemId)" @onclick="@(e => ApplyMasteryFilter(e, mastery.ItemId))" />
             }
         </div>
     </div>
-}
+</div>

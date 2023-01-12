@@ -1,12 +1,15 @@
 .tanks-list {
-  height: 332px;
+  height: 70%;
   overflow-y: scroll;
+  margin-top: 10px;
+  max-height: 50vh;
+  width: 100%;
+  max-width: 400px;
 }
 
 .sorting {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  width: 100%;
+  max-width: 420px;
 }
 
 .sort-button {
@@ -22,17 +25,9 @@
 }
 
 .filter-area {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   margin-top: 10px;
-}
-
-.filter-row-area {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 10px;
+  width: 100%;
+  max-width: 420px;
 }
 
 .nation-filter-flag {
