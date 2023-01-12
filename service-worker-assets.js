@@ -2633,7 +2633,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-ClCPLSp3pjpHTfyGSqIceXvObCvloiRJxnbRM6MQbns=",
+      "hash": "sha256-cLf3XMchqVyaqbFd72XJqvpiIKHNPhf+IMOPHIuyIWs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2769,7 +2769,7 @@
       "url": "_framework\/SQLitePCLRaw.provider.e_sqlite3.dll"
     },
     {
-      "hash": "sha256-BlydRRwha\/xrDE4mmoM0QhIUgDcikTXVmtVfWm4cKpQ=",
+      "hash": "sha256-XTM5mYjdacwTrGp4+ktbmP8TU+SSF+gn+Jsfm\/h0W1w=",
       "url": "_framework\/SqliteWasmHelper.dll"
     },
     {
@@ -2941,23 +2941,23 @@
       "url": "_framework\/System.Transactions.Local.dll"
     },
     {
-      "hash": "sha256-JbHsdgX6kCgG6cVXkrZPznJkYAr7mf+tG\/TMN4QE4jQ=",
+      "hash": "sha256-1cIRKO1VbKET0vXBWnE3XBitYwsIIgAfh7cqYPw8wqw=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
-      "hash": "sha256-xer83u9mX9OS2vmfXMRzkh\/CCh7yC3\/reHq0+2J18jI=",
+      "hash": "sha256-j0DPfgDsbn9Y4IT01OpPaeD5WcowoFd1DkSW0SOcVlQ=",
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-3AKagrmnFOyblxe3zUuXrrFFlaSQahmR0mgbpb\/5G4Q=",
+      "hash": "sha256-GyL5KFkWJGjM1SztyGDYlKmJ+8Vysq5bB9MEa5iG6Tw=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
-      "hash": "sha256-qmoJkq4ch0qARKrP7gSD00jhYXJwPYaJOx9T9VQaLp0=",
+      "hash": "sha256-H\/rNFdx17B0Py4y0bJfpaaUEpkpFlvg9t7LnmjI7sSs=",
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-ugIxM4h7ICIkSXC\/B6JjQNI8iCOBCjn\/+0BOeTweCl4=",
+      "hash": "sha256-J65KoKa5mf8IdDS2kxWtYAgSMFjdyltpJDCC5Sn36bc=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -2981,7 +2981,7 @@
       "url": "_framework\/ru\/WotBlitzStatisticsPro.WebUi.resources.dll"
     },
     {
-      "hash": "sha256-mhYeIXUuEFZtZX1ydhMCJWynnOuZBQHWtm921n093uo=",
+      "hash": "sha256-skbVEtLo6tHmyLvELz7GJZLgcsdn8UY5IXpJKiUYaWc=",
       "url": "WotBlitzStatisticsPro.WebUi.styles.css"
     },
     {
@@ -2989,5 +2989,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "dHnKJ\/cr"
+  "version": "qWYKcnob"
 };
