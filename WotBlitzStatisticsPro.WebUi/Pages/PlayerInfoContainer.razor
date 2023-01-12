@@ -52,7 +52,9 @@
             <PlayerInfoOverview Player="@Player"></PlayerInfoOverview>
         </div>
         <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">...</div>
-        <div class="tab-pane fade" id="tanks" role="tabpanel" aria-labelledby="tanks-tab">...</div>
+        <div class="tab-pane fade" id="tanks" role="tabpanel" aria-labelledby="tanks-tab">
+            <TanksList TanksList="@Player?.Tanks"></TanksList>
+        </div>
     </div>
 </div>
 }

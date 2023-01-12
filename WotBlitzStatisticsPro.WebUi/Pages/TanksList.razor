@@ -1,0 +1,86 @@
+@inherits TanksListBase;
+@if (TanksList != null && FilteredTankList != null && FilteredTankList.Count() > 0 && Mediator != null && Localize != null)
+{
+    <div class="sorting">
+        <div @onclick="@(e => OnFilterClick(e, TanksSorting.LastBattle))">
+            <img class="sort-button" src="icons/calendar.scale-200.png" />
+            @if(sorting == TanksSorting.LastBattle && isSortAscending)
+                {<img class="sort-arrow" src="icons/Ascending.png" />}
+            @if(sorting == TanksSorting.LastBattle && !isSortAscending)
+                {<img class="sort-arrow" src="icons/Descending.png" />}
+        </div>
+        <div @onclick="@(e => OnFilterClick(e, TanksSorting.WinRate))">
+            <img class="sort-button" src="icons/sortby.wins.scale-200.png" />
+            @if(sorting == TanksSorting.WinRate && isSortAscending)
+                {<img class="sort-arrow" src="icons/Ascending.png" />}
+            @if(sorting == TanksSorting.WinRate && !isSortAscending)
+                {<img class="sort-arrow" src="icons/Descending.png" />}
+        </div>
+        <div @onclick="@(e => OnFilterClick(e, TanksSorting.Battles))">
+            <img class="sort-button" src="icons/sortby.battle.scale-200.png" />
+            @if(sorting == TanksSorting.Battles && isSortAscending)
+                {<img class="sort-arrow" src="icons/Ascending.png" />}
+            @if(sorting == TanksSorting.Battles && !isSortAscending)
+                {<img class="sort-arrow" src="icons/Descending.png" />}
+        </div>
+        <div @onclick="@(e => OnFilterClick(e, TanksSorting.Damage))">
+            <img class="sort-button" src="icons/sortby.damage.scale-200.png" />
+            @if(sorting == TanksSorting.Damage && isSortAscending)
+                {<img class="sort-arrow" src="icons/Ascending.png" />}
+            @if(sorting == TanksSorting.Damage && !isSortAscending)
+                {<img class="sort-arrow" src="icons/Descending.png" />}
+        </div>
+        <div @onclick="@(e => OnFilterClick(e, TanksSorting.Tier))">
+            <img class="sort-button" src="icons/sortby.vehicle.level.scale-200.png" />
+            @if(sorting == TanksSorting.Tier && isSortAscending)
+                {<img class="sort-arrow" src="icons/Ascending.png" />}
+            @if(sorting == TanksSorting.Tier && !isSortAscending)
+                {<img class="sort-arrow" src="icons/Descending.png" />}
+        </div>
+        <div @onclick="@(e => OnFilterClick(e, TanksSorting.Wn7))">
+            Wn7
+            @if(sorting == TanksSorting.Wn7 && isSortAscending)
+                {<img class="sort-arrow" src="icons/Ascending.png" />}
+            @if(sorting == TanksSorting.Wn7 && !isSortAscending)
+                {<img class="sort-arrow" src="icons/Descending.png" />}
+        </div>
+    </div>
+    
+    <div class="tanks-list">
+        @foreach (var tank in FilteredTankList)
+        {
+            <div @onclick="@(async (e) => { await Mediator.Publish(new OpenTankDetailsNotification(tank)); })">
+                <TankCard Tank=@tank></TankCard>
+            </div>
+        }
+    </div>
+
+    <div class="filter-area">
+        <div>
+            @Localize["Tanks"]: @FilteredTankList.Count()
+        </div>
+        <div class="filter-row-area">
+            @foreach(var nationForFilter in NationsFilter) {
+                <img src="@nationForFilter.ItemName" class="@NationFilterStyle(nationForFilter.ItemId)" @onclick="@(e => ApplyNationFilter(e, nationForFilter.ItemId))" />
+            }
+        </div>
+        <div class="filter-row-area">
+            @foreach(var tier in TierFilter) {
+                <div class="@TierFilterStyle(tier.ItemId)" @onclick="@(e => ApplyTierFilter(e, tier.ItemId))">
+                    @tier.ItemName
+                </div>
+            }
+        </div>
+        <div class="filter-row-area">
+            @foreach(var typeFor in TankTypesFilter) {
+                <img src="@typeFor.ItemName" class="@TankTypeFilterStyle(typeFor.ItemId)" @onclick="@(e => ApplyTankTypeFilter(e, typeFor.ItemId))" />
+            }
+            <img src="icons/vehicle.filter.class.premium.scale-200.png" class="@PremiumStyle()" @onclick="@(e => ApplyPremiumFilter(e))" />
+        </div>
+        <div class="filter-row-area">
+            @foreach(var mastery in MasteryFilter) {
+                <img src="@mastery.ItemName" class="@MasteryFilterStyle(mastery.ItemId)" @onclick="@(e => ApplyMasteryFilter(e, mastery.ItemId))" />
+            }
+        </div>
+    </div>
+}

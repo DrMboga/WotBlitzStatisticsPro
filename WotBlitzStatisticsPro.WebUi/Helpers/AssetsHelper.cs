@@ -12,7 +12,7 @@ namespace WotBlitzStatisticsPro.WebUi.Helpers
                 MarkOfMastery.Rank2 => "mastery/vehicle.mark.second.scale-200.png",
                 MarkOfMastery.Rank1 => "mastery/vehicle.mark.first.scale-200.png",
                 MarkOfMastery.Master => "mastery/vehicle.mark.master.scale-200.png",
-                _ => "/mastery/vehicle.mark.none.big.scale-200.png"
+                _ => "mastery/vehicle.mark.none.big.scale-200.png"
             };
         }
 
