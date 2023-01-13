@@ -3,27 +3,7 @@
 @if(Tank != null)
 {
 <div class="tank-list-item" >
-    <div class="tank-image" >
-        <div class="tank-flag-background" style="background-image: url('@Tank.TankNation!.NationAssetFaded()')"></div>
-        <div class="tank-tier">
-            @if (Tank.IsPremium)
-            {
-
-                <b style="color: @Constants.ClanTagColor; font-size: 16px"> @Tank.Tier.RomanNumber()</b>
-            }
-            else
-            {
-                <b style="font-size: 16px"> @Tank.Tier.RomanNumber()</b>
-            }
-        </div>
-        <img src="@Tank.MarkOfMastery.IconAsset()" class="mastery-image" />
-        <span class="mastery-badge badge rounded-pill bg-secondary">
-            @MasteryCount()?.ToString("N0")
-            <span class="visually-hidden">Mark of mastery</span>
-        </span>
-        <img src=@Tank.PreviewImage.ToLocalVehiclesUrl() class="tank-preview" />
-        <img src="@Tank.TankType!.TankTypeAsset(Tank.IsPremium)" class="tank-type" />
-    </div>
+    <TankCardImage Tank="@Tank"></TankCardImage>
     <div class="tank-info">
         <div class="tank-info-first-row">
             <div>
@@ -65,25 +45,4 @@
 @code {
     [Parameter]
     public TankInfoDto? Tank { get; set; }
-
-    public int? MasteryCount()
-    {
-        if(Tank == null)
-        {
-            return null;
-        }
-        switch(Tank.MarkOfMastery)
-        {
-            case MarkOfMastery.Master: 
-                return Tank.Achievements?.Mastery;
-            case MarkOfMastery.Rank1:
-                return Tank.Achievements?.MasteryRank1;
-            case MarkOfMastery.Rank2:
-                return Tank.Achievements?.MasteryRank2;
-            case MarkOfMastery.Rank3:
-                return Tank.Achievements?.MasteryRank3;
-            default:
-                return 0;
-        }
-    }
 }

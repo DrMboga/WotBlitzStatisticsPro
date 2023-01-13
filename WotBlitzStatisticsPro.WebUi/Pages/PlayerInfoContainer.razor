@@ -40,9 +40,9 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="statistics-tab" data-bs-toggle="pill" data-bs-target="#statistics" type="button" role="tab" aria-controls="statistics" aria-selected="true">@Localize["Statistics"]</button>
         </li>
-        <li class="nav-item" role="presentation">
+        @* <li class="nav-item" role="presentation">
             <button class="nav-link" id="charts-tab" data-bs-toggle="pill" data-bs-target="#charts" type="button" role="tab" aria-controls="charts" aria-selected="false">@Localize["Infographics"]</button>
-        </li>
+        </li> *@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="tanks-tab" data-bs-toggle="pill" data-bs-target="#tanks" type="button" role="tab" aria-controls="tanks" aria-selected="false">@Localize["Tanks"]</button>
         </li>
@@ -54,7 +54,7 @@
         <div class="tab-pane fade show active" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
             <PlayerInfoOverview Player="@Player"></PlayerInfoOverview>
         </div>
-        <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">...</div>
+        @* <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">...</div> *@
         <div class="tab-pane fade" id="tanks" role="tabpanel" aria-labelledby="tanks-tab">
             @if(SmallScreen)
             {

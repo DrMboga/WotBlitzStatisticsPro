@@ -1,3 +1,138 @@
 @inherits TanksListBase;
 
-<p>Tanks list desktop</p>
+<div class="d-flex flex-column">
+    <div class="d-flex flex-row flex-wrap">
+        <div class="card flex-grow-1 ms-2 me-2 mb-2">
+            <div class="card-body d-flex justify-content-between">
+                @foreach(var nationForFilter in NationsFilter) {
+                    <img src="@nationForFilter.ItemName" class="@NationFilterStyle(nationForFilter.ItemId)" @onclick="@(e => ApplyNationFilter(e, nationForFilter.ItemId))" />
+                }
+            </div>
+        </div>
+        <div class="card ms-2 me-2 mb-2">
+            <div class="card-body d-flex justify-content-between">
+                @foreach(var tier in TierFilter) {
+                    <div class="@TierFilterStyle(tier.ItemId)" @onclick="@(e => ApplyTierFilter(e, tier.ItemId))">
+                        @tier.ItemName
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="card ms-2 me-2 mb-2">
+            <div class="card-body d-flex justify-content-between">
+                @foreach(var typeFor in TankTypesFilter) {
+                    <img src="@typeFor.ItemName" class="@TankTypeFilterStyle(typeFor.ItemId)" @onclick="@(e => ApplyTankTypeFilter(e, typeFor.ItemId))" />
+                }
+                <img src="icons/vehicle.filter.class.premium.scale-200.png" class="@PremiumStyle()" @onclick="@(e => ApplyPremiumFilter(e))" />
+            </div>
+        </div>
+        <div class="card flex-grow-1 ms-2 me-2 mb-2">
+            <div class="card-body d-flex justify-content-between">
+                @foreach(var mastery in MasteryFilter) {
+                    <img src="@mastery.ItemName" class="@MasteryFilterStyle(mastery.ItemId)" @onclick="@(e => ApplyMasteryFilter(e, mastery.ItemId))" />
+                }
+            </div>
+        </div>
+    </div>
+    @if(Localize != null && FilteredTankList != null)
+    {
+    <div>
+        @Localize["Tanks"]: @FilteredTankList.Count()
+    </div>
+    }
+
+@if (TanksList != null && FilteredTankList != null && FilteredTankList.Count() > 0 && Mediator != null && Localize != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td @onclick="@(e => OnFilterClick(e, TanksSorting.Tier))" style="text-align: center; vertical-align: middle;">
+                    <img class="sort-button" src="icons/sortby.vehicle.level.scale-200.png" />
+                    @if(sorting == TanksSorting.Tier && isSortAscending)
+                        {<img class="sort-arrow" src="icons/Ascending.png" />}
+                    @if(sorting == TanksSorting.Tier && !isSortAscending)
+                        {<img class="sort-arrow" src="icons/Descending.png" />}
+                </td>
+                <td></td>
+                <td @onclick="@(e => OnFilterClick(e, TanksSorting.Battles))" style="text-align: center; vertical-align: middle;">
+                    <img class="sort-button" src="icons/sortby.battle.scale-200.png" />
+                    @if(sorting == TanksSorting.Battles && isSortAscending)
+                        {<img class="sort-arrow" src="icons/Ascending.png" />}
+                    @if(sorting == TanksSorting.Battles && !isSortAscending)
+                        {<img class="sort-arrow" src="icons/Descending.png" />}
+                </td>
+                <td @onclick="@(e => OnFilterClick(e, TanksSorting.WinRate))" style="text-align: center; vertical-align: middle;">
+                    <img class="sort-button" src="icons/sortby.wins.scale-200.png" />
+                    @if(sorting == TanksSorting.WinRate && isSortAscending)
+                        {<img class="sort-arrow" src="icons/Ascending.png" />}
+                    @if(sorting == TanksSorting.WinRate && !isSortAscending)
+                        {<img class="sort-arrow" src="icons/Descending.png" />}
+                </td>
+                <td @onclick="@(e => OnFilterClick(e, TanksSorting.Damage))" style="text-align: center; vertical-align: middle;">
+                    <img class="sort-button" src="icons/sortby.damage.scale-200.png" />
+                    @if(sorting == TanksSorting.Damage && isSortAscending)
+                        {<img class="sort-arrow" src="icons/Ascending.png" />}
+                    @if(sorting == TanksSorting.Damage && !isSortAscending)
+                        {<img class="sort-arrow" src="icons/Descending.png" />}
+                </td>
+                <td style="text-align: center; vertical-align: middle;"><img class="sort-button" src="icons/xp.avg.scale-200.png" /></td>
+                <td @onclick="@(e => OnFilterClick(e, TanksSorting.Wn7))" style="text-align: center; vertical-align: middle;">
+                    Wn7
+                    @if(sorting == TanksSorting.Wn7 && isSortAscending)
+                        {<img class="sort-arrow" src="icons/Ascending.png" />}
+                    @if(sorting == TanksSorting.Wn7 && !isSortAscending)
+                        {<img class="sort-arrow" src="icons/Descending.png" />}
+                </td>
+                <td @onclick="@(e => OnFilterClick(e, TanksSorting.LastBattle))" style="text-align: center; vertical-align: middle;">
+                    <img class="sort-button" src="icons/calendar.scale-200.png" />
+                    @if(sorting == TanksSorting.LastBattle && isSortAscending)
+                        {<img class="sort-arrow" src="icons/Ascending.png" />}
+                    @if(sorting == TanksSorting.LastBattle && !isSortAscending)
+                        {<img class="sort-arrow" src="icons/Descending.png" />}
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var tank in FilteredTankList)
+        {
+            <tr>
+                <td>
+                    <TankCardImage Tank="@tank"></TankCardImage>
+                </td>
+                <td style="text-align: left; vertical-align: middle;">
+                @if (tank.IsPremium)
+                {
+                    <span style="color: @Constants.ClanTagColor; font-size: 18px">
+                        @tank.Name
+                    </span>
+                }
+                else
+                {
+                    <span style="font-size: 18px">@tank.Name</span>
+                }
+                </td>
+                <td style="text-align: center; vertical-align: middle;">
+                    @tank.Battles.ToString("N0")
+                </td>
+                <td style="text-align: center; vertical-align: middle; font-weight: bold;">
+                    <div>
+                        @tank.WinRate.ToString("N0") %
+                        <div style="background-color: @tank.WinRate.ScaleColor(); width: 100%; height: 3px; margin-right: 2px;"></div>
+                    </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;">@tank.AvgDamage.ToString("N0")</td>
+                <td style="text-align: center; vertical-align: middle;">@tank.AvgXp.ToString("N0")</td>
+                <td style="text-align: center; vertical-align: middle;">
+                    <div>
+                        @tank.Wn7.ToString("N0")
+                        <div style="background-color: @tank.Wn7.Wn7ScaleColor(); width: 100%; height: 3px; margin-right: 2px;"></div>
+                    </div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;">@tank.LastBattleTime.ToString("d")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+    
+</div>
