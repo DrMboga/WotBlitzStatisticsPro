@@ -46,6 +46,9 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="tanks-tab" data-bs-toggle="pill" data-bs-target="#tanks" type="button" role="tab" aria-controls="tanks" aria-selected="false">@Localize["Tanks"]</button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tanks-tree-tab" data-bs-toggle="pill" data-bs-target="#tanks-tree" type="button" role="tab" aria-controls="tanks" aria-selected="false">@Localize["Tanks tree"]</button>
+        </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
@@ -53,7 +56,24 @@
         </div>
         <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">...</div>
         <div class="tab-pane fade" id="tanks" role="tabpanel" aria-labelledby="tanks-tab">
-            <TanksList TanksList="@Player?.Tanks"></TanksList>
+            @if(SmallScreen)
+            {
+                <TanksList TanksList="@Player?.Tanks"></TanksList>
+            }
+            else
+            {
+                <TanksListDesktop TanksList="@Player?.Tanks"></TanksListDesktop>
+            }
+        </div>
+        <div class="tab-pane fade" id="tanks-tree" role="tabpanel" aria-labelledby="tanks-tree-tab">
+            @if(SmallScreen)
+            {
+                <TanksTree TanksList="@Player?.Tanks"></TanksTree>
+            }
+            else
+            {
+                <TanksTreeDesktop TanksList="@Player?.Tanks"></TanksTreeDesktop>
+            }
         </div>
     </div>
 </div>
@@ -65,8 +85,12 @@
 
     public PlayerInfoDto? Player { get; set; }
 
+    public bool SmallScreen { get; set; }  
+
     protected override async Task OnInitializedAsync()
     {
+        const int screenWidthThreshold = 1000;
         Player = await Mediator.Send(new GetPlayerInfoRequest(AccountId, CultureInfo.CurrentCulture.Name));
+        SmallScreen = await Mediator.Send(new IsScreenLessThenValueRequest(screenWidthThreshold));
     }
 }
