@@ -49,63 +49,6 @@ dates-section[b-jklkqzpfj9] {
   font-size: 12px;
 }
 
-.tank-image[b-2uocvlfdxc] {
-  position: relative;
-  width: 120px;
-  min-width: 120px;
-  height: 70px;
-  justify-content: flex-end;
-  display: flex;
-  flex-direction: row;
-}
-
-.tank-flag-background[b-2uocvlfdxc] {
-  /*filter: grayscale(60%);*/
-  /*    filter: blur(1.5px);*/
-  position: absolute;
-  width: 120px;
-  min-width: 120px;
-  height: 70px;
-}
-
-.tank-tier[b-2uocvlfdxc] {
-  position: absolute;
-  left: 5px;
-  top: 0px;
-  width: 24px;
-  height: 24px;
-}
-
-.tank-preview[b-2uocvlfdxc] {
-  position: absolute;
-  left: 25px;
-  top: 0px;
-  width: 95px;
-  height: 70px;
-}
-
-.tank-type[b-2uocvlfdxc] {
-  position: absolute;
-  left: 0px;
-  top: 46px;
-  width: 24px;
-  height: 24px;
-}
-
-.mastery-image[b-2uocvlfdxc] {
-  position: absolute;
-  left: 94px;
-  top: 46px;
-  width: 24px;
-  height: 24px;
-}
-
-.mastery-badge[b-2uocvlfdxc] {
-  position: absolute;
-  left: 110px;
-  top: 58px;
-}
-
 .tank-info[b-2uocvlfdxc] {
   display: flex;
   flex-direction: column;
@@ -132,6 +75,63 @@ dates-section[b-jklkqzpfj9] {
 .icon-scale[b-2uocvlfdxc] {
   width: 20px;
   height: 20px;
+}
+/* /Pages/TankCardImage.razor.rz.scp.css */
+.tank-image[b-11kw04uyzi] {
+  position: relative;
+  width: 120px;
+  min-width: 120px;
+  height: 70px;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+}
+
+.tank-flag-background[b-11kw04uyzi] {
+  /*filter: grayscale(60%);*/
+  /*    filter: blur(1.5px);*/
+  position: absolute;
+  width: 120px;
+  min-width: 120px;
+  height: 70px;
+}
+
+.tank-tier[b-11kw04uyzi] {
+  position: absolute;
+  left: 5px;
+  top: 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.mastery-image[b-11kw04uyzi] {
+  position: absolute;
+  left: 94px;
+  top: 46px;
+  width: 24px;
+  height: 24px;
+}
+
+.mastery-badge[b-11kw04uyzi] {
+  position: absolute;
+  left: 110px;
+  top: 58px;
+}
+
+.tank-preview[b-11kw04uyzi] {
+  position: absolute;
+  left: 25px;
+  top: 0px;
+  width: 95px;
+  height: 70px;
+}
+
+.tank-type[b-11kw04uyzi] {
+  position: absolute;
+  left: 0px;
+  top: 46px;
+  width: 24px;
+  height: 24px;
 }
 /* /Pages/TanksList.razor.rz.scp.css */
 .tanks-list[b-xgdi9qsc4c] {
@@ -161,9 +161,8 @@ dates-section[b-jklkqzpfj9] {
 }
 
 .filter-area[b-xgdi9qsc4c] {
-  margin-top: 10px;
   width: 100%;
-  max-width: 420px;
+  max-width: 450px;
 }
 
 .nation-filter-flag[b-xgdi9qsc4c] {
@@ -191,6 +190,46 @@ dates-section[b-jklkqzpfj9] {
   border-style: solid;
 }
 /* /Pages/TanksListDesktop.razor.rz.scp.css */
+.tank-table-row[b-biiqki6irj] {
+  background-color: #3a474d;
+}
+
+.nation-filter-flag[b-biiqki6irj] {
+  width: 50px;
+  height: 33px;
+  border-radius: 4px;
+}
+
+.tier-filter[b-biiqki6irj] {
+  width: 33px;
+  height: 33px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.filter-selected[b-biiqki6irj] {
+  border-width: 1px;
+  border-color: #f5aa3b;
+  border-style: solid;
+}
+
+.filter-non-premium-selected[b-biiqki6irj] {
+  border-width: 1px;
+  border-color: #7c807c;
+  border-style: solid;
+}
+
+.sort-button[b-biiqki6irj] {
+  min-height: 24px;
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.sort-arrow[b-biiqki6irj] {
+  min-height: 24px;
+  height: 24px;
+}
 /* /Pages/TanksTree.razor.rz.scp.css */
 .nation-filter-flag[b-h0bqelyy5v] {
   width: 35px;
