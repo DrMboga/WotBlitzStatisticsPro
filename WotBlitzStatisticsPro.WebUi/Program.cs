@@ -7,6 +7,7 @@ using System.Globalization;
 using WotBlitzStatisticsPro.Application;
 using WotBlitzStatisticsPro.WebUi.Model;
 using WotBlitzStatisticsPro;
+using WotBlitzStatisticsPro.WebUi.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -17,6 +18,7 @@ builder.Services.AddLocalization(options => options.ResourcesPath = "Resources")
 var wgApiConfig = new WargamingApiSettings();
 builder.Configuration.GetSection("WargamingApi").Bind(wgApiConfig);
 builder.Services.AddSingleton<IWargamingApiSettings>(wgApiConfig);
+builder.Services.AddTransient<ISvgHelper, SvgHelper>();
 
 ApplicationInstaller.ConfigureServices(builder.Services, wgApiConfig.UseMockData, builder.HostEnvironment.BaseAddress);
 

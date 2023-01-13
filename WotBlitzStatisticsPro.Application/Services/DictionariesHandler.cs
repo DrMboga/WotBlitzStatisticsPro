@@ -8,7 +8,8 @@ namespace WotBlitzStatisticsPro.Application.Services
         IRequestHandler<GetLastDictionariesUpdateRequest, DictionariesInfoDto>,
         IRequestHandler<GetDictionaryVehiclesRequest, DictionaryVehicleDto[]>,
         INotificationHandler<CheckAndUpdateDictionariesNotification>,
-        IRequestHandler<GetResearchedTenTierTanksCountRequest, int>
+        IRequestHandler<GetResearchedTenTierTanksCountRequest, int>,
+        IRequestHandler<GetDictionaryVehiclesByNationRequest, DictionaryVehicleDto[]>
     {
         private readonly IMediator _mediator;
         private readonly IStaticData _staticData;
@@ -68,6 +69,12 @@ namespace WotBlitzStatisticsPro.Application.Services
         public Task<int> Handle(GetResearchedTenTierTanksCountRequest request, CancellationToken cancellationToken)
         {
             return _mediator.Send(new GetVehiclesCountByTierRequest(10, false));
+        }
+
+        public async Task<DictionaryVehicleDto[]> Handle(GetDictionaryVehiclesByNationRequest request, CancellationToken cancellationToken)
+        {
+            var vehicles = await _mediator.Send(new GetVehiclesByNationRequest(request.Nation));
+            return vehicles.ToVehiclesDto();
         }
 
         private async Task<DictionariesInfoDto> ReadState()

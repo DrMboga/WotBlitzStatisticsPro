@@ -11,7 +11,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         IRequestHandler<ReadStateRequest, State>,
         IRequestHandler<GetVehiclesDictionaryRequest, DictionaryVehicle[]>,
         IRequestHandler<GetVehiclesByIdsRequest, DictionaryVehicle[]>,
-        IRequestHandler<GetVehiclesCountByTierRequest, int>
+        IRequestHandler<GetVehiclesCountByTierRequest, int>,
+        IRequestHandler<GetVehiclesByNationRequest, DictionaryVehicle[]>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -117,12 +118,32 @@ namespace WotBlitzStatisticsPro.Persistence.Services
                     .CountAsync();
         }
 
+        public async Task<DictionaryVehicle[]> Handle(GetVehiclesByNationRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.VehiclesDictionary.AsNoTracking()
+                    .Include(v => v.NextVehicles)
+                    .Where(v => request.Nation == v.Nation)
+                    .ToArrayAsync();
+        }
+
         private async Task RemoveAllVehicles()
         {
             // Clear vehicles, NextVehicle and VehicleModule tables
             using var dbContext = await _contextFactory.CreateDbContextAsync();
             var allVehicles = await dbContext.VehiclesDictionary.ToListAsync();
             dbContext.RemoveRange(allVehicles);
+
+            var allNextVehicles = await dbContext.VehiclesTreeDictionary.ToListAsync();
+            dbContext.RemoveRange(allNextVehicles);
+
+            var allModuleRelations = await dbContext.VehicleModulesDictionaryRelation.ToListAsync();
+            dbContext.RemoveRange(allModuleRelations);
+
+            var allModules = await dbContext.VehicleModulesDictionary.ToListAsync();
+            dbContext.RemoveRange(allModules);
+
+            await dbContext.SaveChangesAsync();
         }
     }
 }

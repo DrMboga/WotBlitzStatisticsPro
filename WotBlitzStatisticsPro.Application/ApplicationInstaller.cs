@@ -32,6 +32,7 @@ namespace WotBlitzStatisticsPro.Application
             services.AddTransient<IFindPlayersService, FindPlayersServiceMock>();
             services.AddTransient<IPlayerInfoService, PlayerInfoServiceMock>();
             services.AddTransient<IClanInfoService, ClanInfoServiceMock>();
+            services.AddTransient<IStaticData, StaticDataMock>();
         }
     }
 }
