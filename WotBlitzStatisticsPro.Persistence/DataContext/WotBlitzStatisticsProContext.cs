@@ -9,6 +9,8 @@ namespace WotBlitzStatisticsPro.Persistence.DataContext
         public DbSet<DictionaryVehicleModule> VehicleModulesDictionary { get; set; } = null!;
         public DbSet<DictionaryVehicleModuleRelation> VehicleModulesDictionaryRelation { get; set; } = null!;
         public DbSet<DictionaryNextVehicle> VehiclesTreeDictionary { get; set; } = null!;
+        public DbSet<PlayerSession> PlayerSessions { get; set; } = null!;
+        public DbSet<PlayerTankSession> PlayerTankSessions { get; set; } = null!;
 
         public WotBlitzStatisticsProContext(DbContextOptions<WotBlitzStatisticsProContext> opts): base(opts)
         {
@@ -17,6 +19,26 @@ namespace WotBlitzStatisticsPro.Persistence.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PlayerSession>(e => {
+                e.HasKey(s => s.PlayerSessionId);
+                e.Property(s => s.PlayerSessionId).ValueGeneratedOnAdd();
+                e.HasIndex(s => s.AccountId);
+                e.HasIndex(s => s.LastBattleTime);
+            });
+
+            modelBuilder.Entity<PlayerTankSession>(e => {
+                e.HasKey(s => s.PlayerTankSessionId);
+                e.Property(s => s.PlayerTankSessionId).ValueGeneratedOnAdd();
+                e.HasIndex(s => s.TankId);
+                e.HasIndex(s => s.LastBattleTime);
+            });
+
+            modelBuilder.Entity<PlayerTankSession>()
+                .HasOne<PlayerSession>(s => s.PlayerSession)
+                .WithMany(g => g.TanksSession)
+                .HasForeignKey(s => s.PlayerSessionId);
+
+
             modelBuilder.Entity<State>(e => {
                 e.HasKey(s => s.Id);
             });

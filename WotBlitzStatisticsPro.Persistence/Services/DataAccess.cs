@@ -12,7 +12,9 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         IRequestHandler<GetVehiclesDictionaryRequest, DictionaryVehicle[]>,
         IRequestHandler<GetVehiclesByIdsRequest, DictionaryVehicle[]>,
         IRequestHandler<GetVehiclesCountByTierRequest, int>,
-        IRequestHandler<GetVehiclesByNationRequest, DictionaryVehicle[]>
+        IRequestHandler<GetVehiclesByNationRequest, DictionaryVehicle[]>,
+        IRequestHandler<GetLastPlayerSessionDateRequest, DateTime?>,
+        INotificationHandler<InsertNewPlayersSessionNotification>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -30,7 +32,6 @@ namespace WotBlitzStatisticsPro.Persistence.Services
             await dbContext.AddRangeAsync(notification.Vehicles);
 
             await dbContext.SaveChangesAsync();
-            Console.WriteLine("Vehicle dictionaries update handler");
         }
 
         public async Task Handle(UpdateStateNotification notification, CancellationToken cancellationToken)
@@ -125,6 +126,27 @@ namespace WotBlitzStatisticsPro.Persistence.Services
                     .Include(v => v.NextVehicles)
                     .Where(v => request.Nation == v.Nation)
                     .ToArrayAsync();
+        }
+
+        public async Task<DateTime?> Handle(GetLastPlayerSessionDateRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.PlayerSessions.AsNoTracking()
+                    .Where(s => s.AccountId == request.AccountId)
+                    .OrderByDescending(s => s.LastBattleTime)
+                    .Select(s => s.LastBattleTime)
+                    .FirstOrDefaultAsync();
+        }
+
+        public async Task Handle(InsertNewPlayersSessionNotification notification, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+
+            // Insert new vehicles dictionary
+            await dbContext.AddAsync(notification.PlayerSession);
+
+            await dbContext.SaveChangesAsync();
+
         }
 
         private async Task RemoveAllVehicles()

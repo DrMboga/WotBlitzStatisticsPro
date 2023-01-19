@@ -38,6 +38,7 @@ namespace WotBlitzStatisticsPro.Application.Services
             var accountAchievements = await _mediator.Send(new GetAccountAchievementsRequest(accountId, language));
             playerInfo.Achievements = accountAchievements.Achievements?.ToAchievementsDto();
 
+            await _mediator.Publish(new SaveNewPlayerSessionNotification(playerInfo));
 
             // Console.WriteLine(JsonSerializer.Serialize(playerInfo, options: new()
             // {
