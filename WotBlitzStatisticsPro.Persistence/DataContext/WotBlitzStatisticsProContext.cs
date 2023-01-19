@@ -11,6 +11,7 @@ namespace WotBlitzStatisticsPro.Persistence.DataContext
         public DbSet<DictionaryNextVehicle> VehiclesTreeDictionary { get; set; } = null!;
         public DbSet<PlayerSession> PlayerSessions { get; set; } = null!;
         public DbSet<PlayerTankSession> PlayerTankSessions { get; set; } = null!;
+        public DbSet<ResourcePlanning> ResourcePlanning { get; set; } = null!;
 
         public WotBlitzStatisticsProContext(DbContextOptions<WotBlitzStatisticsProContext> opts): base(opts)
         {
@@ -19,6 +20,12 @@ namespace WotBlitzStatisticsPro.Persistence.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ResourcePlanning>(e => {
+                e.HasKey(p => p.PlanId);
+                e.Property(p => p.PlanId).ValueGeneratedOnAdd();
+                e.HasIndex(p => p.AccountId);
+            });
+
             modelBuilder.Entity<PlayerSession>(e => {
                 e.HasKey(s => s.PlayerSessionId);
                 e.Property(s => s.PlayerSessionId).ValueGeneratedOnAdd();
