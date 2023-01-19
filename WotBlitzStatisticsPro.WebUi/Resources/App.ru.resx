@@ -293,4 +293,8 @@
     <value>Дерево танков</value>
     <comment/>
   </data>
+  <data name="Planner" xml:space="preserve">
+    <value>Планировщик</value>
+    <comment/>
+  </data>
 </root>

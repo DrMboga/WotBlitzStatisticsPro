@@ -1,0 +1,14 @@
+@page "/planner"
+@inherits PlannerBase;
+
+@if(Localize != null)
+{
+
+@if (!IsPlayerLoggedIn)
+{
+<div class="d-flex justify-content-evenly">
+    <button type="button" class="btn btn-warning mt-3"><img src="icons/wg-200.png" width="32px" height="32px"> @Localize["Login with WG.net ID"]</button>
+</div>
+}
+
+}
