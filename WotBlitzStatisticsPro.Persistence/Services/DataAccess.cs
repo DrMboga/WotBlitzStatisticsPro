@@ -14,7 +14,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         IRequestHandler<GetVehiclesCountByTierRequest, int>,
         IRequestHandler<GetVehiclesByNationRequest, DictionaryVehicle[]>,
         IRequestHandler<GetLastPlayerSessionDateRequest, DateTime?>,
-        INotificationHandler<InsertNewPlayersSessionNotification>
+        INotificationHandler<InsertNewPlayersSessionNotification>,
+        IRequestHandler<GetLastTwoPlayerSessionsRequest, PlayerSession[]?>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -147,6 +148,16 @@ namespace WotBlitzStatisticsPro.Persistence.Services
 
             await dbContext.SaveChangesAsync();
 
+        }
+
+        public async Task<PlayerSession[]?> Handle(GetLastTwoPlayerSessionsRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.PlayerSessions.AsNoTracking()
+                                .Where(s => s.AccountId == request.AccountId)
+                                .OrderByDescending(s => s.LastBattleTime)
+                                .Take(2)
+                                .ToArrayAsync();
         }
 
         private async Task RemoveAllVehicles()
