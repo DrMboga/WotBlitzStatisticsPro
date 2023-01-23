@@ -1,0 +1,61 @@
+
+<div class="d-flex flex-column">
+    <div class="d-flex flex-row justify-content-around">
+        <div class="position-relative">
+            <img src="mastery/vehicle.mark.master.big.scale-200.png" width="60px" height="60px">
+            <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                @Achievements?.Mastery.ToString("N0")
+                <span class="visually-hidden">Mark of mastery</span>
+            </span>
+        </div>
+        <div class="position-relative">
+            <img src="medals/Kolobanov.png" width="60px" height="60px">
+            <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                @Achievements?.MedalKolobanov.ToString("N0")
+                <span class="visually-hidden">Medal Kolobanov</span>
+            </span>
+        </div>   
+        <div class="position-relative">
+            <img src="medals/mainGun.png" width="60px" height="60px">
+            <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                @Achievements?.mainGun.ToString("N0")
+                <span class="visually-hidden">Medal Main gun</span>
+            </span>
+        </div>                             
+    </div>
+
+    <div class="d-flex flex-row justify-content-around mt-4">
+        <div class="position-relative">
+            <img src="medals/Rassenay.png" width="60px" height="60px">
+            <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                @Achievements?.HeroesOfRassenay.ToString("N0")
+                <span class="visually-hidden">Medal Heroes of Rassenay</span>
+            </span>
+        </div>                
+        <div class="position-relative">
+            <img src="medals/Pool.png" width="60px" height="60px">
+            <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                @Achievements?.MedalLafayettePool.ToString("N0")
+                <span class="visually-hidden">Medal Lafayet Pool</span>
+            </span>
+        </div>
+        <div class="position-relative">
+            <img src="medals/Walters.png" width="60px" height="60px">
+            <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                @Achievements?.MedalRadleyWalters.ToString("N0")
+                <span class="visually-hidden">Medal Radley Walters</span>
+            </span>
+        </div>
+        <div class="position-relative">
+            <img src="medals/warrior.png" width="60px" height="60px">
+            <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">
+                @Achievements?.Warrior.ToString("N0")
+                <span class="visually-hidden">Medal Warrior</span>
+            </span>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public AchievementsDto? Achievements { get; set; }
+}
