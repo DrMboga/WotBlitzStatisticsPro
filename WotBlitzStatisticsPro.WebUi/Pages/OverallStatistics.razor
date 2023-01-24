@@ -89,10 +89,18 @@
 
     private string Persentage(long firstNumber, long secondNuber)
     {
+        if(secondNuber == 0)
+        {
+            return "-";
+        }
         return (((decimal)(100*firstNumber))/((decimal)secondNuber)).ToString("N2");
     }
     private string Average(long firstNumber, long secondNuber)
     {
+        if(secondNuber == 0)
+        {
+            return "-";
+        }
         return (((decimal)(firstNumber))/((decimal)secondNuber)).ToString("N2");
     }
 }
