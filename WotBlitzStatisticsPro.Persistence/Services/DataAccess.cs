@@ -15,7 +15,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         IRequestHandler<GetVehiclesByNationRequest, DictionaryVehicle[]>,
         IRequestHandler<GetLastPlayerSessionDateRequest, DateTime?>,
         INotificationHandler<InsertNewPlayersSessionNotification>,
-        IRequestHandler<GetLastTwoPlayerSessionsRequest, PlayerSession[]?>
+        IRequestHandler<GetLastTwoPlayerSessionsRequest, PlayerSession[]?>,
+        IRequestHandler<GetLastTwoTankSessionRequest, PlayerTankSession[]?>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -155,6 +156,16 @@ namespace WotBlitzStatisticsPro.Persistence.Services
             using var dbContext = await _contextFactory.CreateDbContextAsync();
             return await dbContext.PlayerSessions.AsNoTracking()
                                 .Where(s => s.AccountId == request.AccountId)
+                                .OrderByDescending(s => s.LastBattleTime)
+                                .Take(2)
+                                .ToArrayAsync();
+        }
+
+        public async Task<PlayerTankSession[]?> Handle(GetLastTwoTankSessionRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.PlayerTankSessions.AsNoTracking()
+                                .Where(s => s.AccountId == request.AccountId && s.TankId == request.TankId)
                                 .OrderByDescending(s => s.LastBattleTime)
                                 .Take(2)
                                 .ToArrayAsync();

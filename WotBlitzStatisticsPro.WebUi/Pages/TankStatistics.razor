@@ -1,3 +1,5 @@
+@inject IMediator Mediator
+
 <div class="modal @ModalClass" id="bootstrapModal" role="dialog" tabindex="-1" aria-labelledby="bootstrapModalLabel" style="display:@ModalDisplay">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -56,7 +58,7 @@
         ModalDisplay = "block;";
         ModalClass = "Show";
         Hidden = false;
-        // TODO: Request tank SessionInfoDto
+        PlayerSessionInfo = await Mediator.Send(new GetTankSessionInfoRequest(Tank.AccountId, Tank.TankId));
         StateHasChanged();
     }
 

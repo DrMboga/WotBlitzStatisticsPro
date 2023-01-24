@@ -2,7 +2,8 @@ namespace WotBlitzStatisticsPro.Application.Services
 {
     public class PlayerSessionService : 
         INotificationHandler<SaveNewPlayerSessionNotification>,
-        IRequestHandler<GetPlayerSessionInfoRequest, SessionInfoDto?>
+        IRequestHandler<GetPlayerSessionInfoRequest, SessionInfoDto?>,
+        IRequestHandler<GetTankSessionInfoRequest, SessionInfoDto?>
     {
         private readonly IMediator _mediator;
 
@@ -14,8 +15,6 @@ namespace WotBlitzStatisticsPro.Application.Services
         public async Task Handle(SaveNewPlayerSessionNotification notification, CancellationToken cancellationToken)
         {
             var lastSessionDate = await _mediator.Send(new GetLastPlayerSessionDateRequest(notification.Player.AccountId));
-
-            Console.WriteLine($"Player session LastBattle {(lastSessionDate == null ? "null" : lastSessionDate.Value.ToString("d"))}; Current LastBattle {notification.Player.LastBattleTime.Date}");
 
             if (lastSessionDate.HasValue && lastSessionDate.Value.Date == notification.Player.LastBattleTime.Date)
             {
@@ -48,6 +47,27 @@ namespace WotBlitzStatisticsPro.Application.Services
                 lastTwoSessions[1].LastBattleTime,
                 lastTwoSessions[0].Battles - lastTwoSessions[1].Battles,
                 Convert.ToDecimal(lastTwoSessions[0].AvgTier - lastTwoSessions[1].AvgTier),
+                lastTwoSessions[0].WinRate - lastTwoSessions[1].WinRate,
+                lastTwoSessions[0].AvgDamage - lastTwoSessions[1].AvgDamage,
+                lastTwoSessions[0].AvgXp - lastTwoSessions[1].AvgXp,
+                lastTwoSessions[0].DamageCoefficient - lastTwoSessions[1].DamageCoefficient,
+                lastTwoSessions[0].SurvivalRate - lastTwoSessions[1].SurvivalRate,
+                Convert.ToDecimal(lastTwoSessions[0].Wn7 - lastTwoSessions[1].Wn7)
+            );
+        }
+
+        public async Task<SessionInfoDto?> Handle(GetTankSessionInfoRequest request, CancellationToken cancellationToken)
+        {
+            var lastTwoSessions = await _mediator.Send(new GetLastTwoTankSessionRequest(request.AccountId, request.TankId));
+            if(lastTwoSessions == null || lastTwoSessions.Length < 2)
+            {
+                return null;
+            }
+            // First row - last session, second row - previous session
+            return new SessionInfoDto(
+                lastTwoSessions[1].LastBattleTime,
+                lastTwoSessions[0].Battles - lastTwoSessions[1].Battles,
+                0,
                 lastTwoSessions[0].WinRate - lastTwoSessions[1].WinRate,
                 lastTwoSessions[0].AvgDamage - lastTwoSessions[1].AvgDamage,
                 lastTwoSessions[0].AvgXp - lastTwoSessions[1].AvgXp,
