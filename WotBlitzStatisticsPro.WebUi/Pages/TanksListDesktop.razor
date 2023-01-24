@@ -95,7 +95,7 @@
         <tbody>
         @foreach (var tank in FilteredTankList)
         {
-            <tr>
+            <tr @onclick="@(async (e) => { await Mediator.Publish(new OpenTankDetailsNotification(tank)); })">
                 <td>
                     <TankCardImage Tank="@tank"></TankCardImage>
                 </td>

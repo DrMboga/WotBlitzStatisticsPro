@@ -39,7 +39,6 @@ namespace WotBlitzStatisticsPro.Application.Services
         public async Task<SessionInfoDto?> Handle(GetPlayerSessionInfoRequest request, CancellationToken cancellationToken)
         {
             var lastTwoSessions = await _mediator.Send(new GetLastTwoPlayerSessionsRequest(request.AccountId));
-            Console.WriteLine($"Last 2 sessions count {(lastTwoSessions == null ? "null" : lastTwoSessions.Length)}");
             if(lastTwoSessions == null || lastTwoSessions.Length < 2)
             {
                 return null;
