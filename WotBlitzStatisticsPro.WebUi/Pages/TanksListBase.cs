@@ -58,6 +58,7 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
 
         public bool isSortAscending { get; set; } = false;
 
+        public TankStatistics? TankStatistics { get; set; }
 
         protected override void OnInitialized()
         {

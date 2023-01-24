@@ -1,0 +1,70 @@
+<div class="modal @ModalClass" id="bootstrapModal" role="dialog" tabindex="-1" aria-labelledby="bootstrapModalLabel" style="display:@ModalDisplay">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bootstrapModalLabel">@Tank?.Name</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="() => Close()"></button>
+      </div>
+      <div class="modal-body">
+        @if (Tank != null)
+        {
+            <div class="d-flex flex-column">
+                <div class="card mt-2 ms-2">
+                    <div class="card-body">
+                        <TankCard Tank="@Tank"></TankCard>
+                    </div>
+                </div>
+                <div class="card mt-2 ms-2">
+                    <div class="card-body">
+                        <AchievementsCard Achievements="@Tank.Achievements"></AchievementsCard>
+                        <StatisticsCard Statistics="@Tank" PlayerSessionInfo="@PlayerSessionInfo"></StatisticsCard>
+                    </div>
+                </div>
+                <div class="card mt-2 ms-2">
+                    <div class="card-body">
+                        <OverallStatistics Statistics="@Tank"></OverallStatistics>
+                    </div>
+                </div>
+            </div>
+        }
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @onclick="() => Close()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (!Hidden)
+{
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    public TankInfoDto? Tank { get; set; }
+    public SessionInfoDto? PlayerSessionInfo { get; set; }
+
+    public bool Hidden { get; set; } = true;
+
+    public string ModalDisplay { get; set; } = "none;";
+    public string ModalClass { get; set; } = "";
+
+    public async Task Open(TankInfoDto tank)
+    {
+        Console.WriteLine($"Tank {tank.Name}");
+        Tank = tank;
+        ModalDisplay = "block;";
+        ModalClass = "Show";
+        Hidden = false;
+        // TODO: Request tank SessionInfoDto
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        ModalDisplay = "none";
+        ModalClass = "";
+        Hidden = true;
+        StateHasChanged();
+    }
+}

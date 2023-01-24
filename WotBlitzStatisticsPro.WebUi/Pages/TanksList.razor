@@ -82,10 +82,12 @@
     <div class="tanks-list">
         @foreach (var tank in FilteredTankList)
         {
-            <div @onclick="@(async (e) => { await Mediator.Publish(new OpenTankDetailsNotification(tank)); })">
+            <div @onclick="@(async (e) => { if(TankStatistics != null) await TankStatistics.Open(tank); })">
                 <TankCard Tank=@tank></TankCard>
             </div>
         }
     </div>
 }
 </div>
+
+<TankStatistics @ref="TankStatistics"></TankStatistics>
