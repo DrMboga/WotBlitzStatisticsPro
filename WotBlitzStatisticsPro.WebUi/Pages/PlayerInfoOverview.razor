@@ -6,109 +6,8 @@
     <div class="card mt-2 ms-2" style="width: 20rem;">
     <div class="card-body">
         <div class="d-flex flex-column">
-        <AchievementsCard Achievements="@Player?.Achievements"></AchievementsCard>
-            <table class="table mt-4" width="100%">
-            <tbody>
-                <tr>
-                    <td>@Localize["Battles"]:</td>
-                    <td align="right">
-                        <b>@Player?.Battles.ToString("N0")</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="color: green">
-                            +@PlayerSessionInfo.BattlesDiff.ToString("N0")
-                        </small>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Localize["Win rate"]:</td>
-                    <td align="right">
-                        <b>@Player?.WinRate.ToString("N2")%</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="@(PlayerSessionInfo.WinRateDiff > 0 ? "color: green" : "color: red")">
-                            @ShowDiff(PlayerSessionInfo.WinRateDiff)
-                        </small>
-                        }
-                        <div style="background-color: @Player?.WinRate.ScaleColor(); width: 100%; height: 5px; margin-left: 2px; margin-right: 2px;"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Localize["Wn7"]:</td>
-                    <td align="right">
-                        <b>@Player?.Wn7.ToString("N2")</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="@(PlayerSessionInfo.Wn7Diff > 0 ? "color: green" : "color: red")">
-                            @ShowDiff(PlayerSessionInfo.Wn7Diff)
-                        </small>
-                        }
-                        <div style="background-color: @Player?.Wn7.Wn7ScaleColor(); width: 100%; height: 5px; margin-left: 2px; margin-right: 2px;"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Localize["Average XP"]:</td>
-                    <td align="right">
-                        <b>@Player?.AvgXp.ToString("N0")</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="@(PlayerSessionInfo.AvgXpDiff > 0 ? "color: green" : "color: red")">
-                            @ShowDiff(PlayerSessionInfo.AvgXpDiff)
-                        </small>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Localize["Average Damage"]:</td>
-                    <td align="right">
-                        <b>@Player?.AvgDamage.ToString("N0")</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="@(PlayerSessionInfo.AvgDamageDiff > 0 ? "color: green" : "color: red")">
-                            @ShowDiff(PlayerSessionInfo.AvgDamageDiff)
-                        </small>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Localize["Damage coefficient"]:</td>
-                    <td align="right">
-                        <b>@Player?.DamageCoefficient.ToString("N2")</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="@(PlayerSessionInfo.DamageCoefficientDiff > 0 ? "color: green" : "color: red")">
-                            @ShowDiff(PlayerSessionInfo.DamageCoefficientDiff)
-                        </small>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Localize["Survival rate"]:</td>
-                    <td align="right">
-                        <b>@Player?.SurvivalRate.ToString("N0")%</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="@(PlayerSessionInfo.SurvivalRateDiff > 0 ? "color: green" : "color: red")">
-                            @ShowDiff(PlayerSessionInfo.SurvivalRateDiff)
-                        </small>
-                        }                        
-                    </td>
-                </tr>
-                <tr>
-                    <td>@Localize["Avg tier"]:</td>
-                    <td align="right">
-                        <b>@Player?.AvgTier?.ToString("N2")</b>
-                        @if(PlayerSessionInfo != null)
-                        {
-                        <small style="@(PlayerSessionInfo.AvgTierDiff > 0 ? "color: green" : "color: red")">
-                            @ShowDiff(PlayerSessionInfo.AvgTierDiff)
-                        </small>
-                        }                        
-                    </td>
-                </tr>
-            </tbody>
-            </table>
+            <AchievementsCard Achievements="@Player?.Achievements"></AchievementsCard>
+            <StatisticsCard Statistics="@Player" PlayerSessionInfo="@PlayerSessionInfo" AvgTier="@Player?.AvgTier"></StatisticsCard>
         </div>
     </div>
     </div>
@@ -244,11 +143,6 @@
     public TankInfoDto? MostRelevantTank()
     {
         return Player?.Tanks?.FindMostRelevantTank();
-    }
-
-    public string ShowDiff(decimal diff)
-    {
-        return $" {(diff > 0 ? "+" : "")}{diff:N2}";
     }
 
 }
