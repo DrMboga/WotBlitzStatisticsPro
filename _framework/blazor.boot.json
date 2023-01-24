@@ -85,11 +85,11 @@
       "System.Threading.dll": "sha256-EcIZoNsFhAy0\/VL5XP\/YK0u\/gR\/3ttPKHuPgRP0tSFg=",
       "System.Threading.Thread.dll": "sha256-yN10EZ1tFJiZqGW0a\/arTrRDX3QCUQNH4sLBjFB\/Otg=",
       "System.Transactions.Local.dll": "sha256-RT\/dfxaRgfKSdL+ReIJ5iC2cHP616nNI13boeBBm82I=",
-      "WotBlitzStatisticsPro.Application.dll": "sha256-J5uC3Jp\/PEbkum12+\/VmfTL6w+Jez\/giE68Zc2ZjCns=",
+      "WotBlitzStatisticsPro.Application.dll": "sha256-YzthsOAXwSX6iMPm7Uq5qfYlHuzIB5pmOs2dm6nyEdk=",
       "WotBlitzStatisticsPro.dll": "sha256-xer83u9mX9OS2vmfXMRzkh\/CCh7yC3\/reHq0+2J18jI=",
-      "WotBlitzStatisticsPro.Persistence.dll": "sha256-eOxeUDQrGB52HJ8bnmZ0QdZn6ptPnhytj58ebXlYjuo=",
+      "WotBlitzStatisticsPro.Persistence.dll": "sha256-aCtwdCsO019Pp0D3wdvanf4nhs10FnDKsVRI9qDgizY=",
       "WotBlitzStatisticsPro.WargamingApi.dll": "sha256-qmoJkq4ch0qARKrP7gSD00jhYXJwPYaJOx9T9VQaLp0=",
-      "WotBlitzStatisticsPro.WebUi.dll": "sha256-9q1WvtZwuEN6qb2z6RVsF9Ro6IaxQcKqjoRHgPU39Mw="
+      "WotBlitzStatisticsPro.WebUi.dll": "sha256-mgSDVHB41xfl4tleu4+kMWGgg0zIGkk4oqx3HLEaUlo="
     },
     "extensions": null,
     "lazyAssembly": null,
