@@ -2641,7 +2641,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-cK4AVDwRarB88jf\/mkow9L\/PzkfbHitD28xuRbdMy3s=",
+      "hash": "sha256-z8df9Le0K1dwY5Uw6nwpDrRGRIRQ2RaIWImyNU2\/ybo=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2961,7 +2961,7 @@
       "url": "_framework\/System.Transactions.Local.dll"
     },
     {
-      "hash": "sha256-r0oNzne7hPHDw4ZeB5CtZhjiO6zeEFKgStpnD3DzT0I=",
+      "hash": "sha256-Ns01SmyJANrBwBilAogVC6fpV5X0rSQ3DsFMNTiQtGI=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
@@ -3009,5 +3009,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "nlOCwRuw"
+  "version": "w+NkbS8r"
 };
