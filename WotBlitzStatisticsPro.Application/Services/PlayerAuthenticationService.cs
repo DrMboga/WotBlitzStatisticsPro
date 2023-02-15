@@ -53,7 +53,8 @@ namespace WotBlitzStatisticsPro.Application.Services
                 notification.AccountId, 
                 notification.AccessToken, 
                 Convert.ToInt32(notification.ExpiresAt).ToDateTime()));
-            _navigationManager.NavigateTo("/planner");
+            var baseUri = _navigationManager.BaseUri;
+            _navigationManager.NavigateTo($"{baseUri}planner");
         }
     }
 }
