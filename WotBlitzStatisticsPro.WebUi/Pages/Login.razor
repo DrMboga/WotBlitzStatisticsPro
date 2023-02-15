@@ -1,0 +1,37 @@
+@page "/login"
+@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager NavigationManager
+@inject IMediator Mediator
+
+<h3>Login</h3>
+
+<p>@accountId | @nickName | @accessToken | @expiresAt</p>
+
+@code {
+    string nickName = string.Empty;
+    long accountId;
+    string accessToken = string.Empty;
+    long expiresAt;
+    protected override async Task OnInitializedAsync()
+    {
+        var query = QueryHelpers.ParseQuery(NavigationManager.Uri);
+        if (query.ContainsKey("status") &&
+            query.ContainsKey("access_token") &&
+            query.ContainsKey("nickname") &&
+            query.ContainsKey("account_id") &&
+            query.ContainsKey("expires_at"))
+        {
+            string status = query["status"].FirstOrDefault() ?? string.Empty;
+            if (status == "ok")
+            {
+                nickName = query["nickname"].FirstOrDefault() ?? string.Empty;
+                accountId = Convert.ToInt64(query["account_id"].FirstOrDefault());
+                accessToken = query["access_token"].FirstOrDefault() ?? string.Empty;
+                expiresAt = Convert.ToInt64(query["expires_at"].FirstOrDefault());
+
+                await Mediator.Publish(new RedirectFromWgLoginPlayerNotification(nickName, accountId, accessToken, expiresAt));
+            }
+        }
+    }
+
+}

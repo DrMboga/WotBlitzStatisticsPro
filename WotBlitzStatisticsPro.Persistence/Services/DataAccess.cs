@@ -16,7 +16,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         IRequestHandler<GetLastPlayerSessionDateRequest, DateTime?>,
         INotificationHandler<InsertNewPlayersSessionNotification>,
         IRequestHandler<GetLastTwoPlayerSessionsRequest, PlayerSession[]?>,
-        IRequestHandler<GetLastTwoTankSessionRequest, PlayerTankSession[]?>
+        IRequestHandler<GetLastTwoTankSessionRequest, PlayerTankSession[]?>,
+        INotificationHandler<UpdateLoginInfoNotification>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -169,6 +170,31 @@ namespace WotBlitzStatisticsPro.Persistence.Services
                                 .OrderByDescending(s => s.LastBattleTime)
                                 .Take(2)
                                 .ToArrayAsync();
+        }
+
+        public async Task Handle(UpdateLoginInfoNotification notification, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+
+            var state = await dbContext.State.FirstOrDefaultAsync();
+
+            if(state == null)
+            {
+                state = new State {
+                    LoggedInAccountId = notification.AccountId,
+                    WgToken = notification.AuthToken,
+                    WgTokenExpiration = notification.Expiration
+                };
+                await dbContext.AddAsync(state);
+            }
+            else
+            {
+                state.LoggedInAccountId = notification.AccountId;
+                state.WgToken = notification.AuthToken;
+                state.WgTokenExpiration = notification.Expiration;
+            }
+
+            await dbContext.SaveChangesAsync();
         }
 
         private async Task RemoveAllVehicles()

@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using WotBlitzStatisticsPro.Application.Messages;
 
 namespace WotBlitzStatisticsPro.WebUi.Pages
 {
@@ -13,5 +14,18 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
         public IMediator? Mediator { get; set; }
 
         public bool IsPlayerLoggedIn { get; set; } = false;
+
+        public long? PlayerId { get; set; }
+        public string? PlayerNick { get; set; }
+
+        protected async override Task OnInitializedAsync()
+        {
+            if(Mediator != null)
+            {
+                PlayerId = await Mediator.Send(new GetLoggedInPlayerNameRequest());
+                IsPlayerLoggedIn = PlayerId.HasValue;
+                // TODO: load player nick, tanks and resources
+            }
+        }
     }
 }
