@@ -17,7 +17,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         INotificationHandler<InsertNewPlayersSessionNotification>,
         IRequestHandler<GetLastTwoPlayerSessionsRequest, PlayerSession[]?>,
         IRequestHandler<GetLastTwoTankSessionRequest, PlayerTankSession[]?>,
-        INotificationHandler<UpdateLoginInfoNotification>
+        INotificationHandler<UpdateLoginInfoNotification>,
+        INotificationHandler<ClearAuthStateNotification>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -192,6 +193,22 @@ namespace WotBlitzStatisticsPro.Persistence.Services
                 state.LoggedInAccountId = notification.AccountId;
                 state.WgToken = notification.AuthToken;
                 state.WgTokenExpiration = notification.Expiration;
+            }
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task Handle(ClearAuthStateNotification notification, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+
+            var state = await dbContext.State.FirstOrDefaultAsync();
+
+            if(state != null)
+            {
+                state.LoggedInAccountId = null;
+                state.WgToken = null;
+                state.WgTokenExpiration = null;
             }
 
             await dbContext.SaveChangesAsync();

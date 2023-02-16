@@ -13,7 +13,16 @@
 </div>
 } else 
 {
-    @PlayerId
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container-fluid d-flex align-items-center">
+        <div class="navbar-nav me-auto mb-2 mb-lg-0">
+        @PlayerId
+        </div>
+        <button type="button" class="btn btn-primary"
+        @onclick="@(async (e) => { await Logout(); })">
+        <img src="icons/navigation.exit.scale-200.png" width="32px" height="32px"></button>
+    </div>
+</nav>
 }
 
 }

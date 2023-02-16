@@ -5,7 +5,8 @@ namespace WotBlitzStatisticsPro.Application.Services
     public class PlayerAuthenticationService : 
         IRequestHandler<GetLoggedInPlayerNameRequest, long?>,
         INotificationHandler<RedirectToLoginPlayerNotification>,
-        INotificationHandler<RedirectFromWgLoginPlayerNotification>
+        INotificationHandler<RedirectFromWgLoginPlayerNotification>,
+        INotificationHandler<LogoutPlayerNotification>
     {
         private const int UpdateTokenBeforeExpirationInDays = -3;
         private readonly IMediator _mediator;
@@ -31,9 +32,13 @@ namespace WotBlitzStatisticsPro.Application.Services
                 return null;
             }
 
-            if (state.WgTokenExpiration.HasValue && state.WgTokenExpiration.Value.AddDays(UpdateTokenBeforeExpirationInDays) < today)
+            if (!string.IsNullOrEmpty(state.WgToken) && state.WgTokenExpiration.HasValue && state.WgTokenExpiration.Value.AddDays(UpdateTokenBeforeExpirationInDays) < today)
             {
-                // TODO: Send Prolong Token Notification
+                var prolongResponse = await _mediator.Send(new AuthProlongTokenRequest(state.WgToken));
+                await _mediator.Publish(new UpdateLoginInfoNotification(
+                    prolongResponse.AccountId, 
+                    prolongResponse.AccessToken, 
+                    prolongResponse.ExpirationTimeStamp.ToDateTime()));
             }
 
             return state.LoggedInAccountId;
@@ -55,6 +60,17 @@ namespace WotBlitzStatisticsPro.Application.Services
                 Convert.ToInt32(notification.ExpiresAt).ToDateTime()));
             var baseUri = _navigationManager.BaseUri;
             _navigationManager.NavigateTo($"{baseUri}planner");
+        }
+
+        public async Task Handle(LogoutPlayerNotification notification, CancellationToken cancellationToken)
+        {
+            var state = await _mediator.Send(new ReadStateRequest());
+
+            if (state?.WgToken != null)
+            {
+                await _mediator.Publish(new AuthLogoutNotification(state.WgToken));
+                await _mediator.Publish(new ClearAuthStateNotification());
+            }
         }
     }
 }

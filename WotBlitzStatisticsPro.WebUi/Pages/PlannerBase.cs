@@ -27,5 +27,16 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
                 // TODO: load player nick, tanks and resources
             }
         }
+
+        public async Task Logout()
+        {
+            if(Mediator != null)
+            {
+                await Mediator.Publish(new LogoutPlayerNotification());
+                IsPlayerLoggedIn = false;
+                PlayerId = null;
+                PlayerNick = null;
+            }
+        }
     }
 }
