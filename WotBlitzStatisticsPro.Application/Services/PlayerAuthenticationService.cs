@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class PlayerAuthenticationService : 
-        IRequestHandler<GetLoggedInPlayerNameRequest, long?>,
+        IRequestHandler<GetLoggedInPlayerRequest, State?>,
         INotificationHandler<RedirectToLoginPlayerNotification>,
         INotificationHandler<RedirectFromWgLoginPlayerNotification>,
         INotificationHandler<LogoutPlayerNotification>
@@ -23,7 +23,7 @@ namespace WotBlitzStatisticsPro.Application.Services
             _navigationManager = navigationManager;
         }
 
-        public async Task<long?> Handle(GetLoggedInPlayerNameRequest request, CancellationToken cancellationToken)
+        public async Task<State?> Handle(GetLoggedInPlayerRequest request, CancellationToken cancellationToken)
         {
             var state = await _mediator.Send(new ReadStateRequest());
             var today = DateTime.Now.Date;
@@ -41,7 +41,7 @@ namespace WotBlitzStatisticsPro.Application.Services
                     prolongResponse.ExpirationTimeStamp.ToDateTime()));
             }
 
-            return state.LoggedInAccountId;
+            return state;
         }
 
         public Task Handle(RedirectToLoginPlayerNotification notification, CancellationToken cancellationToken)

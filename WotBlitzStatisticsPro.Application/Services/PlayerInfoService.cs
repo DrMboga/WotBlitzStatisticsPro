@@ -47,5 +47,21 @@ namespace WotBlitzStatisticsPro.Application.Services
 
             return playerInfo;
         }
+
+        public async Task<PlayerPrivateInfoDto> GetPlayerPrivateInfo(long accountId, RequestLanguage language, string accessToken)
+        {
+            var playerPrivateInfoResponse = await _mediator.Send(new GetAccountPrivateInfoRequest(accountId, language, accessToken));
+            var playerPrivateInfo = playerPrivateInfoResponse.ToPlayerPrivateInfo();
+
+            var tanksSTatistics = await _mediator.Send(new GetTankStatisticsRequest(accountId, language));
+            var tankIds = tanksSTatistics.Select(t => t.TankId).ToArray();
+
+            await _mediator.Publish(new CheckAndUpdateDictionariesNotification(language));
+
+            var vehiclesInfo = await _mediator.Send(new GetVehiclesByIdsRequest(tankIds));
+            playerPrivateInfo.Tanks = tanksSTatistics.ToTankInfoDto(vehiclesInfo, new Dictionary<long, AchievementsDto>());
+
+            return playerPrivateInfo;
+        }
     }
 }

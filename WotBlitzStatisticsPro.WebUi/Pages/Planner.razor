@@ -15,8 +15,22 @@
 {
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <div class="container-fluid d-flex align-items-center">
-        <div class="navbar-nav me-auto mb-2 mb-lg-0">
-        @PlayerId
+        <div class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+            <div class="me-3">
+                <b>@PlayerInfo?.Nickname</b>
+            </div>
+            <div class="me-2">
+                <img src="icons/profile.private.gold.scale-200.png" width="32px" height="32px">
+                @PlayerInfo?.Gold.ToString("N0")
+            </div>
+            <div class="me-2">
+                <img src="icons/profile.private.silver.scale-200.png" width="32px" height="32px">
+                @Credits()
+            </div>
+            <div>
+                <img src="icons/profile.private.xp.scale-200.png" width="32px" height="32px">
+                @FreeXp()
+            </div>
         </div>
         <button type="button" class="btn btn-primary"
         @onclick="@(async (e) => { await Logout(); })">

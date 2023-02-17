@@ -2,7 +2,8 @@ namespace WotBlitzStatisticsPro.Application.Services
 {
     public class PlayerRequestsHandler
         : IRequestHandler<FindPlayersRequest, List<ShortPlayerInfoDto>>,
-        IRequestHandler<GetPlayerInfoRequest, PlayerInfoDto>
+        IRequestHandler<GetPlayerInfoRequest, PlayerInfoDto>,
+        IRequestHandler<GetPlayerPrivateInfoRequest, PlayerPrivateInfoDto>
     {
         private readonly IFindPlayersService _findPlayersService;
         private readonly IPlayerInfoService _playerInfoService;
@@ -27,6 +28,14 @@ namespace WotBlitzStatisticsPro.Application.Services
             playerInfo.ClanInfo = await _clanInfoService.GetClanInfo(request.accountId, language);
 
             return playerInfo;
+        }
+
+        public async Task<PlayerPrivateInfoDto> Handle(GetPlayerPrivateInfoRequest request, CancellationToken cancellationToken)
+        {
+            var language = request.Locale.ConvertCulture();
+            var playerPrivateInfo = await _playerInfoService.GetPlayerPrivateInfo(request.AccountId, language, request.AccessToken);
+
+            return playerPrivateInfo;
         }
     }
 }

@@ -30,5 +30,21 @@ namespace WotBlitzStatisticsPro.Application.Mappers
                 Xp = wotAccountInfo?.Statistics?.All?.Xp ?? 0
             };
         }
+
+        
+        public static PlayerPrivateInfoDto ToPlayerPrivateInfo(this WotAccountInfo player)
+        {
+            return new PlayerPrivateInfoDto
+            {
+                AccountId = player.AccountId,
+                Nickname = player.Nickname ?? string.Empty,
+                BattleLifeTimeInSeconds = player.Private?.BattleLifeTimeInSeconds ?? 0,
+                Credits = player.Private?.Credits ?? 0,
+                FreeXp = player.Private?.FreeXp ?? 0,
+                Gold = player.Private?.Gold ?? 0,
+                IsPremium = player.Private?.IsPremium ?? false,
+                PremiumExpiresAt = player.Private?.PremiumExpiresAt != null ? player.Private.PremiumExpiresAt.Value.ToDateTime() : new DateTime(1970, 1, 1)
+            };
+        }
     }
 }

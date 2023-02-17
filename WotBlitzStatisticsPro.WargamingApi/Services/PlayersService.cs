@@ -3,7 +3,8 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
     public class PlayersService : 
         IRequestHandler<GetAccountsListRequest, List<WotAccountListResponse>>,
         IRequestHandler<GetBunchOfAccountsRequest, List<WotAccountInfo>>,
-        IRequestHandler<GetAccountStatisticsRequest, WotAccountInfo>
+        IRequestHandler<GetAccountStatisticsRequest, WotAccountInfo>,
+        IRequestHandler<GetAccountPrivateInfoRequest, WotAccountInfo>
     {
         private readonly IWargamingClient _wargamingClient;
 
@@ -41,5 +42,18 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
                     $"account_id={request.AccountId}").ConfigureAwait(false);
             return account?[request.AccountId.ToString()] ?? new WotAccountInfo();
         }
+
+        public async Task<WotAccountInfo> Handle(GetAccountPrivateInfoRequest request, CancellationToken cancellationToken)
+        {
+            // https://api.wotblitz.eu/wotb/account/info/?application_id=7026c24084fc704a9b73d8b35c5ff45a&account_id=571050560&access_token=3ce71f89155c03cd3a33d0a8644396510c15ab06&fields=account_id%2Cnickname%2Cprivate
+            var account = await _wargamingClient.GetFromBlitzApi<Dictionary<string, WotAccountInfo>>(
+                    request.Language,
+                    "account/info/",
+                    $"account_id={request.AccountId}",
+                    $"access_token={request.AccessToken}",
+                    "fields=account_id,nickname,private").ConfigureAwait(false);
+            return account?[request.AccountId.ToString()] ?? new WotAccountInfo();
+        }
+
     }
 }

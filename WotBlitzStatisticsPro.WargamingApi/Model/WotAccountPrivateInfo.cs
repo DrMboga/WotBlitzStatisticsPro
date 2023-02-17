@@ -48,7 +48,7 @@ namespace WotBlitzStatisticsPro.WargamingApi.Model
 		/// Premium account expiration time
 		///</summary>
 		[JsonPropertyName("premium_expires_at")]
-		private int? PremiumExpiresAt { get; set; }
+		public int? PremiumExpiresAt { get; set; }
 
 		///<summary>
 		/// Group of contacts.
