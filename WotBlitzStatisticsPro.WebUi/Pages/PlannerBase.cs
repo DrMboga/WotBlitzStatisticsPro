@@ -19,6 +19,8 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
 
         public PlayerPrivateInfoDto? PlayerInfo { get; set; }
 
+        public TanksPlannerDialog? TanksPlannerDialog { get; set; }
+
         protected async override Task OnInitializedAsync()
         {
             if(Mediator != null)
@@ -42,6 +44,14 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
                 await Mediator.Publish(new LogoutPlayerNotification());
                 IsPlayerLoggedIn = false;
                 PlayerInfo = null;
+            }
+        }
+
+        public async Task AddNewTank()
+        {
+            if(TanksPlannerDialog != null && PlayerInfo?.Tanks != null) 
+            {
+                await TanksPlannerDialog.Open(PlayerInfo.Tanks);
             }
         }
 

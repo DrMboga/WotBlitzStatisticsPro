@@ -37,6 +37,13 @@
         <img src="icons/navigation.exit.scale-200.png" width="32px" height="32px"></button>
     </div>
 </nav>
+<div class="d-flex justify-content-evenly">
+    <button type="button" class="btn btn-warning mt-3"
+        @onclick="@(async (e) => { await AddNewTank(); })">
+        @Localize["Add new tank"]</button>
+</div>
 }
 
 }
+
+<TanksPlannerDialog @ref="TanksPlannerDialog"></TanksPlannerDialog>
