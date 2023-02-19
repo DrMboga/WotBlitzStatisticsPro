@@ -1,14 +1,54 @@
 @inject IMediator Mediator
+@inject IStringLocalizer<App> Localize
 
 <div class="modal @ModalClass" id="bootstrapModal" role="dialog" tabindex="-1" aria-labelledby="bootstrapModalLabel" style="display:@ModalDisplay">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="bootstrapModalLabel">Hi there</h5>
+        <h5 class="modal-title" id="bootstrapModalLabel">@Title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="() => Close()"></button>
       </div>
       <div class="modal-body">
-        bodyyy
+        @if(VehiclesByNations != null)
+        {
+          <div class="accordion" id="nationsAccorion">
+          @foreach (var vehicleNationKeyValue in VehiclesByNations)
+          {
+              <div class="accordion-item">
+              <h2 class="accordion-header" id="@($"Header_{vehicleNationKeyValue.Key}")">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="@($"#Collapse_{vehicleNationKeyValue.Key}")" aria-expanded="false" aria-controls="@($"Collapse_{vehicleNationKeyValue.Key}")">
+                  <img src="@(vehicleNationKeyValue.Key.NationAsset())" width="55px" height="32px">
+                </button>
+              </h2>
+              <div id="@($"Collapse_{vehicleNationKeyValue.Key}")" class="accordion-collapse collapse" aria-labelledby="@($"Header_{vehicleNationKeyValue.Key}")" data-bs-parent="#nationsAccorion">
+                <div class="accordion-body">
+                  <table class="table">
+                      <tbody>
+                          @foreach (var vehiclesRow in vehicleNationKeyValue.Value)
+                          {
+                              <tr>
+                                @foreach (var vehicle in vehiclesRow)
+                                {
+                                  <td>
+                                  <div>
+                                    @vehicle.Tier.RomanNumber()
+                                    <img src="@(vehicle.Type.TankTypeAsset(vehicle.IsPremium))" width="32px" height="32px">
+                                    <img src="@vehicle.PreviewImage.ToLocalVehiclesUrl()" width="72px" height="53px">
+                                    <b>@vehicle.Name</b>
+                                  </div>
+                                  </td>
+                                }
+                              </tr>
+                          }
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          }
+          </div>
+
+        }
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @onclick="() => Close()">Ok</button>
@@ -24,20 +64,27 @@
 
 @code {
 
-    public TankInfoDto[] Tanks { get; set; }
+    public TankInfoDto[]? Tanks { get; set; }
 
     public bool Hidden { get; set; } = true;
 
     public string ModalDisplay { get; set; } = "none;";
     public string ModalClass { get; set; } = "";
 
+    public string Title { get; set; } = string.Empty;
+
+    public Dictionary<string, List<DictionaryVehicleDto[]>>? VehiclesByNations { get; set; }
+
     public async Task Open(TankInfoDto[] tanks)
     {
-
+        Title = Localize["Select tank"];
         ModalDisplay = "block;";
         ModalClass = "Show";
         Hidden = false;
-        @* PlayerSessionInfo = await Mediator.Send(new GetTankSessionInfoRequest(Tank.AccountId, Tank.TankId)); *@
+
+        Tanks = tanks;
+        await BuildVehicles();      
+
         StateHasChanged();
     }
 
@@ -47,5 +94,49 @@
         ModalClass = "";
         Hidden = true;
         StateHasChanged();
+    }
+
+    private async Task BuildVehicles()
+    {
+      if(Tanks == null)
+      {
+        return;
+      }
+      var existingTankIds = Tanks.Select(t => t.TankId).ToList();
+      var vehicles = await Mediator.Send(new GetDictionaryVehiclesRequest());
+
+      var vehiclesFiltered = vehicles.Where(v => v.Tier > 6 && v.IsPremium == false && !existingTankIds.Contains(v.TankId)).ToArray();
+
+      if(vehiclesFiltered.Length == 0)
+      {
+        return;
+      }
+
+      VehiclesByNations = new Dictionary<string, List<DictionaryVehicleDto[]>>();
+      var tenTiers = vehiclesFiltered.Where(v => v.Tier == 10);
+      foreach (var tenTier in tenTiers)
+      {
+        var currentRow = new List<DictionaryVehicleDto> { tenTier };
+        var allFilteredVehiclesByNation = vehiclesFiltered.Where(v => v.Nation == tenTier.Nation).ToArray();
+        long currentTankId = tenTier.TankId;
+        for (int i = 0; i < 5; i++)
+        {
+          var previousTank = allFilteredVehiclesByNation.FirstOrDefault(v => v.nextTanks?.Select(n => n.NextTankId).Contains(currentTankId) ?? false);
+          if(previousTank == null)
+          {
+            break;
+          }
+          currentTankId = previousTank.TankId;
+          currentRow.Add(previousTank);
+        }
+
+        if (VehiclesByNations.ContainsKey(tenTier.Nation)) {
+          VehiclesByNations[tenTier.Nation].Add(currentRow.ToArray());
+        }
+        else
+        {
+          VehiclesByNations.Add(tenTier.Nation, new List<DictionaryVehicleDto[]> { currentRow.ToArray() });
+        }
+      }
     }
 }
