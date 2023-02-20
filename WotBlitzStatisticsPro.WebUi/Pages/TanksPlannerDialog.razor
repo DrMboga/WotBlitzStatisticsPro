@@ -30,11 +30,17 @@
                                 @foreach (var vehicle in vehiclesRow)
                                 {
                                   <td>
-                                  <div>
-                                    @vehicle.Tier.RomanNumber()
-                                    <img src="@(vehicle.Type.TankTypeAsset(vehicle.IsPremium))" width="32px" height="32px">
-                                    <img src="@vehicle.PreviewImage.ToLocalVehiclesUrl()" width="72px" height="53px">
-                                    <b>@vehicle.Name</b>
+                                  <div class="tank-card d-flex flex-column justify-content-center @(SelectedTank != null && SelectedTank.TankId == vehicle.TankId ? "tank-selected" : "")" @onclick="() => SelectedTank = vehicle">
+                                    <div>
+                                      @vehicle.Tier.RomanNumber()
+                                      <img src="@(vehicle.Type.TankTypeAsset(vehicle.IsPremium))" width="32px" height="32px">
+                                    </div>
+                                    <div>
+                                      <img src="@vehicle.PreviewImage.ToLocalVehiclesUrl()" width="72px" height="53px">
+                                    </div>
+                                    <div>
+                                      <b>@vehicle.Name</b>
+                                    </div>
                                   </div>
                                   </td>
                                 }
@@ -51,7 +57,17 @@
         }
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @onclick="() => Close()">Ok</button>
+        @if(SelectedTank != null)
+        {
+          <div class="input-group mb-3">
+            @SelectedTank.Name
+            <span class="input-group-text">@Localize["Discount"]</span>
+            <input type="text" class="form-control" aria-label="@Localize["Discount"]">
+            <span class="input-group-text">@Localize["Equipment count"]</span>
+            <input type="text" class="form-control" aria-label="@Localize["Equipment count"]">
+          </div>
+        }
+        <button type="button" class="btn btn-primary" disabled="@(SelectedTank == null)" data-bs-dismiss="modal" @onclick="async () => await AddTankToPlan()">Add</button>
       </div>
     </div>
   </div>
@@ -75,6 +91,12 @@
 
     public Dictionary<string, List<DictionaryVehicleDto[]>>? VehiclesByNations { get; set; }
 
+    public DictionaryVehicleDto? SelectedTank { get; set; }
+
+    public int CertificateDiscount { get; set; }
+
+    public int EquipmentNumber { get; set; } = 7;
+
     public async Task Open(TankInfoDto[] tanks)
     {
         Title = Localize["Select tank"];
@@ -94,6 +116,14 @@
         ModalClass = "";
         Hidden = true;
         StateHasChanged();
+    }
+
+    public async Task AddTankToPlan()
+    {
+      // TODO: mediator message
+      SelectedTank = null;
+      CertificateDiscount = 0;
+      EquipmentNumber = 7;
     }
 
     private async Task BuildVehicles()

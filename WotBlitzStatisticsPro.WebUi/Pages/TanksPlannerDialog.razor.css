@@ -1,0 +1,10 @@
+.tank-card {
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: #1d2d40;
+  border-style: solid;
+}
+
+.tank-selected {
+  background-color: #464a5d;
+}
