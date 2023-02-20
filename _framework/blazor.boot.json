@@ -12,7 +12,7 @@
       "MediatR.Contracts.dll": "sha256-jbWZnge7bolAMw8ppWQLC7bKPAY6DjkJn2ezN9OXafU=",
       "MediatR.dll": "sha256-dKR6v33qDhsVhucBfy4sgiiaHEzONIqM9fzguFmt\/eg=",
       "MediatR.Extensions.Microsoft.DependencyInjection.dll": "sha256-dKmMnIcJqc3kPN0CzyHoAUcgrt8QH8hvlSW3NgY+Nfc=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-mxbib9vRw0FMuvHwshNFNMb48iv2hBFKfTiISFFhQE0=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-jJTVII4GZ\/M5hbImbm3RFYiS29NT9O238cI86GYr4QU=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-yGqnIcG596haaxxmG4gZoLL\/AFDlC6SdqW9eNBCLELg=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-zeChqJKToPrh82PpvRa1B\/bvt1QgLa+LOhAzHi88OEE=",
       "Microsoft.AspNetCore.WebUtilities.dll": "sha256-D5akJeBd7NNITuzAXxlX7zl2jfsc4uTKyeEKwwNhqoo=",
@@ -92,7 +92,7 @@
       "WotBlitzStatisticsPro.dll": "sha256-kl215JX3N8nT99zsx4QEiuMziqTFs29gLVH2ZQynpss=",
       "WotBlitzStatisticsPro.Persistence.dll": "sha256-nSLFAf5TlNh0cnKV3pwwL2q4d3vgVMDx5Oy1dm\/1H9g=",
       "WotBlitzStatisticsPro.WargamingApi.dll": "sha256-RyvzAOPkvwblznt4bLJa+tyy1IR0UoifSLENU8EuQ8M=",
-      "WotBlitzStatisticsPro.WebUi.dll": "sha256-fQDDmnJbfJKZ6yJk1uy8Pj3FGKMktk+3ahM2Ho2IRFM="
+      "WotBlitzStatisticsPro.WebUi.dll": "sha256-pkLq6g6V+6Sl2sVoydt61E1UOgROtvfkBCO5sp70f8c="
     },
     "extensions": null,
     "lazyAssembly": null,
