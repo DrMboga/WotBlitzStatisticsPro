@@ -2661,7 +2661,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-KVlwv+8WEr84Cow+HZcgnjLF3wdsN5u6pGruYAi764U=",
+      "hash": "sha256-FuWm8Gl9BugKuFuMTgOSo3ow\/FBDF5toGbEIAxcmCWA=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2677,7 +2677,7 @@
       "url": "_framework\/MediatR.Extensions.Microsoft.DependencyInjection.dll"
     },
     {
-      "hash": "sha256-aolFR9wwz+W1qfCTjhv1T+0U+wur31OTwQzJzBEOIrs=",
+      "hash": "sha256-mxbib9vRw0FMuvHwshNFNMb48iv2hBFKfTiISFFhQE0=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -2997,7 +2997,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-h9ZJktSnLQx2mMDn1X6wECYmxtLWo4Yhj0l67BpttOs=",
+      "hash": "sha256-fQDDmnJbfJKZ6yJk1uy8Pj3FGKMktk+3ahM2Ho2IRFM=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -3021,7 +3021,7 @@
       "url": "_framework\/ru\/WotBlitzStatisticsPro.WebUi.resources.dll"
     },
     {
-      "hash": "sha256-qKGps0WmJNXVJLnVFkZHG\/7QO7w+n6aUL3\/lbk82sd4=",
+      "hash": "sha256-cSJKCsg3xDzzVQPH3W\/MXRAQmDmhgJMofCw0A5IFPpY=",
       "url": "WotBlitzStatisticsPro.WebUi.styles.css"
     },
     {
@@ -3029,5 +3029,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "tv2kh8rN"
+  "version": "0Yywjuo4"
 };
