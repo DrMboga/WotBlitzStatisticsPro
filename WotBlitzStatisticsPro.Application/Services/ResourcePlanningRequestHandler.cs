@@ -1,7 +1,8 @@
 namespace WotBlitzStatisticsPro.Application.Services
 {
     public class ResourcePlanningRequestHandler
-        : INotificationHandler<AddResourcePlanningNotification>
+        : INotificationHandler<AddResourcePlanningNotification>,
+        IRequestHandler<GetResourcePlansRequest, ResourcePlanDto[]?>
     {
         private readonly IMediator _mediator;
 
@@ -30,6 +31,12 @@ namespace WotBlitzStatisticsPro.Application.Services
                 maxOrder + 1, 
                 notification.SaleCert, 
                 notification.PlanningEquipment));
+        }
+
+        public async Task<ResourcePlanDto[]?> Handle(GetResourcePlansRequest request, CancellationToken cancellationToken)
+        {
+            var allPlans = await _mediator.Send(new GetPlanningByAccountId(request.AccountId));
+            return allPlans.ToResourcePlanDto();
         }
     }
 }

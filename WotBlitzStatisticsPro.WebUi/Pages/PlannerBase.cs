@@ -21,6 +21,8 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
 
         public TanksPlannerDialog? TanksPlannerDialog { get; set; }
 
+        public ResourcePlanDto[]? ResourcePlans { get; set; }
+
         protected async override Task OnInitializedAsync()
         {
             if(Mediator != null)
@@ -33,6 +35,7 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
                         playerState.LoggedInAccountId.Value, 
                         CultureInfo.CurrentCulture.Name,
                         playerState.WgToken));
+                    ResourcePlans = await Mediator.Send(new GetResourcePlansRequest(playerState.LoggedInAccountId.Value));
                 }
             }
         }
@@ -52,6 +55,11 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
             if(TanksPlannerDialog != null && PlayerInfo?.Tanks != null) 
             {
                 await TanksPlannerDialog.Open(PlayerInfo.Tanks);
+                if (Mediator != null && PlayerInfo != null)
+                {
+                    ResourcePlans = await Mediator.Send(new GetResourcePlansRequest(PlayerInfo.AccountId));
+                    StateHasChanged();
+                }
             }
         }
 

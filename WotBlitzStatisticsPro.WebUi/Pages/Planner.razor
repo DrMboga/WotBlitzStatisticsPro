@@ -42,6 +42,17 @@
         @onclick="@(async (e) => { await AddNewTank(); })">
         @Localize["Add new tank"]</button>
 </div>
+@if(ResourcePlans != null)
+{
+    <div class="d-flex flex-column">
+@foreach (var planRow in ResourcePlans)
+{
+    <div>
+        @planRow.TankId
+    </div>
+}
+    </div>
+}
 }
 
 }
