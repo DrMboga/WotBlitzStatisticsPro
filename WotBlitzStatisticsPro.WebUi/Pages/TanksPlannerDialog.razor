@@ -59,12 +59,14 @@
       <div class="modal-footer">
         @if(SelectedTank != null)
         {
-          <div class="input-group mb-3">
-            @SelectedTank.Name
+          <div class="input-group mb-3 d-flex align-items-center">
+            <div class="me-3">
+              @SelectedTank.Name
+            </div>
             <span class="input-group-text">@Localize["Discount"]</span>
-            <input type="text" class="form-control" aria-label="@Localize["Discount"]">
+            <input type="text" class="form-control" aria-label="@Localize["Discount"]" @bind="CertificateDiscount">
             <span class="input-group-text">@Localize["Equipment count"]</span>
-            <input type="text" class="form-control" aria-label="@Localize["Equipment count"]">
+            <input type="text" class="form-control" aria-label="@Localize["Equipment count"]" @bind="EquipmentNumber">
           </div>
         }
         <button type="button" class="btn btn-primary" disabled="@(SelectedTank == null)" data-bs-dismiss="modal" @onclick="async () => await AddTankToPlan()">Add</button>
@@ -121,6 +123,9 @@
     public async Task AddTankToPlan()
     {
       // TODO: mediator message
+
+      Console.WriteLine($"discount {CertificateDiscount}; Equipment {EquipmentNumber}");
+
       SelectedTank = null;
       CertificateDiscount = 0;
       EquipmentNumber = 7;
