@@ -18,7 +18,9 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         IRequestHandler<GetLastTwoPlayerSessionsRequest, PlayerSession[]?>,
         IRequestHandler<GetLastTwoTankSessionRequest, PlayerTankSession[]?>,
         INotificationHandler<UpdateLoginInfoNotification>,
-        INotificationHandler<ClearAuthStateNotification>
+        INotificationHandler<ClearAuthStateNotification>,
+        IRequestHandler<GetPlanningByAccountId, List<ResourcePlanning>?>,
+        INotificationHandler<AddNewPlanningNotification>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -210,6 +212,28 @@ namespace WotBlitzStatisticsPro.Persistence.Services
                 state.WgToken = null;
                 state.WgTokenExpiration = null;
             }
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<ResourcePlanning>?> Handle(GetPlanningByAccountId request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.ResourcePlanning.AsNoTracking()
+                    .Where(p => p.AccountId == request.AccountId)
+                    .ToListAsync();
+        }
+
+        public async Task Handle(AddNewPlanningNotification notification, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            await dbContext.ResourcePlanning.AddAsync(new ResourcePlanning{
+                AccountId = notification.AccountId,
+                TankId = notification.TankId,
+                Order = notification.Order,
+                SaleCert = notification.SaleCert,
+                PlanningEquipment = notification.PlanningEquipment
+            });
 
             await dbContext.SaveChangesAsync();
         }

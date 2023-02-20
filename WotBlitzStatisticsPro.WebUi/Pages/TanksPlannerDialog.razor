@@ -122,9 +122,11 @@
 
     public async Task AddTankToPlan()
     {
-      // TODO: mediator message
-
-      Console.WriteLine($"discount {CertificateDiscount}; Equipment {EquipmentNumber}");
+      if (SelectedTank == null)
+      {
+        return;
+      }
+      await Mediator.Publish(new AddResourcePlanningNotification(SelectedTank.TankId, ((decimal)CertificateDiscount/100m), EquipmentNumber));
 
       SelectedTank = null;
       CertificateDiscount = 0;
