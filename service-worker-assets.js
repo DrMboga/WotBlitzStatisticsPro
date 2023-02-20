@@ -2661,7 +2661,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-IdRwaMDAKbhgB7gqCkZQDDzPDQE5CgKsJ1rttZ+5HdA=",
+      "hash": "sha256-peabCsS06XGAIp80YCLFf1ChXXSV8cDQE9865tlZsLU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2981,7 +2981,7 @@
       "url": "_framework\/System.Transactions.Local.dll"
     },
     {
-      "hash": "sha256-xpcygkjbfppwt5cJtmFLj+tlZGwQPCiZXXybQRl\/6+k=",
+      "hash": "sha256-rPLyjiK238caqj\/sXvukvTsA7UAdMGWvtfZGlMPrzFc=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.dll"
     },
     {
@@ -2989,7 +2989,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.dll"
     },
     {
-      "hash": "sha256-nSLFAf5TlNh0cnKV3pwwL2q4d3vgVMDx5Oy1dm\/1H9g=",
+      "hash": "sha256-SnF4vVaIZ4rSyyYDI7PzbDMddWdV8TRF+U6zxteZcsA=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.dll"
     },
     {
@@ -2997,7 +2997,7 @@
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.dll"
     },
     {
-      "hash": "sha256-pkLq6g6V+6Sl2sVoydt61E1UOgROtvfkBCO5sp70f8c=",
+      "hash": "sha256-nNVbb+3DCEHzos8BAC6hDfqkYkTSGoZowcrB3qVvoQE=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.dll"
     },
     {
@@ -3029,5 +3029,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "3XtvLzY7"
+  "version": "02kWygs0"
 };
