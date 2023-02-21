@@ -78,7 +78,7 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
                 }
                 var vehicles = await Mediator.Send(new GetDictionaryVehiclesRequest());
                 resourcePlans = resourcePlans
-                    .OrderByDescending(p => p.Bought)
+                    .OrderBy(p => p.Bought)
                     .ThenBy(p => p.Order)
                     .ToArray();
 
@@ -123,7 +123,11 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
 
         public async Task MarkTankAsBought(long tankId)
         {
-
+            if (Mediator == null || PlayerInfo == null)
+            {
+                return;
+            }
+            await Mediator.Publish(new MarkPlanTankAsBoughtNotification(PlayerInfo.AccountId, tankId));
 
             await RefreshTable();
             StateHasChanged();

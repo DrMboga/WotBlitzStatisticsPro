@@ -49,7 +49,7 @@
             <tbody>
     @foreach (var planRow in ResourcePlans)
     {
-        <tr>
+        <tr class="@(planRow.Bought == null ? "" : "table-secondary")">
             <td>@planRow.Order</td>
             <td><img src="@(planRow.TankNation.NationAsset())" width="55px" height="32px"></td>
             <td>
@@ -79,7 +79,7 @@
             }
             else
             {
-                planRow.Bought.Value.ToString("d");
+                @planRow.Bought.Value.ToString("d");
             }
             </td>
         </tr>

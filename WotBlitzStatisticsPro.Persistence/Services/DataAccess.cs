@@ -20,7 +20,8 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         INotificationHandler<UpdateLoginInfoNotification>,
         INotificationHandler<ClearAuthStateNotification>,
         IRequestHandler<GetPlanningByAccountId, List<ResourcePlanning>?>,
-        INotificationHandler<AddNewPlanningNotification>
+        INotificationHandler<AddNewPlanningNotification>,
+        INotificationHandler<UpdatePlanBoughtMarkNotification>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -236,6 +237,19 @@ namespace WotBlitzStatisticsPro.Persistence.Services
             });
 
             await dbContext.SaveChangesAsync();
+        }
+
+        public async Task Handle(UpdatePlanBoughtMarkNotification notification, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            var plan = await dbContext.ResourcePlanning
+                    .Where(p => p.AccountId == notification.AccountId && p.TankId == notification.TankId)
+                    .FirstOrDefaultAsync();
+            if (plan != null)
+            {
+                plan.Bought = notification.BuyDate;
+                await dbContext.SaveChangesAsync();
+            }
         }
 
         private async Task RemoveAllVehicles()

@@ -2,7 +2,8 @@ namespace WotBlitzStatisticsPro.Application.Services
 {
     public class ResourcePlanningRequestHandler
         : INotificationHandler<AddResourcePlanningNotification>,
-        IRequestHandler<GetResourcePlansRequest, ResourcePlanDto[]?>
+        IRequestHandler<GetResourcePlansRequest, ResourcePlanDto[]?>,
+        INotificationHandler<MarkPlanTankAsBoughtNotification>
     {
         private readonly IMediator _mediator;
 
@@ -37,6 +38,11 @@ namespace WotBlitzStatisticsPro.Application.Services
         {
             var allPlans = await _mediator.Send(new GetPlanningByAccountId(request.AccountId));
             return allPlans.ToResourcePlanDto();
+        }
+
+        public Task Handle(MarkPlanTankAsBoughtNotification notification, CancellationToken cancellationToken)
+        {
+            return _mediator.Publish(new UpdatePlanBoughtMarkNotification(notification.AccountId, notification.TankId, DateTime.Now));
         }
     }
 }
