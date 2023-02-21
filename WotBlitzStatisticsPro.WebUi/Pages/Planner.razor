@@ -44,13 +44,70 @@
 </div>
 @if(ResourcePlans != null)
 {
-    <div class="d-flex flex-column">
-@foreach (var planRow in ResourcePlans)
-{
-    <div>
-        @planRow.TankId
-    </div>
-}
+    <div class="d-flex flex-column justify-content-evenly">
+        <table class="table">
+            <tbody>
+    @foreach (var planRow in ResourcePlans)
+    {
+        <tr>
+            <td>@planRow.Order</td>
+            <td><img src="@(planRow.TankNation.NationAsset())" width="55px" height="32px"></td>
+            <td>
+                @planRow.TankTier.RomanNumber()
+                <img src="@(planRow.TankType.TankTypeAsset(false))" width="32px" height="32px">
+            </td>
+            <td>
+                <img src="@planRow.TankPreview.ToLocalVehiclesUrl()" width="72px" height="53px">
+            </td>
+            <td>
+                <b>@planRow.TankName</b>
+            </td>
+            <td>
+                <img src="icons/profile.private.silver.scale-200.png" width="32px" height="32px">
+                @Truncate(planRow.TankPriceWithEquipmentAndDiscount)
+            </td>
+            <td>
+                <img src="icons/xp.avg.scale-200.png" width="32px" height="32px">
+                @Truncate(planRow.TotalNonDefaultModulesPriceXp)
+            </td>
+            <td>
+            @if(planRow.Bought == null)
+            {
+                <button type="button" class="btn btn-warning mt-3"
+                        @onclick="@(async (e) => { await MarkTankAsBought(planRow.TankId); })">
+                        @Localize["Mark as bought"]</button>
+            }
+            else
+            {
+                planRow.Bought.Value.ToString("d");
+            }
+            </td>
+        </tr>
+    }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>@TotalCount</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <img src="icons/profile.private.silver.scale-200.png" width="32px" height="32px">
+                        @if(TotalPrice.HasValue){
+                        @Truncate(TotalPrice.Value)
+                        }
+                    </td>
+                    <td>
+                        <img src="icons/xp.avg.scale-200.png" width="32px" height="32px">
+                        @if(TotalXp.HasValue){
+                        @Truncate(TotalXp.Value)
+                        }
+                    </td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 }
 }

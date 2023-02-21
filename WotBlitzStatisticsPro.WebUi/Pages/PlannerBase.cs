@@ -3,7 +3,9 @@ using MediatR;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using WotBlitzStatisticsPro.Application.Dto;
+using WotBlitzStatisticsPro.Application.Helpers;
 using WotBlitzStatisticsPro.Application.Messages;
+using WotBlitzStatisticsPro.WebUi.Model;
 
 namespace WotBlitzStatisticsPro.WebUi.Pages
 {
@@ -21,7 +23,13 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
 
         public TanksPlannerDialog? TanksPlannerDialog { get; set; }
 
-        public ResourcePlanDto[]? ResourcePlans { get; set; }
+        public ResourcePlanTableRow[]? ResourcePlans { get; set; }
+
+        public int? TotalCount { get; set; }
+
+        public long? TotalPrice { get; set; }
+
+        public long? TotalXp { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -35,7 +43,7 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
                         playerState.LoggedInAccountId.Value, 
                         CultureInfo.CurrentCulture.Name,
                         playerState.WgToken));
-                    ResourcePlans = await Mediator.Send(new GetResourcePlansRequest(playerState.LoggedInAccountId.Value));
+                    await RefreshTable();
                 }
             }
         }
@@ -55,12 +63,70 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
             if(TanksPlannerDialog != null && PlayerInfo?.Tanks != null) 
             {
                 await TanksPlannerDialog.Open(PlayerInfo.Tanks);
-                if (Mediator != null && PlayerInfo != null)
-                {
-                    ResourcePlans = await Mediator.Send(new GetResourcePlansRequest(PlayerInfo.AccountId));
-                    StateHasChanged();
-                }
+                // TODO: Refresh table
             }
+        }
+
+        public async Task RefreshTable()
+        {
+            if (Mediator != null && PlayerInfo != null)
+            {
+                var resourcePlans = await Mediator.Send(new GetResourcePlansRequest(PlayerInfo.AccountId));
+                if (resourcePlans == null)
+                {
+                    return;
+                }
+                var vehicles = await Mediator.Send(new GetDictionaryVehiclesRequest());
+                resourcePlans = resourcePlans
+                    .OrderByDescending(p => p.Bought)
+                    .ThenBy(p => p.Order)
+                    .ToArray();
+
+                var resourcePlansRows = new List<ResourcePlanTableRow>();
+
+                foreach (var resourcePlan in resourcePlans)
+                {
+                    var vehicle = vehicles.FirstOrDefault(v => v.TankId == resourcePlan.TankId);
+                    if(vehicle == null)
+                    {
+                        continue;
+                    }
+                    
+                    int equipmentPrice = vehicle.Tier.CalculateEquipment(resourcePlan.PlanningEquipment);
+                    long vehiclePriceWithDiscount = vehicle.PriceCredits == null 
+                        ? 0
+                        : Convert.ToInt64((decimal)vehicle.PriceCredits - ((decimal)vehicle.PriceCredits * resourcePlan.SaleCert));
+                    
+                    long modulesXpPrice = vehicle.Modules?.Where(m => m.IsDefault == false).Sum(m => m.PriceXp) ?? 0;
+
+                    resourcePlansRows.Add(new ResourcePlanTableRow(
+                        resourcePlan.Order,
+                        resourcePlan.TankId,
+                        vehicle.Nation,
+                        vehicle.Tier,
+                        vehicle.Type,
+                        vehicle.Name,
+                        vehicle.PreviewImage ?? string.Empty,
+                        vehicle.PriceCredits ?? 0,
+                        vehiclePriceWithDiscount + equipmentPrice,
+                        modulesXpPrice,
+                        resourcePlan.Bought
+                    ));
+                }
+
+                ResourcePlans = resourcePlansRows.ToArray();
+                TotalCount = ResourcePlans.Where(r => r.Bought == null).Count();
+                TotalPrice = ResourcePlans.Where(r => r.Bought == null).Sum(r => r.TankPriceWithEquipmentAndDiscount);
+                TotalXp = ResourcePlans.Where(r => r.Bought == null).Sum(r => r.TotalNonDefaultModulesPriceXp);
+            }
+        }
+
+        public async Task MarkTankAsBought(long tankId)
+        {
+
+
+            await RefreshTable();
+            StateHasChanged();
         }
 
         public string? Credits()
@@ -81,7 +147,7 @@ namespace WotBlitzStatisticsPro.WebUi.Pages
             return Truncate(PlayerInfo.FreeXp);
         }
 
-        private string Truncate(long amount)
+        public string Truncate(long amount)
         {
             if (amount < 1000)
             {
