@@ -19,13 +19,14 @@ namespace WotBlitzStatisticsPro.Application.Helpers
             new EquipmentPrice(9, 1, 250000),
             new EquipmentPrice(9, 2, 275000),
             new EquipmentPrice(9, 3, 300000),
-            new EquipmentPrice(19, 1, 300000),
+            new EquipmentPrice(10, 1, 300000),
             new EquipmentPrice(10, 2, 350000),
             new EquipmentPrice(10, 3, 400000),
         };
 
         public static int CalculateEquipment(this short tier, int equipmentNumber)
         {
+            Console.WriteLine($"Tier {tier}; {equipmentNumber}");
             if (tier < 5 || tier > 10 || equipmentNumber < 1 || equipmentNumber > 9)
             {
                 return 0;
