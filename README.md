@@ -2,6 +2,11 @@
 
 Detailed player &amp; tank statistics and history for [World of Tanks: Blitz](https://wotblitz.com/)
 
+![VehiclesList](readme.media/WotStats1.png)
+![E100](readme.media/WotStats2.png)
+![VehiclesTree](readme.media/WotStats3.png)
+
+- A Blazor WebAssembly application
 - Uses [Wargaming API Service](https://developers.wargaming.net/documentation/guide/getting-started/) for gathering players statistics
 - Stores statistics snapshots in local database
 - Allows to view players, their tanks and achievements statistics, and how it was change in time
