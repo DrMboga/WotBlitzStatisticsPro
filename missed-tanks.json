@@ -1,0 +1,74 @@
+[
+  {
+    "tankId": 26113,
+    "tier": 9,
+    "type": "heavyTank",
+    "nation": "ussr",
+    "isPremium": true,
+    "name": "Object 452K"
+  },
+  {
+    "tankId": 27425,
+    "tier": 9,
+    "type": "heavyTank",
+    "nation": "usa",
+    "isPremium": true,
+    "name": "TL-7-120"
+  },
+  {
+    "tankId": 5425,
+    "tier": 10,
+    "type": "heavyTank",
+    "nation": "china",
+    "isPremium": false,
+    "name": "WZ-113"
+  },
+  {
+    "tankId": 7169,
+    "tier": 10,
+    "type": "heavyTank",
+    "nation": "ussr",
+    "isPremium": false,
+    "name": "IS-7"
+  },
+  {
+    "tankId": 10609,
+    "tier": 7,
+    "type": "mediumTank",
+    "nation": "other",
+    "isPremium": true,
+    "name": "Magnate"
+  },
+  {
+    "tankId": 10865,
+    "tier": 8,
+    "type": "mediumTank",
+    "nation": "other",
+    "isPremium": true,
+    "name": "Fixer"
+  },
+  {
+    "tankId": 11377,
+    "tier": 7,
+    "type": "mediumTank",
+    "nation": "other",
+    "isPremium": true,
+    "name": "Basilisk"
+  },
+  {
+    "tankId": 17025,
+    "tier": 8,
+    "type": "heavyTank",
+    "nation": "european",
+    "isPremium": false,
+    "name": "Progetto CC55 mod.54"
+  },
+  {
+    "tankId": 20545,
+    "tier": 5,
+    "type": "heavyTank",
+    "nation": "france",
+    "isPremium": true,
+    "name": "Renault G1"
+  }
+]
