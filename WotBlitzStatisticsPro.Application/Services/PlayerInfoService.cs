@@ -5,10 +5,12 @@ namespace WotBlitzStatisticsPro.Application.Services
     public class PlayerInfoService : IPlayerInfoService
     {
         private readonly IMediator _mediator;
+        private readonly IStaticData _staticData;
 
-        public PlayerInfoService(IMediator mediator)
+        public PlayerInfoService(IMediator mediator, IStaticData staticData)
         {
             _mediator = mediator;
+            _staticData = staticData;
         }
 
         public async Task<PlayerInfoDto> GetFullPlayerStatistics(long accountId, RequestLanguage language)
@@ -29,6 +31,11 @@ namespace WotBlitzStatisticsPro.Application.Services
             await _mediator.Publish(new CheckAndUpdateDictionariesNotification(language));
 
             var vehiclesInfo = await _mediator.Send(new GetVehiclesByIdsRequest(tankIds));
+            var missedVehicles = await _staticData.GetMissedVehicles();
+            if (vehiclesInfo != null)
+            {
+                vehiclesInfo = [.. vehiclesInfo, .. missedVehicles];
+            }
 
             playerInfo.Tanks = tanksSTatistics.ToTankInfoDto(vehiclesInfo, tankAchievementsDto);
 
