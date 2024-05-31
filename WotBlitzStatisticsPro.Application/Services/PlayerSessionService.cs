@@ -3,7 +3,9 @@ namespace WotBlitzStatisticsPro.Application.Services
     public class PlayerSessionService : 
         INotificationHandler<SaveNewPlayerSessionNotification>,
         IRequestHandler<GetPlayerSessionInfoRequest, SessionInfoDto?>,
-        IRequestHandler<GetTankSessionInfoRequest, SessionInfoDto?>
+        IRequestHandler<GetTankSessionInfoRequest, SessionInfoDto?>,
+        IRequestHandler<GetPlayerHistoryRequest, SessionHistoryItemDto[]>,
+        IRequestHandler<GetTankHistoryRequest, SessionHistoryItemDto[]>
     {
         private readonly IMediator _mediator;
 
@@ -75,6 +77,38 @@ namespace WotBlitzStatisticsPro.Application.Services
                 lastTwoSessions[0].SurvivalRate - lastTwoSessions[1].SurvivalRate,
                 Convert.ToDecimal(lastTwoSessions[0].Wn7 - lastTwoSessions[1].Wn7)
             );
+        }
+
+        public async Task<SessionHistoryItemDto[]> Handle(GetPlayerHistoryRequest request, CancellationToken cancellationToken)
+        {
+            var result = new List<SessionHistoryItemDto>();
+            var playerDbHistory = await _mediator.Send(new GetPlayerHistoryDbRequest(request.AccountId, 5));
+
+            if (playerDbHistory != null)
+            {
+                foreach (var player in playerDbHistory)
+                {
+                    result.Add(player.ToSessionHistoryItem());
+                }
+            }
+
+            return [..result];
+        }
+
+        public async Task<SessionHistoryItemDto[]> Handle(GetTankHistoryRequest request, CancellationToken cancellationToken)
+        {
+            var result = new List<SessionHistoryItemDto>();
+
+            var tankHistory = await _mediator.Send(new GetTankHistoryDbRequest(request.AccountId, request.TankId, 5));
+            if (tankHistory != null)
+            {
+                foreach (var tank in tankHistory)
+                {
+                    result.Add(tank.ToSessionHistoryItem());
+                }
+            }            
+
+            return [..result];
         }
     }
 }

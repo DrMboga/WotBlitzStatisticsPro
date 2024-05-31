@@ -478,3 +478,5 @@ $RECYCLE.BIN/
 
 *.pdn
 WotBlitzStatisticsPro.WebUi/wwwroot/appsettings.Development.json
+
+.idea

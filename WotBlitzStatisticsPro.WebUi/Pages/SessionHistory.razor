@@ -1,0 +1,8 @@
+﻿<h3>SessionHistory</h3>
+
+Count: @History.Count()
+
+@code {
+    [Parameter]
+    public SessionHistoryItemDto[] History { get; set; } = [];
+}

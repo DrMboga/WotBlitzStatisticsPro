@@ -21,7 +21,9 @@ namespace WotBlitzStatisticsPro.Persistence.Services
         INotificationHandler<ClearAuthStateNotification>,
         IRequestHandler<GetPlanningByAccountId, List<ResourcePlanning>?>,
         INotificationHandler<AddNewPlanningNotification>,
-        INotificationHandler<UpdatePlanBoughtMarkNotification>
+        INotificationHandler<UpdatePlanBoughtMarkNotification>,
+        IRequestHandler<GetPlayerHistoryDbRequest, PlayerSession[]?>,
+        IRequestHandler<GetTankHistoryDbRequest, PlayerTankSession[]?>
     {
         private readonly ISqliteWasmDbContextFactory<WotBlitzStatisticsProContext> _contextFactory;
 
@@ -156,24 +158,14 @@ namespace WotBlitzStatisticsPro.Persistence.Services
 
         }
 
-        public async Task<PlayerSession[]?> Handle(GetLastTwoPlayerSessionsRequest request, CancellationToken cancellationToken)
+        public Task<PlayerSession[]?> Handle(GetLastTwoPlayerSessionsRequest request, CancellationToken cancellationToken)
         {
-            using var dbContext = await _contextFactory.CreateDbContextAsync();
-            return await dbContext.PlayerSessions.AsNoTracking()
-                                .Where(s => s.AccountId == request.AccountId)
-                                .OrderByDescending(s => s.LastBattleTime)
-                                .Take(2)
-                                .ToArrayAsync();
+            return Handle(new GetPlayerHistoryDbRequest(request.AccountId, 2), cancellationToken);
         }
 
-        public async Task<PlayerTankSession[]?> Handle(GetLastTwoTankSessionRequest request, CancellationToken cancellationToken)
+        public Task<PlayerTankSession[]?> Handle(GetLastTwoTankSessionRequest request, CancellationToken cancellationToken)
         {
-            using var dbContext = await _contextFactory.CreateDbContextAsync();
-            return await dbContext.PlayerTankSessions.AsNoTracking()
-                                .Where(s => s.AccountId == request.AccountId && s.TankId == request.TankId)
-                                .OrderByDescending(s => s.LastBattleTime)
-                                .Take(2)
-                                .ToArrayAsync();
+            return Handle(new GetTankHistoryDbRequest(request.AccountId, request.TankId, 2), cancellationToken);
         }
 
         public async Task Handle(UpdateLoginInfoNotification notification, CancellationToken cancellationToken)
@@ -250,6 +242,26 @@ namespace WotBlitzStatisticsPro.Persistence.Services
                 plan.Bought = notification.BuyDate;
                 await dbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task<PlayerSession[]?> Handle(GetPlayerHistoryDbRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.PlayerSessions.AsNoTracking()
+                                .Where(s => s.AccountId == request.AccountId)
+                                .OrderByDescending(s => s.LastBattleTime)
+                                .Take(request.Take)
+                                .ToArrayAsync();
+        }
+
+        public async Task<PlayerTankSession[]?> Handle(GetTankHistoryDbRequest request, CancellationToken cancellationToken)
+        {
+            using var dbContext = await _contextFactory.CreateDbContextAsync();
+            return await dbContext.PlayerTankSessions.AsNoTracking()
+                                .Where(s => s.AccountId == request.AccountId && s.TankId == request.TankId)
+                                .OrderByDescending(s => s.LastBattleTime)
+                                .Take(request.Take)
+                                .ToArrayAsync();
         }
 
         private async Task RemoveAllVehicles()

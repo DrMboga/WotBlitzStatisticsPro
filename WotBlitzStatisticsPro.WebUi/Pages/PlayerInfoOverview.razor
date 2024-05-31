@@ -8,6 +8,10 @@
         <div class="d-flex flex-column">
             <AchievementsCard Achievements="@Player?.Achievements"></AchievementsCard>
             <StatisticsCard Statistics="@Player" PlayerSessionInfo="@PlayerSessionInfo" AvgTier="@Player?.AvgTier"></StatisticsCard>
+            @if(History.Length > 0)
+            {
+                <SessionHistory History=@History></SessionHistory>
+            }
         </div>
     </div>
     </div>
@@ -72,6 +76,9 @@
 
     [Parameter]
     public SessionInfoDto? PlayerSessionInfo { get; set; }
+
+    [Parameter]
+    public SessionHistoryItemDto[] History { get; set; } = [];
 
     public int ResearchedTenTierTanksCount { get; set; }
 

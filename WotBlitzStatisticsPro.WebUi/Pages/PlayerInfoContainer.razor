@@ -52,7 +52,7 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
-            <PlayerInfoOverview Player="@Player" PlayerSessionInfo="@PlayerSessionInfo"></PlayerInfoOverview>
+            <PlayerInfoOverview Player="@Player" PlayerSessionInfo="@PlayerSessionInfo" History=@PlayerHistory></PlayerInfoOverview>
         </div>
         @* <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">...</div> *@
         <div class="tab-pane fade" id="tanks" role="tabpanel" aria-labelledby="tanks-tab">
@@ -89,11 +89,14 @@
 
     public bool SmallScreen { get; set; }  
 
+    public SessionHistoryItemDto[] PlayerHistory { get; set; } = [];
+
     protected override async Task OnInitializedAsync()
     {
         const int screenWidthThreshold = 1000;
         Player = await Mediator.Send(new GetPlayerInfoRequest(AccountId, CultureInfo.CurrentCulture.Name));
         PlayerSessionInfo = await Mediator.Send(new GetPlayerSessionInfoRequest(AccountId));
         SmallScreen = await Mediator.Send(new IsScreenLessThenValueRequest(screenWidthThreshold));
+        PlayerHistory = await Mediator.Send(new GetPlayerHistoryRequest(AccountId));
     }
 }

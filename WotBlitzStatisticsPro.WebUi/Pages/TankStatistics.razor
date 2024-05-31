@@ -22,6 +22,14 @@
                         <StatisticsCard Statistics="@Tank" PlayerSessionInfo="@PlayerSessionInfo"></StatisticsCard>
                     </div>
                 </div>
+                @if(History.Length > 0)
+                {
+                  <div class="card mt-2 ms-2">
+                      <div class="card-body">
+                          <SessionHistory History=@History></SessionHistory>
+                      </div>
+                  </div>
+                }
                 <div class="card mt-2 ms-2">
                     <div class="card-body">
                         <OverallStatistics Statistics="@Tank"></OverallStatistics>
@@ -46,6 +54,8 @@
     public TankInfoDto? Tank { get; set; }
     public SessionInfoDto? PlayerSessionInfo { get; set; }
 
+    public SessionHistoryItemDto[] History { get; set; } = [];
+
     public bool Hidden { get; set; } = true;
 
     public string ModalDisplay { get; set; } = "none;";
@@ -59,6 +69,7 @@
         ModalClass = "Show";
         Hidden = false;
         PlayerSessionInfo = await Mediator.Send(new GetTankSessionInfoRequest(Tank.AccountId, Tank.TankId));
+        History = await Mediator.Send(new GetTankHistoryRequest(Tank.AccountId, Tank.TankId));
         StateHasChanged();
     }
 
