@@ -8,7 +8,7 @@
         <div class="d-flex flex-column">
             <AchievementsCard Achievements="@Player?.Achievements"></AchievementsCard>
             <StatisticsCard Statistics="@Player" PlayerSessionInfo="@PlayerSessionInfo" AvgTier="@Player?.AvgTier"></StatisticsCard>
-            @if(History.Length > 0)
+            @if(History.Length > 2)
             {
                 <SessionHistory History=@History></SessionHistory>
             }

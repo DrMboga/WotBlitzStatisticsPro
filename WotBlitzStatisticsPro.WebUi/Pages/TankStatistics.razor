@@ -22,11 +22,11 @@
                         <StatisticsCard Statistics="@Tank" PlayerSessionInfo="@PlayerSessionInfo"></StatisticsCard>
                     </div>
                 </div>
-                @if(History.Length > 0)
+                @if(History.Length > 2)
                 {
                   <div class="card mt-2 ms-2">
                       <div class="card-body">
-                          <SessionHistory History=@History></SessionHistory>
+                          <SessionHistory History=@History Hidden=@Hidden></SessionHistory>
                       </div>
                   </div>
                 }
@@ -63,7 +63,6 @@
 
     public async Task Open(TankInfoDto tank)
     {
-        Console.WriteLine($"Tank {tank.Name}");
         Tank = tank;
         ModalDisplay = "block;";
         ModalClass = "Show";

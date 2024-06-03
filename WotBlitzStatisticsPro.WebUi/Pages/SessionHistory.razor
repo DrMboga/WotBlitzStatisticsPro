@@ -1,8 +1,114 @@
-﻿<h3>SessionHistory</h3>
-
-Count: @History.Count()
+﻿@implements IAsyncDisposable
+@inject IJSRuntime JsRuntime
+<div style="position: relative; width: 100%; height: 150px; margin: 10px;">
+    <canvas id="@WinRateId"></canvas>
+</div>
+<div style="position: relative; width: 100%; height: 150px; margin: 10px;">
+    <canvas id="@AvgDmgId"></canvas>
+</div>
+<div style="position: relative; width: 100%; height: 150px; margin: 10px;">
+    <canvas id="@Wn7Id"></canvas>
+</div>
 
 @code {
     [Parameter]
     public SessionHistoryItemDto[] History { get; set; } = [];
+
+    [Parameter]
+    public bool Hidden { get; set; } = false;
+
+    public string WinRateId {get;set;} = string.Empty;
+    public string AvgDmgId {get;set;} = string.Empty;
+    public string Wn7Id {get;set;} = string.Empty;
+
+    private IJSObjectReference _winRateChartRef = null;
+    private IJSObjectReference _dmgChartRef = null;
+    private IJSObjectReference _wn7ChartRef = null;
+
+    protected override void OnInitialized()
+    {
+        WinRateId = Guid.NewGuid().ToString();
+        AvgDmgId = Guid.NewGuid().ToString();
+        Wn7Id = Guid.NewGuid().ToString();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (Hidden)
+        {
+            if (_winRateChartRef != null)
+            {
+                await JsRuntime.InvokeVoidAsync("chartsHelper.removeData", _winRateChartRef);
+            }
+            if (_dmgChartRef != null)
+            {
+                await JsRuntime.InvokeVoidAsync("chartsHelper.removeData", _dmgChartRef);
+            }
+            if (_wn7ChartRef != null)
+            {
+                await JsRuntime.InvokeVoidAsync("chartsHelper.removeData", _wn7ChartRef);
+            }
+            return;
+        }
+        var chartData = History.OrderBy(h => h.BattleTime).ToArray();
+        var labels = chartData.Select(h => h.BattleTime.ToString("dd.MM.yy")).ToArray();
+        var winRateData = new ChartData {
+            Datasets = new [] {
+                new ChartDataSet {
+                    Data = chartData.Select(h => h.WinRate).ToArray(),
+                    BackgroundColor = "rgb(54, 162, 235)",
+                    BorderColor = "rgb(54, 162, 235)"
+                }
+            },
+            Labels = labels,
+        };
+        var dmgData = new ChartData {
+            Datasets = new [] {
+                new ChartDataSet {
+                    Data = chartData.Select(h => h.AvgDamage).ToArray(),
+                    BackgroundColor = "rgb(70, 140, 72)",
+                    BorderColor = "rgb(70, 140, 72)"
+                }
+            },
+            Labels = labels,
+        };
+        var wn7Data = new ChartData {
+            Datasets = new [] {
+                new ChartDataSet {
+                    Data = chartData.Select(h => h.Wn7).ToArray(),
+                    BackgroundColor = "rgb(204, 207, 62)",
+                    BorderColor = "rgb(204, 207, 62)"
+                }
+            },
+            Labels = labels,
+        };
+        if (firstRender)
+        {
+            _winRateChartRef = await JsRuntime.InvokeAsync<IJSObjectReference>("chartsHelper.BuildHistoryChart", WinRateId, "Winrate", winRateData);
+            _dmgChartRef = await JsRuntime.InvokeAsync<IJSObjectReference>("chartsHelper.BuildHistoryChart", AvgDmgId, "Avg damage", dmgData);
+            _wn7ChartRef = await JsRuntime.InvokeAsync<IJSObjectReference>("chartsHelper.BuildHistoryChart", Wn7Id, "Wn7", wn7Data);
+        }
+        else
+        {
+            await JsRuntime.InvokeVoidAsync("chartsHelper.addData", _winRateChartRef, winRateData);
+            await JsRuntime.InvokeVoidAsync("chartsHelper.addData", _dmgChartRef, dmgData);
+            await JsRuntime.InvokeVoidAsync("chartsHelper.addData", _wn7ChartRef, wn7Data);
+        }
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (_winRateChartRef != null)
+        {
+            await _winRateChartRef.DisposeAsync();
+        }
+        if (_dmgChartRef != null)
+        {
+            await _dmgChartRef.DisposeAsync();
+        }
+        if (_wn7ChartRef != null)
+        {
+            await _wn7ChartRef.DisposeAsync();
+        }
+    }
 }
