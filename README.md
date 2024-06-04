@@ -2,6 +2,7 @@
 
 Detailed player &amp; tank statistics and history for [World of Tanks: Blitz](https://wotblitz.com/)
 
+![Player](readme.media/WotStats0.png)
 ![VehiclesList](readme.media/WotStats1.png)
 ![E100](readme.media/WotStats2.png)
 ![VehiclesTree](readme.media/WotStats3.png)
