@@ -465,7 +465,7 @@
       "url": "medals\/warrior.png"
     },
     {
-      "hash": "sha256-BPEG2BfQBD6skL9scPFHp6Iy8lqQDiG5bSoww3U9864=",
+      "hash": "sha256-FPp1uSpk6\/b\/dQnFq9n9NV6qe+7\/LwCC8m6re\/zVL4w=",
       "url": "missed-tanks.json"
     },
     {
@@ -485,7 +485,7 @@
       "url": "modules\/encyclopedia.vehicle.turret.scale-200.png"
     },
     {
-      "hash": "sha256-jH4E7C74bcyPJXMFf+ag9iVT+OAZfpoGvWih7ZnLg2Q=",
+      "hash": "sha256-In1phx+FjNxmTv7Ma733jVHskhIw+Wvu\/g9jyiNE8sQ=",
       "url": "scripts\/chart-helper.js"
     },
     {
@@ -2737,7 +2737,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-nXbVo+aGJ4mlm+h+24i+5Ij3ENw9brsktUyeO1CQD0E=",
+      "hash": "sha256-oGQnKyItRBi2StVxxtYSlGwrRoPqdsv4pIks2sKLi\/c=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2897,7 +2897,7 @@
       "url": "_framework\/SQLitePCLRaw.provider.e_sqlite3.wasm"
     },
     {
-      "hash": "sha256-1nGvUPUoybW4323dkf5yiDRKO+IQcKENf0IBBk9ncic=",
+      "hash": "sha256-ag24cKPNjhD+Z3NwkTI3IZgIvyYOqb89yxpZF13hqU4=",
       "url": "_framework\/SqliteWasmHelper.wasm"
     },
     {
@@ -3073,23 +3073,23 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-YvBpXL8r\/qEXWGoOmQoYzANqbKJYD0RCcMPNLPNdMCs=",
+      "hash": "sha256-KwjvuGoeRaBusXvQUyakJx5PDJ\/uoxdmlgdCdpM2p+4=",
       "url": "_framework\/WotBlitzStatisticsPro.Application.wasm"
     },
     {
-      "hash": "sha256-dnhWeFdCLj5NV6EQYOe34IPoIN8DrZzUkaYWl6ppO+g=",
+      "hash": "sha256-GbiyceYURKSHSpdL5jExwcVcLfISMXy0qVSjaXq6A\/M=",
       "url": "_framework\/WotBlitzStatisticsPro.Persistence.wasm"
     },
     {
-      "hash": "sha256-SNYiS6UX1cdiYYYbq4526AFVKKgZR33h1l8tCF5Ovx4=",
+      "hash": "sha256-iomDa0xw5braEoJAE+aJOk80xHFJqBsAKhnj+5TKQsQ=",
       "url": "_framework\/WotBlitzStatisticsPro.WargamingApi.wasm"
     },
     {
-      "hash": "sha256-aUKxJso6Acla64uH+gulBOexFfbF6ay\/yBNO2cLwuvs=",
+      "hash": "sha256-Z9U0uvO470tyH75pRSW7PkGCmcquc2PYCFfPjvZ6psY=",
       "url": "_framework\/WotBlitzStatisticsPro.wasm"
     },
     {
-      "hash": "sha256-oRlF48fpeB2DyL2jXHrAC4pe78\/Zt9hyvXnM8UxLGqs=",
+      "hash": "sha256-PcEIJs07+64y3CgsqWKRWDebs\/P7owgYuC0xTJ1DScs=",
       "url": "_framework\/WotBlitzStatisticsPro.WebUi.wasm"
     },
     {
@@ -3097,11 +3097,11 @@
       "url": "appsettings.json"
     },
     {
-      "hash": "sha256-DbSmwEKgnyqWgfSVSf4xczVriA56ysPMeHzxav0XLwU=",
+      "hash": "sha256-5pI35yPZplslLwq03mrah9\/XzziXZHTGRO8H7\/ZRg5A=",
       "url": "_framework\/de\/WotBlitzStatisticsPro.WebUi.resources.wasm"
     },
     {
-      "hash": "sha256-Q5drvh01Tt3KOpRKZSaPgErL5c8oNDw+oap0\/uQfgyk=",
+      "hash": "sha256-BTz2Qjpp5yaFRJJTy3\/PdgTYhIJYQMJbRqm53jd+iw0=",
       "url": "_framework\/ru\/WotBlitzStatisticsPro.WebUi.resources.wasm"
     },
     {
@@ -3113,5 +3113,5 @@
       "url": "_content\/SqliteWasmHelper\/browserCache.js"
     }
   ],
-  "version": "de74LW\/c"
+  "version": "\/TjwrqeE"
 };

@@ -64,6 +64,14 @@
     "name": "Progetto CC55 mod.54"
   },
   {
+    "tankId": 17281,
+    "tier": 9,
+    "type": "heavyTank",
+    "nation": "european",
+    "isPremium": false,
+    "name": "Progetto CC50 mod.66"
+  },
+  {
     "tankId": 20545,
     "tier": 5,
     "type": "heavyTank",
