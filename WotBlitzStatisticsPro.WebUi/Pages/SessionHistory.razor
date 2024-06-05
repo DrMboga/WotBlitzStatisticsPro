@@ -65,7 +65,7 @@
         var dmgData = new ChartData {
             Datasets = new [] {
                 new ChartDataSet {
-                    Data = chartData.Select(h => h.AvgDamage).ToArray(),
+                    Data = chartData.Select(h => Math.Round(h.AvgDamage, 0)).ToArray(),
                     BackgroundColor = "rgb(70, 140, 72)",
                     BorderColor = "rgb(70, 140, 72)"
                 }

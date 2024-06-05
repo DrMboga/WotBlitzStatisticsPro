@@ -17,6 +17,33 @@ chartsHelper.BuildHistoryChart = function (elementId, label, data) {
           text: label,
         },
       },
+      elements: {
+        point: {
+          radius: 0,
+        },
+      },
+      scales: {
+        x: {
+          display: true,
+          title: {
+            display: false,
+          },
+          grid: {
+            color: '#3d3b3b',
+            lineWidth: 0.5,
+          },
+        },
+        y: {
+          display: true,
+          title: {
+            display: false,
+          },
+          grid: {
+            color: '#3d3b3b',
+            lineWidth: 0.5,
+          },
+        },
+      },
     },
   });
 
