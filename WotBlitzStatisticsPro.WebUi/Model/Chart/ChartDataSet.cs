@@ -6,4 +6,5 @@ public class ChartDataSet
     public decimal[]? Data { get; set; }
     public string BorderColor { get; set; } = string.Empty;
     public string BackgroundColor { get; set; } = string.Empty;
+    public decimal Tension { get; set; } = 0.4m;
 }
