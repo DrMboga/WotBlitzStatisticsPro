@@ -108,7 +108,7 @@
                 }
                 else
                 {
-                    <span style="font-size: 18px">@tank.Name</span>
+                    <span style="font-size: 18px">@(string.IsNullOrWhiteSpace(tank.Name) ? tank.TankId : tank.Name)</span>
                 }
                 </td>
                 <td style="text-align: center; vertical-align: middle;">
