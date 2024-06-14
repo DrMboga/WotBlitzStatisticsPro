@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "WotBlitzStatisticsPro.WebUi",
   "resources": {
-    "hash": "sha256-NOg8vxK14k8fO5H9sIlQecRs8puXud3cDO2EX0uy5tA=",
+    "hash": "sha256-jNCmaZ1SedTKX28THzpJ9J+ogdJ+syqstFpS9azTJzA=",
     "jsModuleNative": {
       "dotnet.native.8.0.6.hz4mbijwjn.js": "sha256-J6bn0WlXqihbYOdhGSdArPPZtl2pzsRKFbQ5tuBjbjg="
     },
@@ -52,7 +52,7 @@
       "SQLitePCLRaw.batteries_v2.wasm": "sha256-vcL07vkPcm46XRmmbiwtkIjh7BANf+xIbkHc9QwXTms=",
       "SQLitePCLRaw.core.wasm": "sha256-5ncp/PNVntosOHmUwpvRVJZvvreYP08nlkqD9XgBkdA=",
       "SQLitePCLRaw.provider.e_sqlite3.wasm": "sha256-r+d/B9DNIVIRpgZeJsrHiAFnwLIGEfNSDY8bRpDAMsI=",
-      "SqliteWasmHelper.wasm": "sha256-U5SNqV8IMKqLNe0u60ybVgJdEEL56lla1VQhk9Cfc/Q=",
+      "SqliteWasmHelper.wasm": "sha256-skcQaa7wyAdOnWKKIIGk3FglsIOPqNcWK7HQQWYsEcA=",
       "System.Buffers.wasm": "sha256-ESyLw2C1cw3eZ66HmTjdQAmutRNp8gs2mOzvLFiuHEE=",
       "System.Collections.Concurrent.wasm": "sha256-wgzuXd/4W8FA3svb9P7ahWZLh4KBbOLhjT0tjNPRWng=",
       "System.Collections.Immutable.wasm": "sha256-4XtJQYDFz4DpVhaeSxXCwdca3Oj3Wcq4ATQPFpINEHs=",
@@ -96,18 +96,18 @@
       "System.Threading.wasm": "sha256-eMGTcazd/nl2kLFkplkqVjv17l2Nfrq5YRl14GId6/A=",
       "System.Transactions.Local.wasm": "sha256-Q8IFMGzPPxoFzsCtl4MGeLXzRsF2PVvx7P7nADxV5AY=",
       "System.wasm": "sha256-ebjgSlOswwIVl6vCKxSWfkZlcWzXp5P2U87gypSQ52U=",
-      "WotBlitzStatisticsPro.Application.wasm": "sha256-l2DSojk+C6yeSnHQ5vvGiHn7TqZf296f66sNEAOjbnE=",
-      "WotBlitzStatisticsPro.Persistence.wasm": "sha256-DRCU5l/qILHm0jwQEwtK84XHbrR4cFJthD9bpeEE67g=",
-      "WotBlitzStatisticsPro.WargamingApi.wasm": "sha256-YACTb6QIiPuE2/VL4FcouM3DdiF3l2siEcEYU6/OZ9c=",
-      "WotBlitzStatisticsPro.wasm": "sha256-V3WaMjBjAEuZ/fFx4/DKlqmHUqvdUPsHbJFaE+pQ3Xc=",
-      "WotBlitzStatisticsPro.WebUi.wasm": "sha256-YF2k+pXeaWXENV87U1ywUUQd9RvNYRC6NJLc8Dwe1Nw="
+      "WotBlitzStatisticsPro.Application.wasm": "sha256-hU7cHun3g5e+LeAXQw8NKkz4RolIQXPAusNKsdz1sY4=",
+      "WotBlitzStatisticsPro.Persistence.wasm": "sha256-k25w95hDeAO+J0RPn9kfN8CUGc+ObNzgIheucyofLIY=",
+      "WotBlitzStatisticsPro.WargamingApi.wasm": "sha256-6I9WAooZFAJkkod2pq2sPw4nnd6ZPiNivgwMGB0rbiA=",
+      "WotBlitzStatisticsPro.wasm": "sha256-IBLgAFlPJMeKViplnrq8PS+JiRZJpeBGmC6qGGFCn60=",
+      "WotBlitzStatisticsPro.WebUi.wasm": "sha256-HDqeXStcLCPBfA0enSlH0wn4KRdySlyaKTc3FgS14EY="
     },
     "satelliteResources": {
       "de": {
-        "WotBlitzStatisticsPro.WebUi.resources.wasm": "sha256-s0mFQNgqnSC8cMs+RBQ/xXhM8zauYeU0Se74LoImS+4="
+        "WotBlitzStatisticsPro.WebUi.resources.wasm": "sha256-XCzY7/ML8ojlW+Q/v5oGiHIjnvMNctpSVXK/TSIKdgk="
       },
       "ru": {
-        "WotBlitzStatisticsPro.WebUi.resources.wasm": "sha256-y09y6fiozOwSSYOTdGvcZ1S8i+ZaSBt6/fjI9xbaTNU="
+        "WotBlitzStatisticsPro.WebUi.resources.wasm": "sha256-9GOPAaGhCsbTZ8SHKaeTqarg0gMI03dWXwBmmncEKrw="
       }
     }
   },

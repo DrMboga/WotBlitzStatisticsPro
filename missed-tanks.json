@@ -78,5 +78,13 @@
     "nation": "france",
     "isPremium": true,
     "name": "Renault G1"
+  },
+  {
+    "tankId": 14721,
+    "tier": 8,
+    "type": "mediumTank",
+    "nation": "european",
+    "isPremium": true,
+    "name": "Strv 81"
   }
 ]
