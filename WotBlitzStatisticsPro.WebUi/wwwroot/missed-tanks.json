@@ -86,5 +86,13 @@
     "nation": "european",
     "isPremium": true,
     "name": "Strv 81"
+  },
+  {
+    "tankId": 27137,
+    "tier": 8,
+    "type": "heavyTank",
+    "nation": "ussr",
+    "isPremium": true,
+    "name": "K-2"
   }
 ]
