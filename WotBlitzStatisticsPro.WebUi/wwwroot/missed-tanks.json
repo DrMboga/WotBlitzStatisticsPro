@@ -94,5 +94,13 @@
     "nation": "ussr",
     "isPremium": true,
     "name": "K-2"
+  },
+  {
+    "tankId": 9777,
+    "tier": 9,
+    "type": "heavyTank",
+    "nation": "china",
+    "isPremium": true,
+    "name": "WZ-114"
   }
 ]
