@@ -102,5 +102,13 @@
     "nation": "china",
     "isPremium": true,
     "name": "WZ-114"
+  },
+  {
+    "tankId": 23633,
+    "tier": 5,
+    "type": "mediumTank",
+    "nation": "uk",
+    "isPremium": true,
+    "name": "A25 Harry Hopkins I"
   }
 ]
