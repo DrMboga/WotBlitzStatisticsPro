@@ -110,5 +110,13 @@
     "nation": "uk",
     "isPremium": true,
     "name": "A25 Harry Hopkins I"
+  },
+  {
+    "tankId": 14465,
+    "tier": 5,
+    "type": "mediumTank",
+    "nation": "european",
+    "isPremium": false,
+    "name": "DS PZInz"
   }
 ]
