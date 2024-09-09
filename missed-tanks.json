@@ -118,5 +118,13 @@
     "nation": "european",
     "isPremium": false,
     "name": "DS PZInz"
+  },
+  {
+    "tankId": 16001,
+    "tier": 6,
+    "type": "mediumTank",
+    "nation": "european",
+    "isPremium": false,
+    "name": "B.U.G.I."
   }
 ]
