@@ -126,5 +126,13 @@
     "nation": "european",
     "isPremium": false,
     "name": "B.U.G.I."
+  },
+  {
+    "tankId": 15745,
+    "tier": 7,
+    "type": "mediumTank",
+    "nation": "european",
+    "isPremium": false,
+    "name": "CS-44"
   }
 ]
