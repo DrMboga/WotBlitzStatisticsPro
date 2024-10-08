@@ -134,5 +134,13 @@
     "nation": "european",
     "isPremium": false,
     "name": "CS-44"
+  },
+  {
+    "tankId": 15489,
+    "tier": 8,
+    "type": "mediumTank",
+    "nation": "european",
+    "isPremium": false,
+    "name": "CS-53"
   }
 ]
