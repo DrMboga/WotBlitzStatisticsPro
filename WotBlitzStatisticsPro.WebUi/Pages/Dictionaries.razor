@@ -27,7 +27,16 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    } else
+    }
+    @if(!string.IsNullOrEmpty(Error))
+    {
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+        <div class="alert alert-danger" role="alert">
+            @Error
+        </div>
+    </div>        
+    }
+    @if(!Loading && string.IsNullOrEmpty(Error))
     {
         @if(SelectedDictionary == StateDictionary)
         {
@@ -57,6 +66,7 @@
     public DictionariesInfoDto? DictionariesUpdated { get; set; }
 
     private bool Loading { get; set; } = false;
+    private string Error { get; set; } = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -65,8 +75,16 @@
 
     public async Task UpdateDictionaries()
     {
-        Loading = true;
-        DictionariesUpdated = await Mediator.Send(new UpdateDictionariesRequest(CultureInfo.CurrentCulture.Name));
+        try
+        {
+            Error = string.Empty;
+            Loading = true;
+            DictionariesUpdated = await Mediator.Send(new UpdateDictionariesRequest(CultureInfo.CurrentCulture.Name));
+        }
+        catch(Exception e)
+        {
+            Error = e.Message;
+        }
         Loading = false;
     }
 }

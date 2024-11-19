@@ -13,11 +13,20 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
 
         public async Task<WotAccountAchievementResponse> Handle(GetAccountAchievementsRequest request, CancellationToken cancellationToken)
         {
-            var accountAchievements = await _wargamingClient.GetFromBlitzApi<Dictionary<string, WotAccountAchievementResponse>>(
-                request.Language,
-                "account/achievements/",
-                $"account_id={request.AccountId}").ConfigureAwait(false);
-            return accountAchievements?[request.AccountId.ToString()] ?? new WotAccountAchievementResponse();        }
+            try
+            {
+                var accountAchievements = await _wargamingClient.GetFromBlitzApi<Dictionary<string, WotAccountAchievementResponse>>(
+                    request.Language,
+                    "account/achievements/",
+                    $"account_id={request.AccountId}").ConfigureAwait(false);
+                return accountAchievements?[request.AccountId.ToString()] ?? new WotAccountAchievementResponse();        
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new WotAccountAchievementResponse();
+            }
+        }
 
         public async Task<WotAccountAchievementResponse[]> Handle(GetTanksAchievementsRequest request, CancellationToken cancellationToken)
         {
@@ -54,18 +63,25 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
 
             foreach (var tankIdsQuery in tankIdsQueries)
             {
-                var accountAchievements = await _wargamingClient.GetFromBlitzApi<Dictionary<string, WotAccountAchievementResponse[]>>(
-                    request.Language,
-                    "tanks/achievements/",
-                    $"account_id={request.AccountId}",
-                    $"tank_id={tankIdsQuery}").ConfigureAwait(false);
-                if (accountAchievements?[request.AccountId.ToString()] != null &&
-                    accountAchievements?[request.AccountId.ToString()].Length > 0)
+                try
                 {
-                    response.AddRange(accountAchievements[request.AccountId.ToString()]);
+                    var accountAchievements = await _wargamingClient.GetFromBlitzApi<Dictionary<string, WotAccountAchievementResponse[]>>(
+                        request.Language,
+                        "tanks/achievements/",
+                        $"account_id={request.AccountId}",
+                        $"tank_id={tankIdsQuery}").ConfigureAwait(false);
+                    if (accountAchievements?[request.AccountId.ToString()] != null &&
+                        accountAchievements?[request.AccountId.ToString()].Length > 0)
+                    {
+                        response.AddRange(accountAchievements[request.AccountId.ToString()]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
-            return response.ToArray();
+            return [.. response];
         }
     }
 }

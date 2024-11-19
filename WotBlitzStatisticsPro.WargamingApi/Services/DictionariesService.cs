@@ -19,11 +19,20 @@ namespace WotBlitzStatisticsPro.WargamingApi.Services
                 "encyclopedia/info/"
             ).ConfigureAwait(false);
 
-            var clanGlossaryResponse = await _wargamingClient.GetFromBlitzApi<WotClanMembersDictionaryResponse>(
-                request.Language,
-                "clans/glossary/");
 
-            if(encyclopedia == null || clanGlossaryResponse == null)
+            WotClanMembersDictionaryResponse? clanGlossaryResponse = null;
+            try
+            {
+                clanGlossaryResponse = await _wargamingClient.GetFromBlitzApi<WotClanMembersDictionaryResponse>(
+                    request.Language,
+                    "clans/glossary/");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            if(encyclopedia == null)
             {
                 throw new ApplicationException("Unable to get encyclopedia");
             }

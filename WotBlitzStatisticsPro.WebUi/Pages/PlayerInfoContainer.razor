@@ -6,11 +6,21 @@
 <PageTitle>@(Player == null ? "Player": Player.Nickname)</PageTitle>
 @if(Player == null)
 {
-<div class="text-center">
-  <div class="spinner-border" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</div>
+    @if(GetPlayerError == null)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    } else 
+    {
+        <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+            <div class="alert alert-danger" role="alert">
+                @GetPlayerError
+            </div>
+        </div>    
+    }
 }
 @if(Player != null)
 {
@@ -51,9 +61,19 @@
         </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
-            <PlayerInfoOverview Player="@Player" PlayerSessionInfo="@PlayerSessionInfo" History=@PlayerHistory></PlayerInfoOverview>
-        </div>
+        @if(GetSessionInfoError == null)
+        {
+            <div class="tab-pane fade show active" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
+                <PlayerInfoOverview Player="@Player" PlayerSessionInfo="@PlayerSessionInfo" History=@PlayerHistory></PlayerInfoOverview>
+            </div>
+        } else 
+        {
+            <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+                <div class="alert alert-danger" role="alert">
+                    @GetSessionInfoError
+                </div>
+            </div>   
+        }
         @* <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">...</div> *@
         <div class="tab-pane fade" id="tanks" role="tabpanel" aria-labelledby="tanks-tab">
             @if(SmallScreen)
@@ -84,6 +104,7 @@
     public long AccountId { get; set; }
 
     public PlayerInfoDto? Player { get; set; }
+    public string? GetPlayerError { get; set; }
 
     public SessionInfoDto? PlayerSessionInfo { get; set; }
 
@@ -91,12 +112,31 @@
 
     public SessionHistoryItemDto[] PlayerHistory { get; set; } = [];
 
+    public string? GetSessionInfoError { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         const int screenWidthThreshold = 1000;
-        Player = await Mediator.Send(new GetPlayerInfoRequest(AccountId, CultureInfo.CurrentCulture.Name));
-        PlayerSessionInfo = await Mediator.Send(new GetPlayerSessionInfoRequest(AccountId));
+        try
+        {
+            GetPlayerError = null;
+            Player = await Mediator.Send(new GetPlayerInfoRequest(AccountId, CultureInfo.CurrentCulture.Name));
+        }
+        catch (Exception e)
+        {
+            Player = null;
+            GetPlayerError = e.Message;
+        }
+        try
+        {
+            GetSessionInfoError = null;
+            PlayerSessionInfo = await Mediator.Send(new GetPlayerSessionInfoRequest(AccountId));
+            PlayerHistory = await Mediator.Send(new GetPlayerHistoryRequest(AccountId));
+        }
+        catch (Exception e)
+        {
+            GetSessionInfoError = e.Message;
+        }
         SmallScreen = await Mediator.Send(new IsScreenLessThenValueRequest(screenWidthThreshold));
-        PlayerHistory = await Mediator.Send(new GetPlayerHistoryRequest(AccountId));
     }
 }
